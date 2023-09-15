@@ -11,3 +11,108 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Style for the horizontal list */
+.horizontal-list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.horizontal-list li {
+  margin-right: 20px; /* Adjust the spacing between list items as needed */
+}
+
+/* Style for the selected list item */
+.horizontal-list .selected {
+  color: #007bff; /* Change the color to your desired selection color (blue) */
+  font-weight: bold; /* Add additional styling for the selected item */
+}
+
+/* App Styles */
+.dashboard-root {
+  display: flex;
+  background-color: #f5f5f5; /* Light gray background color */
+}
+
+.app-bar {
+  width: calc(100% - 240px);
+  margin-left: 240px;
+  background-color: #007bff; /* Blue app bar background color */
+  color: #fff; /* White text color */
+}
+
+.drawer {
+  width: 240px;
+  flex-shrink: 0;
+  background-color: #fff; /* White drawer background color */
+}
+
+.drawer-paper {
+  width: 240px;
+}
+
+.drawer-container {
+  overflow: auto;
+}
+
+.content {
+  flexGrow: 1;
+  padding: 20px; /* Adjust as needed */
+  background-color: #fff; /* White content background color */
+}
+
+.active-route {
+  background-color: rgba(0, 123, 255, 0.1); /* Light blue selected route background color */
+}
+
+/* Add more custom styles as needed */
+/* TableComponent.css */
+
+/* Styles for the selected column highlighting */
+
+/* Styles for the deep green text color */
+.deep-green {
+  color: #006400; /* Dark green text color */
+}
+
+/* Style for selected table in the list */
+.selected {
+  background-color: #e0f0e9; /* Light green background color for the selected table in the list */
+}
+
+/* Custom styling for the DataGrid */
+.data-grid {
+  background-color: #fff; /* White data grid background color */
+  color: #333; /* Dark text color */
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light gray shadow */
+}
+
+/* Style the header row with a light blue background */
+.data-grid .MuiDataGrid-header {
+  background-color: #f0f8ff; /* Light blue */
+}
+
+/* Style the header cells with dark text */
+.data-grid .MuiDataGrid-colCell {
+  color: #333; /* Dark text color */
+}
+
+/* Style the cells with a slightly darker background color */
+.data-grid .MuiDataGrid-cell {
+  background-color: #f5f5f5; /* Light gray background */
+  color: #333; /* Dark text color */
+}
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns as needed */
+  gap: 20px; /* Adjust the gap between charts */
+}
+
+.chart {
+  border: 1px solid #ccc; /* Optional: Add borders to separate charts */
+  padding: 20px; /* Optional: Add padding to charts */
+}
