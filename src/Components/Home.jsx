@@ -43,9 +43,8 @@ function Home() {
       <AppBar>
       <Toolbar>
         <MenuIcon onClick={toggleDrawer} style={{ cursor: 'pointer' }} /> {/* Menu icon */}
-        <Typography >
-          XYZ INSTITUTE
-        </Typography>
+        <Typography variant="h5" gutterBottom letterSpacing={5} marginLeft={15}>
+        APJ Abdul Kalam Free Education Centre        </Typography>
       </Toolbar>
       </AppBar>
       <Drawer

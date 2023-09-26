@@ -14,28 +14,26 @@ function HomePage() {
         </Slide>
         <Fade in={true} timeout={1000}>
           <Typography variant="body1" paragraph>
-            Naresh i Technologies (Pronounced: NareshIT) is a leading software training institute providing Software Training, Project Guidance, IT Consulting, and Technology Workshops.
-          </Typography>
+          Presenting the APJ Abdul Kalam Free Education Center
+   </Typography>
         </Fade>
         <Fade in={true} timeout={2000}>
           <Typography variant="body1" paragraph>
-            Using our enhanced global software training delivery methodology, innovative software training approach, and industry expertise, we provide high-value corporate training services that enable our clients to enhance business performance, accelerate time-to-market, increase productivity, and improve customer service.
+          Founded on October 15, 2022, in honor of APJ Abdul Kalam's birth anniversary, we are an initiative of the Universal Human Foundation, a registered trust under the Indian Trust Act 1982. Our primary objective is to provide outstanding education to deserving Bengali students who face barriers in accessing essential resources, such as top-tier study materials and tools crucial for excelling in university admission exams.       
           </Typography>
         </Fade>
-        <Fade in={true} timeout={3000}>
-          <Typography variant="body1" paragraph>
-            We serve Global 100 companies and the leading software vendors in Banking & Financial Services, Insurance, Telecommunications, Technology, and Media, Information & Education industries. We design and mentor human resources for our clients who create competitive advantage.
-          </Typography>
-        </Fade>
+
         <Slide direction="up" in={true} mountOnEnter unmountOnExit>
           <Typography variant="h4" gutterBottom>
-            We are on a mission to bridge the gap between industry & academia by rapidly building industry-relevant skills in people.
-          </Typography>
+Our Mission  </Typography>
         </Slide>
         <Fade in={true} timeout={1000}>
           <Typography variant="body1" paragraph>
-            Describe your mission and goals here.
-          </Typography>
+          We are dedicated to providing a launchpad for the underprivileged, empowering them to conquer the nation's university admission exams.
+
+In our eyes, education is a fundamental human right, and we firmly believe that no one should be deprived of this opportunity due to a lack of essential guidance.
+
+Join us in leveling the playing field and ensuring equal access to education for all.          </Typography>
         </Fade>
         <Slide direction="up" in={true} mountOnEnter unmountOnExit>
           <Typography variant="h4" gutterBottom>
@@ -44,8 +42,10 @@ function HomePage() {
         </Slide>
         <Fade in={true} timeout={1000}>
           <Typography variant="body1" paragraph>
-            List the courses you offer and any additional information about them.
-          </Typography>
+
+          As previously indicated, our coaching sessions are a vital component of our institution's overarching mission. We are dedicated to providing deserving and diligent students, particularly those hailing from underprivileged backgrounds in West Bengal, with the invaluable opportunity to pursue prestigious university careers across various fields.
+
+It's a well-known fact that financially disadvantaged students often find the prospect of private colleges out of reach due to their exorbitant tuition costs. However, there are reputable institutions such as JMI, AMU, CU, BHU, DU, and PU that offer quality education at affordable rates. To facilitate the admission of these deserving students into these esteemed universities, the APJ Abdul Kalam Free Education Center serves as a bridge, connecting their hard work with the realization of their dreams.          </Typography>
         </Fade>
       </Container>
     </div>
