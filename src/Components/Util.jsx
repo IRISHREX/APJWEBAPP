@@ -2,6 +2,22 @@ import * as XLSX from 'xlsx';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import React, { useState } from 'react';
+import Employee1 from '../Images/Employee1.png'
+import Employee2 from '../Images/Employee2.png'
+import Employee3 from '../Images/Employee3.png'
+import L from 'leaflet';
+import HomeIcon from '@mui/icons-material/Home';
+import TableChartIcon from '@mui/icons-material/TableChart';
+import AssessmentIcon from '@mui/icons-material/Assessment';
+import NoticeIcon from '@mui/icons-material/Notifications';
+import LoginIcon from '@mui/icons-material/Login';
+import AboutIcon from '@mui/icons-material/Info';
+import ContactIcon from '@mui/icons-material/ContactMail';
+import NoticeUploaderIcon from '@mui/icons-material/CloudUpload';
+import CredentialManagerIcon from '@mui/icons-material/VpnKey';
+import { ListItem, ListItemIcon, ListItemText, Toolbar, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
+
 
 //convert Excel To Json data
 export const convertExcelToJson = (file, onSuccess, onError) => {
@@ -239,3 +255,98 @@ export const convertExcelToJsonModified = (file, onSuccess, onError) => {
     reader.readAsArrayBuffer(file);
   };
   
+// Updated default center location
+export const defaultLocation = {
+  lat: 12.9816, // Replace with the latitude of the default location
+  lng: 80.1773, // Replace with the longitude of the default location
+};
+
+export const zoom = 13; // Initial zoom level
+
+export const waypoints = [
+  L.latLng(defaultLocation.lat, defaultLocation.lng), // Start point
+  L.latLng(51.501, -0.08), // End point (you can replace with your desired endpoint)
+];
+
+export const teamMembers = [
+  {
+    name: 'John Doe',
+    role: 'CEO',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.',
+    imageSrc: Employee1, // Replace with the image source
+    socialLinks: {
+      linkedin: 'https://www.linkedin.com/in/johndoe/',
+      twitter: 'https://twitter.com/johndoe/',
+    },
+  },
+  {
+    name: 'Jane Smith',
+    role: 'Lead Developer',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.',
+    imageSrc: Employee2, // Replace with the image source
+    socialLinks: {
+      linkedin: 'https://www.linkedin.com/in/janesmith/',
+      twitter: 'https://twitter.com/janesmith/',
+    },
+  },
+  {
+    name: 'Sohel Islam',
+    role: 'Lead Developer',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.',
+    imageSrc: Employee3, // Replace with the image source
+    socialLinks: {
+      linkedin: 'https://www.linkedin.com/in/janesmith/',
+      twitter: 'https://twitter.com/janesmith/',
+    },
+  },
+  // Add more team members as needed
+];
+export const SidebarItem = ({ to, text, icon, isActive }) => (
+  <ListItem
+    button
+    component={Link}
+    to={to}
+    className={`${
+      isActive ? 'active-route' : ''
+    } group hover:bg-indigo-600 dark:hover:bg-indigo-400`}
+  >
+    <ListItemIcon>{icon}</ListItemIcon>
+    <ListItemText primary={text} />
+  </ListItem>
+);
+
+export const sidebarIcons = {
+  Home: <HomeIcon />,
+  Table: <TableChartIcon />,
+  Analysis: <AssessmentIcon />,
+  Notice: <NoticeIcon />,
+  Login: <LoginIcon />,
+  About: <AboutIcon />,
+  Contact: <ContactIcon />,
+  'Notice Uploader': <NoticeUploaderIcon />,
+  'Credential Manager': <CredentialManagerIcon />,
+};
+
+export function AppToolbar({ darkMode, toggleDarkMode }) {
+  return (
+    <Toolbar className="flex justify-between">
+      <div>
+        <Typography variant="h6">Your App Title</Typography>
+      </div>
+      <div>
+        <button
+          className={`${
+            darkMode
+              ? 'bg-gray-800 text-white'
+              : 'bg-gray-200 text-gray-700 dark:bg-gray-600 dark:text-white'
+          } p-2 rounded-full shadow-md hover:bg-gray-300 dark:hover:bg-gray-700 focus:outline-none`}
+          onClick={toggleDarkMode}
+        >
+          {darkMode ? 'Light Mode' : 'Dark Mode'}
+        </button>
+      </div>
+    </Toolbar>
+  );
+}
+
+
