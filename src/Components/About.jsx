@@ -7,7 +7,8 @@ import MapComponent from './MapComponent';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Link from '@mui/material/Link';
-import { defaultLocation, teamMembers, waypoints, zoom } from './Util';
+import { defaultLocation, waypoints, zoom } from './Util';
+import teamMembersData from '../SubPackages/TeamMembarData';
 
 const About = () => {
   return (
@@ -18,14 +19,15 @@ const About = () => {
 
       {/* Cards section */}
       <Grid container spacing={2}>
-        {teamMembers.map((member, index) => (
+        {teamMembersData.map((member, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
             <Card>
               <CardContent>
+              <Avatar alt={member.name} src={member.imageSrc} />
                 <Typography variant="h6">{member.name}</Typography>
                 <Typography variant="subtitle1">{member.role}</Typography>
                 <Typography variant="body2">{member.description}</Typography>
-                <Avatar alt={member.name} src={member.imageSrc} />
+                
                 <div>
                   {member.socialLinks.linkedin && (
                     <IconButton

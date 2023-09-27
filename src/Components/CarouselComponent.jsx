@@ -1,11 +1,11 @@
 import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import carouselData from '../Graphs/CarouselData';
+import carouselData from '../SubPackages/CarouselData';
 
 
 const CarouselComponent = () => {
-  return (
+  return ( 
     <Carousel>
       {carouselData.map((item, index) => (
         <div key={index}>

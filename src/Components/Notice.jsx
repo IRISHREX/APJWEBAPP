@@ -16,7 +16,7 @@ import {
   TableRow,
 } from '@mui/material';
 import Carousel from 'react-material-ui-carousel';
-import notices from '../Graphs/NoticeData';
+import notices from '../SubPackages/NoticeData';
 
 const NoticeCard = ({ title, description, image, link, isTable }) => (
   <Grid item xs={12} sm={12} md={6}>

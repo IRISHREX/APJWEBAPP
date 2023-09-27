@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ThemeProvider, createTheme } from '@mui/material';
 
 // Import the base styles and any additional styles you need.
 import 'tailwindcss/base.css';
@@ -11,12 +12,15 @@ import 'tailwindcss/utilities.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 // Your other imports and code here
+// Create a Material-UI theme
+const theme = createTheme();
+
 
 ReactDOM.render(
   <Router>
-  <React.StrictMode>
+  <ThemeProvider theme={theme}>
     <App />
-  </React.StrictMode>,
+  </ThemeProvider>,
   </Router>,
   document.getElementById('root')
 );

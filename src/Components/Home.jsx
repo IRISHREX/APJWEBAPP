@@ -16,6 +16,7 @@ import Notice from './Notice';
 import Contact from './Contact';
 import LoginPage from './LoginPage';
 import { AppBar, Typography } from '@mui/material';
+import MasterUploader from './MasterUploader';
 
 function Home() {
   const [jsonData, setJsonData] = useState([]);
@@ -119,7 +120,7 @@ function Home() {
       <main className="content p-5">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route
+          {/* <Route
             path="/notice-uploader"
             element={
               <ExcelToJsonConverter
@@ -128,11 +129,12 @@ function Home() {
                 jsonData={jsonData}
               />
             }
-          />
+          /> */}
           <Route path="/table" element={<TableComponent jsonData={jsonData} />} />
           <Route path="/analysis" element={<Analyzer jsonData={jsonData} />} />
           <Route path="/about" element={<About jsonData={jsonData} />} />
           <Route path="/notice" element={<Notice jsonData={jsonData} />} />
+          <Route path="/notice-uploader" element={<MasterUploader jsonData={jsonData} />} />
           <Route path="/contact" element={<Contact jsonData={jsonData} />} />
           <Route path="/login" element={<LoginPage jsonData={jsonData} />} />
           {/* Add more routes as needed */}

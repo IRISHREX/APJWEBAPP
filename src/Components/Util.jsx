@@ -2,10 +2,6 @@ import * as XLSX from 'xlsx';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import React, { useState } from 'react';
-import Employee1 from '../Images/Employee1.png'
-import Employee2 from '../Images/Employee2.png'
-import Employee3 from '../Images/Employee3.png'
-import Employee4 from '../Images/Employee4.jpeg'
 import L from 'leaflet';
 import HomeIcon from '@mui/icons-material/Home';
 import TableChartIcon from '@mui/icons-material/TableChart';
@@ -269,79 +265,8 @@ export const waypoints = [
   L.latLng(51.501, -0.08), // End point (you can replace with your desired endpoint)
 ];
 
-export const teamMembers = [
-  {
-    name: 'John Doe',
-    role: 'CEO',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.',
-    imageSrc: Employee1, // Replace with the image source
-    socialLinks: {
-      linkedin: 'https://www.linkedin.com/in/johndoe/',
-      twitter: 'https://twitter.com/johndoe/',
-    },
-  },
-  {
-    name: 'Jane Smith',
-    role: 'Lead Developer',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.',
-    imageSrc: Employee2, // Replace with the image source
-    socialLinks: {
-      linkedin: 'https://www.linkedin.com/in/janesmith/',
-      twitter: 'https://twitter.com/janesmith/',
-    },
-  },
-  {
-    name: 'Sohel Islam',
-    role: 'Lead Developer',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.',
-    imageSrc: Employee3, // Replace with the image source
-    socialLinks: {
-      linkedin: 'https://www.linkedin.com/in/janesmith/',
-      twitter: 'https://twitter.com/janesmith/',
-    },
-  },
-  {
-    name: 'Jane Smith',
-    role: 'Lead Developer',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.',
-    imageSrc: Employee2, // Replace with the image source
-    socialLinks: {
-      linkedin: 'https://www.linkedin.com/in/janesmith/',
-      twitter: 'https://twitter.com/janesmith/',
-    },
-  },
-  {
-    name: 'Sohel Islam',
-    role: 'Lead Developer',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.',
-    imageSrc: Employee3, // Replace with the image source
-    socialLinks: {
-      linkedin: 'https://www.linkedin.com/in/janesmith/',
-      twitter: 'https://twitter.com/janesmith/',
-    },
-  },
-  {
-    name: 'Jane Smith',
-    role: 'Lead Developer',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.',
-    imageSrc: Employee2, // Replace with the image source
-    socialLinks: {
-      linkedin: 'https://www.linkedin.com/in/janesmith/',
-      twitter: 'https://twitter.com/janesmith/',
-    },
-  },
-  {
-    name: 'Sohel Islam',
-    role: 'Lead Developer',
-    description: 'Iam Syed Imtiaz Hossain, currently in my 4th year at Surendranath Law College, part of Calcutta University. Throughout my academic journey, I have been fortunate to receive recognition for my studies. I have also had the privilege of sharing my understanding by assisting my fellow students in their learning process. Alongside my studies, I have gained valuable insights interning with a respected Advocate at Calcutta High Court, which has deepened my appreciation for the practical aspects of law. Faculty For Legal Reasoning',
-      imageSrc: Employee4, // Replace with the image source
-    socialLinks: {
-      linkedin: 'https://www.linkedin.com/in/janesmith/',
-      twitter: 'https://twitter.com/janesmith/',
-    },
-  },
   // Add more team members as needed
-];
+
 export const SidebarItem = ({ to, text, icon, isActive }) => (
   <ListItem
     button
