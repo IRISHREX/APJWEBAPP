@@ -11,6 +11,15 @@ import { defaultLocation, waypoints, zoom } from './Util';
 import teamMembersData from '../SubPackages/TeamMembarData';
 
 const About = () => {
+  const cardStyles = {
+    maxHeight: '400px', // Set a maximum height for the card content
+  };
+
+  const avatarStyles = {
+    width: '100px', // Increase the Avatar size
+    height: '100px',
+  };
+
   return (
     <div className="about-container">
       <Typography variant="h4" gutterBottom>
@@ -21,13 +30,15 @@ const About = () => {
       <Grid container spacing={2}>
         {teamMembersData.map((member, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
-            <Card>
+            <Card style={cardStyles}>
               <CardContent>
-              <Avatar alt={member.name} src={member.imageSrc} />
+                <Avatar alt={member.name} src={member.imageSrc} style={avatarStyles} />
                 <Typography variant="h6">{member.name}</Typography>
                 <Typography variant="subtitle1">{member.role}</Typography>
-                <Typography variant="body2">{member.description}</Typography>
-                
+                <Typography variant="body2" style={{ maxHeight: '100px', overflowY: 'auto' }}>
+                  {member.description}
+                </Typography>
+
                 <div>
                   {member.socialLinks.linkedin && (
                     <IconButton

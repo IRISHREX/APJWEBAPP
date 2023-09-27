@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Toolbar from '@mui/material/Toolbar';
 import Drawer from '@mui/material/Drawer';
@@ -38,7 +38,18 @@ function Home() {
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
+  useEffect(() => {
+    if (isDrawerOpen) {
+      const timer = setTimeout(() => {
+        setIsDrawerOpen(false); // Close the drawer after 3 seconds
+      }, 4000);
 
+      // Clear the timer if the component unmounts or the drawer is closed manually
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [isDrawerOpen]);
   return (
     <div >
       <AppBar>
@@ -65,18 +76,7 @@ function Home() {
               icon={sidebarIcons.Home}
               isActive={location.pathname === '/'}
             />
-            <SidebarItem
-              to="/table"
-              text="Table"
-              icon={sidebarIcons.Table}
-              isActive={location.pathname === '/table'}
-            />
-            <SidebarItem
-              to="/analysis"
-              text="Analysis"
-              icon={sidebarIcons.Analysis}
-              isActive={location.pathname === '/analysis'}
-            />
+            
             <SidebarItem
               to="/notice"
               text="Notice"
@@ -112,6 +112,18 @@ function Home() {
               text="Credential Manager"
               icon={sidebarIcons['Credential Manager']}
               isActive={location.pathname === '/credential-manager'}
+            />
+            <SidebarItem
+              to="/table"
+              text="Table"
+              icon={sidebarIcons.Table}
+              isActive={location.pathname === '/table'}
+            />
+            <SidebarItem
+              to="/analysis"
+              text="Analysis"
+              icon={sidebarIcons.Analysis}
+              isActive={location.pathname === '/analysis'}
             />
           </List>
         </div>
