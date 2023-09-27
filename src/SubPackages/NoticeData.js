@@ -9,7 +9,7 @@ const notices = [
     {
       id: 1,
       title: 'Notice 1',
-      description: 'This is the description of Notice 1.',
+      description: 'Today is Holiday',
       image: SLIDE1, // Replace with image URL
       link: 'https://example.com/notice1',
     },
