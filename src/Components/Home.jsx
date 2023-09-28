@@ -1,9 +1,11 @@
-import React, { useState ,useEffect} from 'react';
+import React, { useState ,useEffect, useRef} from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Toolbar from '@mui/material/Toolbar';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import MenuIcon from '@mui/icons-material/Menu'; // Import Menu icon
+import logo512 from '../Images/Genral/logo512.png'; // Replace 'logo512.png' with the actual path to your logo image.
+
 
 import { AppToolbar, SidebarItem, sidebarIcons, useSnackbar } from './Util';
 
@@ -24,6 +26,8 @@ function Home() {
 
   const { openSnackbar, SnackbarComponent } = useSnackbar();
   const location = useLocation();
+  const [isAppBarVisible, setIsAppBarVisible] = useState(true);
+  const prevScrollY = useRef(0);
 
   const handleJsonDataChange = (data) => {
     setJsonData(data);
@@ -50,12 +54,36 @@ function Home() {
       };
     }
   }, [isDrawerOpen]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > prevScrollY.current) {
+        // Scrolling down, hide the app bar
+        setIsAppBarVisible(false);
+      } else {
+        // Scrolling up, show the app bar
+        setIsAppBarVisible(true);
+      }
+
+      prevScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <div >
-      <AppBar>
+      <AppBar style={{ display: isAppBarVisible ? 'block' : 'none' }}>
       <Toolbar>
         <MenuIcon onClick={toggleDrawer} style={{ cursor: 'pointer' }} /> {/* Menu icon */}
-        <Typography variant="h5" gutterBottom letterSpacing={5} marginLeft={15}>
+        <img src={logo512} alt="Logo" style={{ maxWidth: '60px', marginRight: '10px',marginLeft: '20px', borderRadius:"15%"}} /> {/* Add your logo here */}
+        <Typography variant="h4" gutterBottom letterSpacing={5} marginLeft={15} height={15}>
         APJ Abdul Kalam Free Education Centre        </Typography>
       </Toolbar>
       </AppBar>
