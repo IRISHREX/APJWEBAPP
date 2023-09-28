@@ -314,5 +314,3 @@ export function AppToolbar({ darkMode, toggleDarkMode }) {
     </Toolbar>
   );
 }
-
-

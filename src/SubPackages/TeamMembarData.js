@@ -1,11 +1,16 @@
+import AbooBakarMajeeda from '../Images/TeamMembars/AbooBakarMajeeda.jpg'
 import AdyanChowdhury from '../Images/TeamMembars/AdyanChowdhury.jpeg'
+import Ahmadulla from '../Images/TeamMembars/Ahmadulla.jpg'
 import AnanyaSaren from '../Images/TeamMembars/AnanyaSaren.jpeg'
 import ArmanSheikh from '../Images/TeamMembars/ArmanSheikh.jpeg'
 import AsifReza from '../Images/TeamMembars/AsifReza.jpeg'
+import MdAlkama from '../Images/TeamMembars/MdAlkama.jpg'
 import MdGolamSamdani from '../Images/TeamMembars/MdGolamSamdani.jpeg'
-import SifaSuhana from '../Images/TeamMembars/SifaSuhana.jpeg'
+import MohdKifayatullahAnsari from '../Images/TeamMembars/MohdKifayatullahAnsari.jpg'
+import SifaSuhana from '../Images/TeamMembars/SifaSuhana.jpg'
 import SyedImtiazHossain from '../Images/TeamMembars/SyedImtiazHossain.jpeg'
 import SwarnaliGhosh from '../Images/TeamMembars/SwarnaliGhosh.png'
+import UzairAhmed from '../Images/TeamMembars/UzairAhmed.jpg'
 
  const teamMembersData = [
     {
@@ -88,6 +93,49 @@ import SwarnaliGhosh from '../Images/TeamMembars/SwarnaliGhosh.png'
           twitter: 'https://twitter.com/janesmith/',
         },
       },
+
+
+      {
+        name: 'Ahmadulla',
+        role: 'Faculty',
+        description: 'Ahmadullah, a dedicated student, is currently in his third year pursuing his B.A LL.B at Calcutta University. His educational journey has been remarkable, as he has successfully completed his Alim from Jamea Mohammadia Mansoora Malegaon, Nasik (Maharashtra). Additionally, he has earned Alim and Fazil qualifications from the esteemed West Bengal Board of Madrasah Education. Ahmadullah is commitment to language proficiency is evident through his achievement of a Diploma in Functional Arabic from the National Council for Promotion of Urdu Language, Government of India. With his diverse educational background and relentless pursuit of knowledge, Ahmadullah is poised for a bright future in the legal field.',
+          imageSrc: Ahmadulla, // Replace with the image source
+        socialLinks: {
+          linkedin: 'https://www.linkedin.com/in/ahmadulla/',
+          twitter: 'https://twitter.com/ahmadulla/',
+        },
+      },
+      {
+        name: 'Uzair Ahmed',
+        role: 'Faculty',
+        description: 'I am Uzair Ahmed, a student pursuing BA LLB (HONS) at Jamia Millia Islamia, New Delhi. I have a passion for curating the legal and current affairs section of mock tests. My goal is to provide relevant questions from an exam perspective, specifically in the field of law and general knowledge. I am dedicated to helping students excel in their studies and preparation for exams. My interest in law and current affairs drives me to continuously update and improve the content I create. I believe that a strong understanding of legal concepts combined with knowledge of current events is crucial for success in the legal profession. Therefore, I ensure that the questions I curate are informative, engaging, and beneficial for students',
+          imageSrc: UzairAhmed, // Replace with the image source
+        socialLinks: {
+          linkedin: 'https://www.linkedin.com/in/ahmadulla/',
+          twitter: 'https://twitter.com/ahmadulla/',
+        },
+      },
+      {
+        name: 'Md Alkama',
+        role: 'Faculty',
+        description: 'I am Md Alkama from West Bengal. I am proud to share that I have achieved the 1st rank in the 12th standard (Fazil) from WBBME in 2022, which was a remarkable accomplishment. This achievement has motivated me to pursue my passion for languages, and currently, I am in Jamia Millia Islamia fully dedicated to studying the Arabic language. I believe that learning Arabic will open up new opportunities for me and enable me to connect with a wider global community. I am excited to expand my knowledge and skills in this beautiful language and explore its rich cultural heritage.',
+          imageSrc: MdAlkama, // Replace with the image source
+        socialLinks: {
+          linkedin: 'https://www.linkedin.com/in/ahmadulla/',
+          twitter: 'https://twitter.com/ahmadulla/',
+        },
+      },
+      {
+        name: 'Aboo Bakar Majeeda',
+        role: 'Faculty',
+        description: 'I am Aboo Bakr Majeedi, a dedicated law student from Panipat, Haryana. Currently enrolled in the esteemed law program at Jamia Millia Islamia, I am expanding my knowledge and sharpening my legal skills. Through academic pursuits, discussions, and practical experiences, I am growing as a law student. I embrace challenges and opportunities, believing they lead to a successful legal career. Inspired to make a positive impact, contribute to society, and uphold justice and equality, my journey as a law student is exhilarating. Excited to see where this path leads me.',
+          imageSrc: AbooBakarMajeeda, // Replace with the image source
+        socialLinks: {
+          linkedin: 'https://www.linkedin.com/in/aboobakarmajeeda/',
+          twitter: 'https://twitter.com/aboobakarmajeeda/',
+        },
+      },
+      
 
   ];
   export default teamMembersData;
