@@ -9,9 +9,9 @@ import logo512 from '../Images/Genral/logo512.png'; // Replace 'logo512.png' wit
 
 import { AppToolbar, SidebarItem, sidebarIcons, useSnackbar } from './Util';
 
-import ExcelToJsonConverter from './ExcelToJsonConverter';
+// import ExcelToJsonConverter from './ExcelToJsonConverter';
 import TableComponent from './TableComponent';
-import Analyzer from './Analyzer';
+// import Analyzer from './Analyzer';
 import About from './About';
 import HomePage from './HomePage';
 import Notice from './Notice';
@@ -29,13 +29,13 @@ function Home() {
   const [isAppBarVisible, setIsAppBarVisible] = useState(true);
   const prevScrollY = useRef(0);
 
-  const handleJsonDataChange = (data) => {
-    setJsonData(data);
-  };
+  // const handleJsonDataChange = (data) => {
+  //   setJsonData(data);
+  // };
 
-  const handleFileError = (errorMessage) => {
-    openSnackbar(errorMessage, 'error');
-  };
+  // const handleFileError = (errorMessage) => {
+  //   openSnackbar(errorMessage, 'error');
+  // };
 
 
 
@@ -141,7 +141,7 @@ function Home() {
               icon={sidebarIcons['Credential Manager']}
               isActive={location.pathname === '/credential-manager'}
             />
-            <SidebarItem
+            {/* <SidebarItem
               to="/table"
               text="Table"
               icon={sidebarIcons.Table}
@@ -152,7 +152,7 @@ function Home() {
               text="Analysis"
               icon={sidebarIcons.Analysis}
               isActive={location.pathname === '/analysis'}
-            />
+            /> */}
           </List>
         </div>
       </Drawer>
@@ -171,7 +171,7 @@ function Home() {
             }
           /> */}
           <Route path="/table" element={<TableComponent jsonData={jsonData} />} />
-          <Route path="/analysis" element={<Analyzer jsonData={jsonData} />} />
+          {/* <Route path="/analysis" element={<Analyzer jsonData={jsonData} />} /> */}
           <Route path="/about" element={<About jsonData={jsonData} />} />
           <Route path="/notice" element={<Notice jsonData={jsonData} />} />
           <Route path="/notice-uploader" element={<MasterUploader jsonData={jsonData} />} />

@@ -62,7 +62,7 @@ const NetCashFlowLineChart = ({ data }) => {
       .attr('stroke', 'blue') // Blue color for the line
       .attr('stroke-width', 2)
       .attr('d', line);
-  }, [data, startIndex]);
+  }, [data,combinedData, startIndex]);
 
   const chartWidth = 1000; // Match the width used in rendering
   const chartHeight = 400; // Match the height used in rendering
