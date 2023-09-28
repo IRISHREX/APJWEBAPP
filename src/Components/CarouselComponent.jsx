@@ -5,36 +5,49 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import carouselData from '../SubPackages/CarouselData';
 
 const containerStyle = {
-  height: '400px', // Set a fixed height for the container
-  overflow: 'auto', // Enable scrolling if the content exceeds the container's height
+  position: 'relative', // Position relative for text overlay
+  width: '100%',
+  height: '500px', // Increase the height for larger images
 };
 
 const imageStyle = {
-  width: '100%', // Set the width to 100% to maintain aspect ratio
-  height: 'auto', // Automatically adjust height to maintain aspect ratio
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover', // Maintain aspect ratio and cover the entire container
+};
+
+const textStyle = {
+  position: 'absolute',
+  top: '50%', // Center the text vertically
+  left: '50%', // Center the text horizontally
+  transform: 'translate(-50%, -50%)', // Center the text precisely
+  zIndex: 1, // Place text above the image
+  backgroundColor: 'rgba(255, 255, 255, 0.8)', // Add a semi-transparent background
+  padding: '16px',
+  borderRadius: '8px',
 };
 
 const CarouselComponent = () => {
   const carouselSettings = {
-    autoPlay: true, // Enable automatic slide advancement
-    interval: 3000, // Set the interval to 3 seconds (3000 milliseconds)
-    infiniteLoop: true, // Enable infinite loop
+    autoPlay: true,
+    interval: 3000,
+    infiniteLoop: true,
   };
 
   return (
     <Carousel {...carouselSettings}>
       {carouselData.map((item, index) => (
         <div key={index}>
-          <Box sx={containerStyle}>
+          <div style={containerStyle}>
             <img
               src={item.imageSrc}
               alt={`Image ${index + 1}`}
               style={imageStyle}
             />
-          </Box>
-          <Paper elevation={3} style={{ padding: '16px' }}>
-            <Typography variant="body1">{item.details}</Typography>
-          </Paper>
+            <div style={textStyle}>
+              <Typography variant="body1" letterSpacing={2}>{item.details}</Typography>
+            </div>
+          </div>
         </div>
       ))}
     </Carousel>
