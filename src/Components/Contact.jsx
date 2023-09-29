@@ -107,7 +107,8 @@ const ContactInfo = () => {
       <Typography variant="h5" gutterBottom>
         Our Address
       </Typography>
-      <Typography>123 Main Street, City, Country</Typography>
+      <Typography>Registered Office - Uttar Dariapur,Kaliachak,Malda,West Bengal,732201</Typography>
+      <Typography>City Office - H-78/17,Batla House,Jamia Nagar,New Delhi,110025</Typography>
 
       <Typography variant="h5" gutterBottom>
         Phone Number
@@ -128,7 +129,7 @@ const ContactInfo = () => {
         Email
       </Typography>
       <Typography>
-        <a href="mailto:info@example.com">info@example.com</a>
+        <a href="mailto:apjec.education@gmail.com">apjec.education@gmail.com</a>
       </Typography>
     </div>
   );
