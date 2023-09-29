@@ -17,31 +17,31 @@ const carouselData = [
   },
   {
     imageSrc: S2,
-    details: 'Details for Image 2',
+    details: '"Education is the most powerful weapon which you can use to change the world." - Nelson Mandela',
   },
   {
     imageSrc: S3,
-    details: 'Details for Image 3',
+    details: '"The function of education is to teach one to think intensively and to think critically. Intelligence plus character - that is the goal of true education." - Martin Luther King Jr.',
   },
   {
     imageSrc: S4,
-    details: 'Details for Image 3',
+    details: '"Education is the most powerful weapon which you can use to change the world." - Dr. A.P.J. Abdul Kalam',
   },
   {
     imageSrc: S5,
-    details: 'Details for Image 1',
+    details: '"Learning gives creativity. Creativity leads to thinking. Thinking provides knowledge. Knowledge makes you great." - Dr. A.P.J. Abdul Kalam',
   },
   {
     imageSrc: S6,
-    details: 'Details for Image 2',
+    details: '"The roots of education are bitter, but the fruit is sweet." - Aristotle',
   },
   {
     imageSrc: S7,
-    details: 'Details for Image 3',
+    details: '"Education is the passport to the future, for tomorrow belongs to those who prepare for it today." - Malcolm X',
   },
   {
     imageSrc: S8,
-    details: 'Details for Image 3',
+    details: '"Education is the key to unlocking the world, a passport to freedom." - Oprah Winfrey',
   },
   // Add more objects for additional images and details
 ];
