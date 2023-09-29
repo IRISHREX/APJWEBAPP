@@ -36,7 +36,6 @@ function TableComponent({ jsonData }) {
                 headerName: col,
                 flex: 1,
               }))}
-              // Enable auto-resizing columns
             />
           </div>
         )}

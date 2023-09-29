@@ -1,8 +1,8 @@
 import React from 'react';
-import AvgBalanceBarChart from '../SubPackages/AvgBalanceBarChart';
-import CashflowBarChart from '../SubPackages/CashflowBarChart';
-import NetCashFlowLineChart from '../SubPackages/NetCashFlowLineChart';
-import PieChart from '../SubPackages/PieChart';
+import AvgBalanceBarChart from '../Graphs/AvgBalanceBarChart';
+import CashflowBarChart from '../Graphs/CashflowBarChart';
+import NetCashFlowLineChart from '../Graphs/NetCashFlowLineChart';
+import PieChart from '../Graphs/PieChart';
 
 const Analyzer = ({ jsonData }) => {
   if (!jsonData) {

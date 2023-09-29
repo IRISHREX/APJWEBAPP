@@ -8,28 +8,24 @@ import AboutCard from '../SubPackages/AboutCard';
 import teamMembersData from '../SubPackages/TeamMembarData';
 
 const About = () => {
-  const [isMainTeamDrawerOpen, setIsMainTeamDrawerOpen] = useState(false);
-  const [isSubTeamDrawerOpen, setIsSubTeamDrawerOpen] = useState(false);
-  const [isCoordinatorDrawerOpen, setIsCoordinatorDrawerOpen] = useState(false);
+  // Define functions to filter team members based on their teams
+  const getMainTeamMembers = () => teamMembersData.filter(member => member.team === 'members');
+  const getSubTeamMembers = () => teamMembersData.filter(member => member.team === 'mocTeam');
+  const getCoordinatorMembers = () => teamMembersData.filter(member => member.team === 'cordTeam');
 
-  const toggleMainTeamDrawer = () => {
-    setIsMainTeamDrawerOpen(!isMainTeamDrawerOpen);
-  };
+  // State to track which team section is open
+  const [selectedTeam, setSelectedTeam] = useState(null);
 
-  const toggleSubTeamDrawer = () => {
-    setIsSubTeamDrawerOpen(!isSubTeamDrawerOpen);
-  };
-
-  const toggleCoordinatorDrawer = () => {
-    setIsCoordinatorDrawerOpen(!isCoordinatorDrawerOpen);
+  const toggleTeamDrawer = (team) => {
+    setSelectedTeam(selectedTeam === team ? null : team);
   };
 
   const avatarStyles = {
-    width: '60px',
-    height: '60px',
-    marginRight: '8px',
-    boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)', // Apply shadow to avatars
-    borderRadius: '50%', // Make avatars circular
+    width: '8vw', // Responsive avatar size relative to viewport width
+    height: '8vw', // Responsive avatar size relative to viewport width
+    marginRight: '2vw', // Responsive margin relative to viewport width
+    boxShadow: '0px 0px 2vw rgba(0, 0, 0, 0.2)', // Responsive shadow relative to viewport width
+    borderRadius: '50%',
   };
 
   const sectionStyles = {
@@ -50,29 +46,35 @@ const About = () => {
         About Us
       </Typography>
 
-      {/* Card with avatars for Main Team */}
+      {/* Render team members based on selected team */}
       <Paper style={{ background: gradientColors[0] }}>
         <div style={{ display: 'flex', alignItems: 'center', marginBottom: '16px' }}>
-          {teamMembersData.slice(0, 3).map((member, index) => (
-            <Avatar 
+          {getMainTeamMembers().map((member, index) => (
+            <Avatar
               key={index}
               alt={member.name}
               src={member.imageSrc}
-              style={{ ...avatarStyles, background: gradientColors[0] ,margin:'1rem'}}
-              onClick={toggleMainTeamDrawer}
+              style={{ ...avatarStyles, background: gradientColors[0], margin: '1rem' }}
+              onClick={() => toggleTeamDrawer('members')}
             />
           ))}
-          <Typography variant="body2" onClick={toggleMainTeamDrawer} style={{ cursor: 'pointer', }} letterSpacing={5} marginLeft={40}>
+          <Typography
+            variant="body2"
+            onClick={() => toggleTeamDrawer('members')}
+            style={{ cursor: 'pointer' }}
+            letterSpacing={5}
+            marginLeft={20}          
+             >
             ABOUT MAIN TEAM
           </Typography>
         </div>
       </Paper>
 
-      {/* Drawer with cards for Main Team */}
-      <div style={{ ...sectionStyles, maxHeight: isMainTeamDrawerOpen ? '1000px' : '0' }}>
+      {/* Render team members for the selected team */}
+      <div style={{ ...sectionStyles, maxHeight: selectedTeam === 'members' ? '1000px' : '0' }}>
         <Grid container spacing={2}>
-          {isMainTeamDrawerOpen &&
-            teamMembersData.slice(0, 3).map((member, index) => (
+          {selectedTeam === 'members' &&
+            getMainTeamMembers().map((member, index) => (
               <Grid item xs={12} sm={6} md={4} key={index}>
                 <Paper style={{ boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)', background: gradientColors[0] }}>
                   <AboutCard member={member} />
@@ -82,29 +84,35 @@ const About = () => {
         </Grid>
       </div>
 
-      {/* Card with avatars for Sub Team */}
+      {/* Render team members for Sub Team */}
       <Paper style={{ background: gradientColors[1] }}>
         <div style={{ display: 'flex', alignItems: 'center', marginBottom: '16px' }}>
-          {teamMembersData.slice(3, 6).map((member, index) => (
+          {getSubTeamMembers().map((member, index) => (
             <Avatar
               key={index}
               alt={member.name}
               src={member.imageSrc}
-              style={{ ...avatarStyles, background: gradientColors[1],margin:'1rem'}}
-              onClick={toggleSubTeamDrawer}
+              style={{ ...avatarStyles, background: gradientColors[1], margin: '1rem' }}
+              onClick={() => toggleTeamDrawer('mocTeam')}
             />
           ))}
-          <Typography variant="body2" onClick={toggleSubTeamDrawer} style={{ cursor: 'pointer' }}letterSpacing={5} marginLeft={40}>
-            ABOUT SUB TEAM
+          <Typography
+            variant="body2"
+            onClick={() => toggleTeamDrawer('mocTeam')}
+            style={{ cursor: 'pointer' }}
+            letterSpacing={5}
+            marginLeft={40}
+          >
+            ABOUT MOC TEAM
           </Typography>
         </div>
       </Paper>
 
-      {/* Drawer with cards for Sub Team */}
-      <div style={{ ...sectionStyles, maxHeight: isSubTeamDrawerOpen ? '1000px' : '0' }}>
+      {/* Render team members for the selected team */}
+      <div style={{ ...sectionStyles, maxHeight: selectedTeam === 'mocTeam' ? '1000px' : '0' }}>
         <Grid container spacing={2}>
-          {isSubTeamDrawerOpen &&
-            teamMembersData.slice(3, 6).map((member, index) => (
+          {selectedTeam === 'mocTeam' &&
+            getSubTeamMembers().map((member, index) => (
               <Grid item xs={12} sm={6} md={4} key={index}>
                 <Paper style={{ boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)', background: gradientColors[1] }}>
                   <AboutCard member={member} />
@@ -114,29 +122,35 @@ const About = () => {
         </Grid>
       </div>
 
-      {/* Card with avatars for Coordinator */}
+      {/* Render team members for Coordinator */}
       <Paper style={{ background: gradientColors[2] }}>
         <div style={{ display: 'flex', alignItems: 'center', marginBottom: '16px' }}>
-          {teamMembersData.slice(6, 9).map((member, index) => (
+          {getCoordinatorMembers().map((member, index) => (
             <Avatar
               key={index}
               alt={member.name}
               src={member.imageSrc}
-              style={{ ...avatarStyles, background: gradientColors[2] ,margin:'1rem'}}
-              onClick={toggleCoordinatorDrawer}
+              style={{ ...avatarStyles, background: gradientColors[2], margin: '1rem' }}
+              onClick={() => toggleTeamDrawer('cordTeam')}
             />
           ))}
-          <Typography variant="body2" onClick={toggleCoordinatorDrawer} style={{ cursor: 'pointer' }}letterSpacing={5} marginLeft={40}>
+          <Typography
+            variant="body2"
+            onClick={() => toggleTeamDrawer('cordTeam')}
+            style={{ cursor: 'pointer' }}
+            letterSpacing={5}
+            marginLeft={40}
+          >
             ABOUT COORDINATOR
           </Typography>
         </div>
       </Paper>
 
-      {/* Drawer with cards for Coordinator */}
-      <div style={{ ...sectionStyles, maxHeight: isCoordinatorDrawerOpen ? '1000px' : '0' }}>
+      {/* Render team members for the selected team */}
+      <div style={{ ...sectionStyles, maxHeight: selectedTeam === 'cordTeam' ? '1000px' : '0' }}>
         <Grid container spacing={2}>
-          {isCoordinatorDrawerOpen &&
-            teamMembersData.slice(6, 9).map((member, index) => (
+          {selectedTeam === 'cordTeam' &&
+            getCoordinatorMembers().map((member, index) => (
               <Grid item xs={12} sm={6} md={4} key={index}>
                 <Paper style={{ boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)', background: gradientColors[2] }}>
                   <AboutCard member={member} />
