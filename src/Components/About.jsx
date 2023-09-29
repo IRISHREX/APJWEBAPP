@@ -139,7 +139,8 @@ const About = () => {
             onClick={() => toggleTeamDrawer('cordTeam')}
             style={{ cursor: 'pointer' }}
             letterSpacing={5}
-            marginLeft={40}
+            marginLeft={"50%"}
+            // textAlign={'right'}
           >
             ABOUT COORDINATOR
           </Typography>

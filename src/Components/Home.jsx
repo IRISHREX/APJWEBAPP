@@ -17,7 +17,7 @@ import HomePage from './HomePage';
 import Notice from './Notice';
 import Contact from './Contact';
 import LoginPage from './LoginPage';
-import { AppBar, Typography } from '@mui/material';
+import { AppBar, Grid, Typography } from '@mui/material';
 import MasterUploader from './MasterUploader';
 
 function Home() {
@@ -79,14 +79,35 @@ function Home() {
 
   return (
     <div >
-      <AppBar style={{ display: isAppBarVisible ? 'block' : 'none' }}>
+ <AppBar style={{ display: isAppBarVisible ? 'block' : 'none' }}>
       <Toolbar>
-        <MenuIcon onClick={toggleDrawer} style={{ cursor: 'pointer' }} /> {/* Menu icon */}
-        <img src={logo512} alt="Logo" style={{ maxWidth: '60px', marginRight: '10px',marginLeft: '20px', borderRadius:"15%"}} /> {/* Add your logo here */}
-        <Typography variant="h4" gutterBottom letterSpacing={5} marginLeft={15} height={15}>
-        APJ Abdul Kalam Free Education Centre        </Typography>
+        <MenuIcon onClick={toggleDrawer} style={{ cursor: 'pointer' }} />
+        <Grid container alignItems="center" spacing={2}>
+          <Grid item>
+            <img
+              src={logo512}
+              alt="Logo"
+              style={{
+                maxWidth: '60px',
+                borderRadius: '15%',
+                marginLeft: '1rem', // Adjusted margin for simplicity
+              }}
+            />
+          </Grid>
+          <Grid item>
+            <Typography
+              variant="h5"
+              gutterBottom
+              letterSpacing="2px" // Adjusted letterSpacing for simplicity
+              marginLeft="1rem" // Adjusted margin for simplicity
+              fontSize={{ xs: '1.5rem', sm: '2rem', md: '2.5rem' }}
+            >
+              APJ Abdul Kalam Free Education Centre
+            </Typography>
+          </Grid>
+        </Grid>
       </Toolbar>
-      </AppBar>
+    </AppBar>
       <Drawer
         className="drawer"
         variant="temporary" // Use "temporary" variant to show/hide the Drawer
