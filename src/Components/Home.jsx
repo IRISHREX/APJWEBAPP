@@ -7,7 +7,7 @@ import MenuIcon from '@mui/icons-material/Menu'; // Import Menu icon
 import logo512 from '../Images/Genral/logo512.png'; // Replace 'logo512.png' with the actual path to your logo image.
 
 
-import { AppToolbar, SidebarItem, sidebarIcons, useSnackbar } from './Util';
+import { AppToolbar, SidebarItem, sidebarIcons} from './Util';
 
 // import ExcelToJsonConverter from './ExcelToJsonConverter';
 import TableComponent from './TableComponent';
@@ -21,10 +21,10 @@ import { AppBar, Typography } from '@mui/material';
 import MasterUploader from './MasterUploader';
 
 function Home() {
-  const [jsonData, setJsonData] = useState([]);
+  // const [jsonData, setJsonData] = useState([]);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false); // State variable for Drawer open/close
 
-  const { openSnackbar, SnackbarComponent } = useSnackbar();
+  // const { openSnackbar, SnackbarComponent } = useSnackbar();
   const location = useLocation();
   const [isAppBarVisible, setIsAppBarVisible] = useState(true);
   const prevScrollY = useRef(0);
@@ -170,17 +170,17 @@ function Home() {
               />
             }
           /> */}
-          <Route path="/table" element={<TableComponent jsonData={jsonData} />} />
+          <Route path="/table" element={<TableComponent  />} />
           {/* <Route path="/analysis" element={<Analyzer jsonData={jsonData} />} /> */}
-          <Route path="/about" element={<About jsonData={jsonData} />} />
-          <Route path="/notice" element={<Notice jsonData={jsonData} />} />
-          <Route path="/notice-uploader" element={<MasterUploader jsonData={jsonData} />} />
-          <Route path="/contact" element={<Contact jsonData={jsonData} />} />
-          <Route path="/login" element={<LoginPage jsonData={jsonData} />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/notice" element={<Notice />} />
+          <Route path="/notice-uploader" element={<MasterUploader />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<LoginPage  />} />
           {/* Add more routes as needed */}
         </Routes>
       </main>
-      {SnackbarComponent()}
+      {/* {SnackbarComponent()} */}
     </div>
   );
 }

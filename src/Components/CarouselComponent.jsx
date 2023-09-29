@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Paper, Typography } from '@mui/material';
+import {  Typography } from '@mui/material';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import carouselData from '../SubPackages/CarouselData';
@@ -41,7 +41,7 @@ const CarouselComponent = () => {
           <div style={containerStyle}>
             <img
               src={item.imageSrc}
-              alt={`Image ${index + 1}`}
+              alt={`Slide ${index + 1}`}
               style={imageStyle}
             />
             <div style={textStyle}>
