@@ -1,96 +1,45 @@
-import React, { useState ,useEffect, useRef} from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
-import Toolbar from '@mui/material/Toolbar';
-import Drawer from '@mui/material/Drawer';
-import List from '@mui/material/List';
-import MenuIcon from '@mui/icons-material/Menu'; // Import Menu icon
-import logo512 from '../Images/Genral/logo512.png'; // Replace 'logo512.png' with the actual path to your logo image.
-
-
-import { AppToolbar, SidebarItem, sidebarIcons} from './Util';
-
-// import ExcelToJsonConverter from './ExcelToJsonConverter';
+import React, { useState, useEffect} from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { Drawer, Grid, Typography } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import { closeDrawerAfterDelay, toggleDrawer } from '../Components/Util';
+import Sidebar from './Sidebar';
 import TableComponent from './TableComponent';
-// import Analyzer from './Analyzer';
 import About from './About';
 import HomePage from './HomePage';
 import Notice from './Notice';
 import Contact from './Contact';
 import LoginPage from './LoginPage';
-import { AppBar, Grid, Typography } from '@mui/material';
 import MasterUploader from './MasterUploader';
+import TopMostBar from '../SubPackages/TopMostBar';
+import LOGO from '../Images/Genral/LOGO.png'
 
 function Home() {
-  // const [jsonData, setJsonData] = useState([]);
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false); // State variable for Drawer open/close
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  // const { openSnackbar, SnackbarComponent } = useSnackbar();
-  const location = useLocation();
-  const [isAppBarVisible, setIsAppBarVisible] = useState(true);
-  const prevScrollY = useRef(0);
-
-  // const handleJsonDataChange = (data) => {
-  //   setJsonData(data);
-  // };
-
-  // const handleFileError = (errorMessage) => {
-  //   openSnackbar(errorMessage, 'error');
-  // };
-
-
-
-  const toggleDrawer = () => {
-    setIsDrawerOpen(!isDrawerOpen);
-  };
   useEffect(() => {
-    if (isDrawerOpen) {
-      const timer = setTimeout(() => {
-        setIsDrawerOpen(false); // Close the drawer after 3 seconds
-      }, 4000);
-
-      // Clear the timer if the component unmounts or the drawer is closed manually
-      return () => {
-        clearTimeout(timer);
-      };
-    }
+    closeDrawerAfterDelay(isDrawerOpen, setIsDrawerOpen);
   }, [isDrawerOpen]);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
 
-      if (currentScrollY > prevScrollY.current) {
-        // Scrolling down, hide the app bar
-        setIsAppBarVisible(false);
-      } else {
-        // Scrolling up, show the app bar
-        setIsAppBarVisible(true);
-      }
 
-      prevScrollY.current = currentScrollY;
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  const isLargeScreen = window.innerWidth >= 768; // Adjust the breakpoint as needed
 
   return (
-    <div >
- <AppBar style={{ display: isAppBarVisible ? 'block' : 'none' }}>
-      <Toolbar>
-        <MenuIcon onClick={toggleDrawer} style={{ cursor: 'pointer' }} />
-        <Grid container alignItems="center" spacing={2}>
+    <div>
+      {isLargeScreen ? ( 
+        <TopMostBar/>
+      ) : (
+        <div>
+          <MenuIcon onClick={() => toggleDrawer(isDrawerOpen, setIsDrawerOpen)} style={{ cursor: 'pointer' }} />
+          <Grid container alignItems="center">
           <Grid item>
             <img
-              src={logo512}
+              src={LOGO}
               alt="Logo"
               style={{
-                maxWidth: '60px',
-                borderRadius: '15%',
-                marginLeft: '1rem', // Adjusted margin for simplicity
+                maxWidth: '150px', // Adjust the maxWidth as needed
+                height: 'auto',
               }}
             />
           </Grid>
@@ -98,110 +47,40 @@ function Home() {
             <Typography
               variant="h5"
               gutterBottom
-              letterSpacing="2px" // Adjusted letterSpacing for simplicity
-              marginLeft="1rem" // Adjusted margin for simplicity
+              letterSpacing="2px"
+              marginLeft="1rem"
               fontSize={{ xs: '1.5rem', sm: '2rem', md: '2.5rem' }}
+              className="neon-text"
             >
-              APJ Abdul Kalam Free Education Centre
+              A.A.K.F.E.C
             </Typography>
           </Grid>
         </Grid>
-      </Toolbar>
-    </AppBar>
-      <Drawer
-        className="drawer"
-        variant="temporary" // Use "temporary" variant to show/hide the Drawer
-        open={isDrawerOpen} // Control Drawer open state
-        onClose={toggleDrawer} // Close Drawer when clicked outside
-        classes={{
-          paper: 'drawer-paper',
-        }}
-      >
-        <div className="drawer-container">
-        <List>
-            <SidebarItem
-              to="/"
-              text="Home"
-              icon={sidebarIcons.Home}
-              isActive={location.pathname === '/'}
-            />
-            
-            <SidebarItem
-              to="/notice"
-              text="Notice"
-              icon={sidebarIcons.Notice}
-              isActive={location.pathname === '/notice'}
-            />
-            <SidebarItem
-              to="/login"
-              text="Login"
-              icon={sidebarIcons.Login}
-              isActive={location.pathname === '/login'}
-            />
-            <SidebarItem
-              to="/about"
-              text="About"
-              icon={sidebarIcons.About}
-              isActive={location.pathname === '/about'}
-            />
-            <SidebarItem
-              to="/contact"
-              text="Contact"
-              icon={sidebarIcons.Contact}
-              isActive={location.pathname === '/contact'}
-            />
-            <SidebarItem
-              to="/notice-uploader"
-              text="Notice Uploader"
-              icon={sidebarIcons['Notice Uploader']}
-              isActive={location.pathname === '/notice-uploader'}
-            />
-            <SidebarItem
-              to="/credential-manager"
-              text="Credential Manager"
-              icon={sidebarIcons['Credential Manager']}
-              isActive={location.pathname === '/credential-manager'}
-            />
-            {/* <SidebarItem
-              to="/table"
-              text="Table"
-              icon={sidebarIcons.Table}
-              isActive={location.pathname === '/table'}
-            />
-            <SidebarItem
-              to="/analysis"
-              text="Analysis"
-              icon={sidebarIcons.Analysis}
-              isActive={location.pathname === '/analysis'}
-            /> */}
-          </List>
+          <Drawer
+            className="drawer"
+            variant="temporary"
+            open={isDrawerOpen}
+            onClose={() => toggleDrawer(isDrawerOpen, setIsDrawerOpen)}
+            classes={{
+              paper: 'drawer-paper',
+            }}
+          >
+            <Sidebar />
+          </Drawer>
         </div>
-      </Drawer>
-      <AppToolbar  />
+      )}
       <main className="content p-5">
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          {/* <Route
-            path="/notice-uploader"
-            element={
-              <ExcelToJsonConverter
-                onJsonDataChange={handleJsonDataChange}
-                onError={handleFileError}
-                jsonData={jsonData}
-              />
-            }
-          /> */}
+          {/* Route components */}
+          <Route path="/" element={<HomePage/>} />
           <Route path="/table" element={<TableComponent  />} />
-          {/* <Route path="/analysis" element={<Analyzer jsonData={jsonData} />} /> */}
           <Route path="/about" element={<About />} />
           <Route path="/notice" element={<Notice />} />
           <Route path="/notice-uploader" element={<MasterUploader />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<LoginPage  />} />
-          {/* Add more routes as needed */}
         </Routes>
       </main>
-      {/* {SnackbarComponent()} */}
     </div>
   );
 }

@@ -26,27 +26,27 @@ code {
 
 /* Style for the selected list item */
 .horizontal-list .selected {
-  color: #007bff; /* Change the color to your desired selection color (blue) */
+  color: #52ab98; /* Change the color to your desired selection color */
   font-weight: bold; /* Add additional styling for the selected item */
 }
 
 /* App Styles */
 .dashboard-root {
   display: flex;
-  background-color: #f5f5f5; /* Light gray background color */
+  background-color: #f2f2f2; /* Light gray background color */
 }
 
 .app-bar {
   width: calc(100% - 240px);
   margin-left: 240px;
-  background-color: #007bff; /* Blue app bar background color */
-  color: #fff; /* White text color */
+  background-color: #52ab98; /* Greenish-blue app bar background color */
+  color: #ffffff; /* White text color */
 }
 
 .drawer {
   width: 240px;
   flex-shrink: 0;
-  background-color: #fff; /* White drawer background color */
+  background-color: #ffffff; /* White drawer background color */
 }
 
 .drawer-paper {
@@ -60,11 +60,11 @@ code {
 .content {
   flexGrow: 1;
   padding: 20px; /* Adjust as needed */
-  background-color: #fff; /* White content background color */
+  background-color: #ffffff; /* White content background color */
 }
 
 .active-route {
-  background-color: rgba(0, 123, 255, 0.1); /* Light blue selected route background color */
+  background-color: #c8d8e4; /* Light blue selected route background color */
 }
 
 /* Add more custom styles as needed */
@@ -74,17 +74,17 @@ code {
 
 /* Styles for the deep green text color */
 .deep-green {
-  color: #006400; /* Dark green text color */
+  color: #2b6777; /* Dark green text color */
 }
 
 /* Style for selected table in the list */
 .selected {
-  background-color: #e0f0e9; /* Light green background color for the selected table in the list */
+  background-color: #f2f2f2; /* Light gray background color for the selected table in the list */
 }
 
 /* Custom styling for the DataGrid */
 .data-grid {
-  background-color: #fff; /* White data grid background color */
+  background-color: #ffffff; /* White data grid background color */
   color: #333; /* Dark text color */
   border: 1px solid #ccc; /* Light gray border */
   border-radius: 8px;
@@ -93,7 +93,7 @@ code {
 
 /* Style the header row with a light blue background */
 .data-grid .MuiDataGrid-header {
-  background-color: #f0f8ff; /* Light blue */
+  background-color: #c8d8e4; /* Light blue */
 }
 
 /* Style the header cells with dark text */
@@ -103,7 +103,7 @@ code {
 
 /* Style the cells with a slightly darker background color */
 .data-grid .MuiDataGrid-cell {
-  background-color: #f5f5f5; /* Light gray background */
+  background-color: #f2f2f2; /* Light gray background */
   color: #333; /* Dark text color */
 }
 .chart-grid {
@@ -116,3 +116,44 @@ code {
   border: 1px solid #ccc; /* Optional: Add borders to separate charts */
   padding: 20px; /* Optional: Add padding to charts */
 }
+/* Sidebar.css */
+
+.neon-sidebar {
+  background-color: #2b6777; /* Dark blueish-green */
+}
+
+.neon-sidebar a {
+  color: #52ab98; /* Greenish-blue */
+}
+/* TopMostBar.css */
+
+.neon-top-bar {
+  background-color: #2b6777; /* Dark blueish-green */
+}
+
+.neon-text {
+  color: #52ab98; /* Greenish-blue */
+}
+
+.neon-links {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.neon-link {
+  color: #52ab98; /* Greenish-blue */
+  text-decoration: none;
+  margin-right: 20px;
+  transition: color 0.3s ease-in-out; /* Add a transition for a smooth effect */
+}
+
+.neon-link:hover {
+  color: #ffffff; /* White color for the glowing effect */
+  text-shadow: 0 0 10px #52ab98, 0 0 20px #52ab98, 0 0 30px #52ab98; /* Glowing effect */
+}
+
+.neon-link.active {
+  color: red; /* Adjust the color for the active link */
+}
+
+/* Add more styles as needed */

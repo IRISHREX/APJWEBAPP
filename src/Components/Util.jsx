@@ -314,3 +314,33 @@ export function AppToolbar({ darkMode, toggleDarkMode }) {
     </Toolbar>
   );
 }
+
+export const toggleDrawer = (isDrawerOpen, setIsDrawerOpen) => {
+  setIsDrawerOpen(!isDrawerOpen);
+};
+
+export const closeDrawerAfterDelay = (isDrawerOpen, setIsDrawerOpen) => {
+  if (isDrawerOpen) {
+    const timer = setTimeout(() => {
+      setIsDrawerOpen(false);
+    }, 4000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }
+};
+
+// export const handleScroll = (prevScrollY, setIsAppBarVisible) => {
+//   return () => {
+//     const currentScrollY = window.scrollY;
+
+//     if (currentScrollY > prevScrollY.current) {
+//       setIsAppBarVisible(false);
+//     } else {
+//       setIsAppBarVisible(true);
+//     }
+
+//     prevScrollY.current = currentScrollY;
+//   };
+// };
