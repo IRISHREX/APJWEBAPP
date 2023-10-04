@@ -4,7 +4,6 @@ import { Drawer, Grid, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { closeDrawerAfterDelay, toggleDrawer } from '../Components/Util';
 import Sidebar from './Sidebar';
-import TableComponent from './TableComponent';
 import About from './About';
 import HomePage from './HomePage';
 import Notice from './Notice';
@@ -31,7 +30,12 @@ function Home() {
         <TopMostBar/>
       ) : (
         <div>
-          <MenuIcon onClick={() => toggleDrawer(isDrawerOpen, setIsDrawerOpen)} style={{ cursor: 'pointer' }} />
+          <Grid padding={2}>
+          <MenuIcon onClick={() => toggleDrawer(isDrawerOpen, setIsDrawerOpen)} style={{ cursor: 'pointer' }} className="neon-top-bar" />
+          <Typography className="neon-text">
+            MENU
+          </Typography>
+          </Grid>
           <Grid container alignItems="center">
           <Grid item>
             <img
@@ -73,7 +77,6 @@ function Home() {
         <Routes>
           {/* Route components */}
           <Route path="/" element={<HomePage/>} />
-          <Route path="/table" element={<TableComponent  />} />
           <Route path="/about" element={<About />} />
           <Route path="/notice" element={<Notice />} />
           <Route path="/notice-uploader" element={<MasterUploader />} />

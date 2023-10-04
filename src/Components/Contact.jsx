@@ -5,7 +5,10 @@ import {
   Paper,
   TextField,
   Button,
+  Grid,
+  IconButton,
 } from '@mui/material';
+import { Facebook, Twitter, Instagram, LinkedIn, Google, Mail } from '@mui/icons-material';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -27,8 +30,6 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // You can send the formData to your server or email service here
-      // For demonstration purposes, we'll just simulate a delay
       await simulateSubmit(formData);
       setIsSubmitted(true);
     } catch (error) {
@@ -36,7 +37,6 @@ const Contact = () => {
     }
   };
 
-  // Simulate a delayed submission (replace with your actual submission logic)
   const simulateSubmit = (formData) => {
     return new Promise((resolve) => {
       setTimeout(resolve, 2000);
@@ -44,7 +44,7 @@ const Contact = () => {
   };
 
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="md" style={{ marginTop: '20px' }}>
       <Typography variant="h4" gutterBottom>
         Contact Us
       </Typography>
@@ -103,12 +103,12 @@ const Contact = () => {
 
 const ContactInfo = () => {
   return (
-    <div>
+    <div style={{ marginTop: '20px' }}>
       <Typography variant="h5" gutterBottom>
         Our Address
       </Typography>
-      <Typography>Registered Office - Uttar Dariapur,Kaliachak,Malda,West Bengal,732201</Typography>
-      <Typography>City Office - H-78/17,Batla House,Jamia Nagar,New Delhi,110025</Typography>
+      <Typography>Registered Office - Uttar Dariapur, Kaliachak, Malda, West Bengal, 732201</Typography>
+      <Typography>City Office - H-78/17, Batla House, Jamia Nagar, New Delhi, 110025</Typography>
 
       <Typography variant="h5" gutterBottom>
         Phone Number
@@ -118,18 +118,35 @@ const ContactInfo = () => {
       <Typography variant="h5" gutterBottom>
         Social Media
       </Typography>
-      <Typography>
-        <a href="https://www.facebook.com/">Facebook</a>
-        <br />
-        <a href="https://twitter.com/">Twitter</a>
-        {/* Add more social media links */}
-      </Typography>
-
+      <Grid container spacing={1} alignItems="center">
+        <Grid item>
+          <IconButton color="primary" component="a" href="https://www.facebook.com/" target="_blank">
+            <Facebook />
+          </IconButton>
+        </Grid>
+        <Grid item>
+          <IconButton color="primary" component="a" href="https://twitter.com/" target="_blank">
+            <Twitter />
+          </IconButton>
+        </Grid>
+        <Grid item>
+          <IconButton color="primary" component="a" href="https://www.instagram.com/" target="_blank">
+            <Instagram />
+          </IconButton>
+        </Grid>
+        <Grid item>
+          <IconButton color="primary" component="a" href="https://www.linkedin.com/" target="_blank">
+            <LinkedIn />
+          </IconButton>
+        </Grid>
+        {/* Add more social media icons as needed */}
+      </Grid>
+  
+      <IconButton color="primary" component="a" href="apjec.education@gmail.com">
+      <Mail/>
+      </IconButton>
       <Typography variant="h5" gutterBottom>
-        Email
-      </Typography>
-      <Typography>
-        <a href="mailto:apjec.education@gmail.com">apjec.education@gmail.com</a>
+        Email :- apjec.education@gmail.com
       </Typography>
     </div>
   );
