@@ -44,7 +44,7 @@ function MapComponent({ center, zoom, waypoints }) {
           <Popup>
             <div>
               <strong>Default Location:</strong>
-              <p>4th Floor, Featherlite - The Address, Survey No. 203/10B, 200 feet MMRD Road, Zamin Pallavaram, Chennai - 600 044</p>
+              <p>City Office - H-78/17, Batla House, Jamia Nagar, New Delhi, 110025</p>
             </div>
           </Popup>
         </Marker>

@@ -1,3 +1,4 @@
+// Import the CSS file
 import React, { useState } from 'react';
 import { Typography, Grid } from '@mui/material';
 import MapComponent from './MapComponent';
@@ -22,44 +23,28 @@ const About = () => {
   ];
 
   const renderTeamMembers = (team, color) => (
-    <TeamSection team={team} members={getTeamMembers(team)} color={color} toggleTeamDrawer={toggleTeamDrawer} />
+    <div className={`team-section ${selectedTeam === team ? 'active' : ''}`}>
+      <TeamSection team={team} members={getTeamMembers(team)} color={color} toggleTeamDrawer={toggleTeamDrawer} />
+      <Grid container spacing={2}>
+        {selectedTeam === team &&
+          getTeamMembers(team).map((member, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <AboutCard member={member} />
+            </Grid>
+          ))}
+      </Grid>
+    </div>
   );
 
   return (
-    <div className="about-container" style={{ padding: '16px' }}>
+    <div className="about-container">
       <Typography variant="h4" gutterBottom>
         About Us
       </Typography>
 
       {renderTeamMembers('members', gradientColors[0])}
-      <Grid container spacing={2} style={{ transition: 'max-height 0.5s ease-in-out', overflow: 'hidden', maxHeight: selectedTeam === 'members' ? '1000px' : '0' }}>
-        {selectedTeam === 'members' &&
-          getTeamMembers('members').map((member, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <AboutCard member={member} />
-            </Grid>
-          ))}
-      </Grid>
-
       {renderTeamMembers('mocTeam', gradientColors[1])}
-      <Grid container spacing={2} style={{ transition: 'max-height 0.5s ease-in-out', overflow: 'hidden', maxHeight: selectedTeam === 'mocTeam' ? '1000px' : '0' }}>
-        {selectedTeam === 'mocTeam' &&
-          getTeamMembers('mocTeam').map((member, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <AboutCard member={member} />
-            </Grid>
-          ))}
-      </Grid>
-
       {renderTeamMembers('cordTeam', gradientColors[2])}
-      <Grid container spacing={2} style={{ transition: 'max-height 0.5s ease-in-out', overflow: 'hidden', maxHeight: selectedTeam === 'cordTeam' ? '1000px' : '0' }}>
-        {selectedTeam === 'cordTeam' &&
-          getTeamMembers('cordTeam').map((member, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <AboutCard member={member} />
-            </Grid>
-          ))}
-      </Grid>
 
       <Typography variant="h4" gutterBottom>
         Our Location

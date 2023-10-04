@@ -13,7 +13,7 @@ import S8 from '../Images/Genral/S8.jpg'
 const carouselData = [
   {
     imageSrc: S1,
-    details: 'With this code, you are using the IconButton component with the AddBoxIcon from Material-UI as the icon for the "Add More" action. When clicked, it will toggle the expansion state of the form just as before.',
+    details: 'HOPE IS LIKE A SOAP USE IT DAILY -BIOMECHASOFT',
   },
   {
     imageSrc: S2,

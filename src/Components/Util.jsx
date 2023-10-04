@@ -254,8 +254,8 @@ export const convertExcelToJsonModified = (file, onSuccess, onError) => {
   
 // Updated default center location
 export const defaultLocation = {
-  lat: 12.9816, // Replace with the latitude of the default location
-  lng: 80.1773, // Replace with the longitude of the default location
+  lat: 28.562270, // Replace with the latitude of the default location
+  lng: 77.288990, // Replace with the longitude of the default location
 };
 
 export const zoom = 13; // Initial zoom level
