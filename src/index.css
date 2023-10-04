@@ -58,7 +58,6 @@ code {
 }
 
 .content {
-  flexGrow: 1;
   padding: 20px; /* Adjust as needed */
   background-color: #ffffff; /* White content background color */
 }
@@ -126,13 +125,14 @@ code {
   color: #52ab98; /* Greenish-blue */
 }
 /* TopMostBar.css */
+/* TopMostBar.css */
 
 .neon-top-bar {
-  background-color: #2b6777; /* Dark blueish-green */
+  background-color: transparent; /* Set background color to transparent */
 }
 
 .neon-text {
-  color: #52ab98; /* Greenish-blue */
+  color: #00ff00; /* Neon green text color */
 }
 
 .neon-links {
@@ -141,7 +141,7 @@ code {
 }
 
 .neon-link {
-  color: #52ab98; /* Greenish-blue */
+  color: #00ff00; /* Neon green color for links */
   text-decoration: none;
   margin-right: 20px;
   transition: color 0.3s ease-in-out; /* Add a transition for a smooth effect */
@@ -149,11 +149,14 @@ code {
 
 .neon-link:hover {
   color: #ffffff; /* White color for the glowing effect */
-  text-shadow: 0 0 10px #52ab98, 0 0 20px #52ab98, 0 0 30px #52ab98; /* Glowing effect */
+  text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00; /* Glowing effect */
 }
+
 
 .neon-link.active {
   color: red; /* Adjust the color for the active link */
 }
-
+img {
+  filter: drop-shadow(0 0 10px #00ff00) drop-shadow(0 0 20px #00ff00) drop-shadow(0 0 30px #0c0c0c);
+}
 /* Add more styles as needed */

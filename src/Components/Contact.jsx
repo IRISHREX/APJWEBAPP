@@ -8,7 +8,7 @@ import {
   Grid,
   IconButton,
 } from '@mui/material';
-import { Facebook, Twitter, Instagram, LinkedIn, Google, Mail } from '@mui/icons-material';
+import { Facebook, Twitter, Instagram, LinkedIn,  Mail } from '@mui/icons-material';
 
 const Contact = () => {
   const [formData, setFormData] = useState({

@@ -56,7 +56,7 @@ function Home() {
               fontSize={{ xs: '1.5rem', sm: '2rem', md: '2.5rem' }}
               className="neon-text"
             >
-              A.A.K.F.E.C
+              A.P.J.E.C
             </Typography>
           </Grid>
         </Grid>
