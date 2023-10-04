@@ -12,6 +12,7 @@ import LoginPage from './LoginPage';
 import MasterUploader from './MasterUploader';
 import TopMostBar from '../SubPackages/TopMostBar';
 import LOGO from '../Images/Genral/LOGO.png'
+import Footer from './Footer';
 
 function Home() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -84,6 +85,7 @@ function Home() {
           <Route path="/login" element={<LoginPage  />} />
         </Routes>
       </main>
+      <Footer/>
     </div>
   );
 }
