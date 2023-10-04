@@ -21,7 +21,7 @@ function TopMostBar() {
   });
 
   return (
-    <AppBar position="static" className="neon-top-bar">
+    <AppBar position="static"  style={{ backgroundColor: 'transparent', boxShadow: 'none' }}>
       <Toolbar>
         <Grid container alignItems="center">
           <Grid item>

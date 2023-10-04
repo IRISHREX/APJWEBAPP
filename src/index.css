@@ -66,55 +66,9 @@ code {
   background-color: #c8d8e4; /* Light blue selected route background color */
 }
 
-/* Add more custom styles as needed */
-/* TableComponent.css */
 
-/* Styles for the selected column highlighting */
 
-/* Styles for the deep green text color */
-.deep-green {
-  color: #2b6777; /* Dark green text color */
-}
 
-/* Style for selected table in the list */
-.selected {
-  background-color: #f2f2f2; /* Light gray background color for the selected table in the list */
-}
-
-/* Custom styling for the DataGrid */
-.data-grid {
-  background-color: #ffffff; /* White data grid background color */
-  color: #333; /* Dark text color */
-  border: 1px solid #ccc; /* Light gray border */
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light gray shadow */
-}
-
-/* Style the header row with a light blue background */
-.data-grid .MuiDataGrid-header {
-  background-color: #c8d8e4; /* Light blue */
-}
-
-/* Style the header cells with dark text */
-.data-grid .MuiDataGrid-colCell {
-  color: #333; /* Dark text color */
-}
-
-/* Style the cells with a slightly darker background color */
-.data-grid .MuiDataGrid-cell {
-  background-color: #f2f2f2; /* Light gray background */
-  color: #333; /* Dark text color */
-}
-.chart-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns as needed */
-  gap: 20px; /* Adjust the gap between charts */
-}
-
-.chart {
-  border: 1px solid #ccc; /* Optional: Add borders to separate charts */
-  padding: 20px; /* Optional: Add padding to charts */
-}
 /* Sidebar.css */
 
 .neon-sidebar {
@@ -127,12 +81,11 @@ code {
 /* TopMostBar.css */
 /* TopMostBar.css */
 
-.neon-top-bar {
+/* .neon-top-bar {
   background-color: transparent; /* Set background color to transparent */
-}
 
 .neon-text {
-  color: #00ff00; /* Neon green text color */
+  color: #048604; /* Neon green text color */
 }
 
 .neon-links {
@@ -141,25 +94,22 @@ code {
 }
 
 .neon-link {
-  color: #00ff00; /* Neon green color for links */
+  color: #048604; /* Neon green color for links */
   text-decoration: none;
   margin-right: 20px;
   transition: color 0.3s ease-in-out; /* Add a transition for a smooth effect */
 }
 
 .neon-link:hover {
-  color: #ffffff; /* White color for the glowing effect */
-  text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00; /* Glowing effect */
+  color: #f0f00b; /* White color for the glowing effect */
+  text-shadow: 0 0 10px #f6f2f2, 0 0 20px #00ff00, 0 0 30px #00ff00; /* Glowing effect */
 }
 
 
 .neon-link.active {
   color: red; /* Adjust the color for the active link */
 }
-img {
-  /* filter: drop-shadow(0 0 10px #00ff00) drop-shadow(0 0 20px #fbfdfb) drop-shadow(0 0 30px #f0eded); */
-  filter: drop-shadow(0 0 15px #f9f0f4) drop-shadow(0 0 30px #fabc58) drop-shadow(0 0 45px #f4fc08);
-}
+
 /* Add more styles as needed */
 h4 {
   font-family: 'Pacifico', cursive;
