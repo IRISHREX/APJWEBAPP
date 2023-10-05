@@ -1,8 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
-  Card,
-  CardContent,
-  CardMedia,
   Typography,
   Button,
   Grid,
@@ -14,9 +11,12 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  CardMedia,
+  Card,
+  CardContent,
 } from '@mui/material';
 import Carousel from 'react-material-ui-carousel';
-import notices from '../SubPackages/NoticeData';
+import fetchNoticeData from '../SubPackages/FetchNoticeData';
 
 const NoticeCard = ({ title, description, image, link, isTable }) => (
   <Grid item xs={12} sm={12} md={6}>
@@ -60,6 +60,33 @@ const NoticeCard = ({ title, description, image, link, isTable }) => (
 );
 
 const Notice = () => {
+  const [notices, setNotices] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchNoticeData();
+        setNotices(data);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <Typography variant="h4">Loading...</Typography>;
+  }
+
+  if (error) {
+    return <Typography variant="h4">Error loading notices</Typography>;
+  }
+
   return (
     <div>
       <Typography variant="h4" gutterBottom>

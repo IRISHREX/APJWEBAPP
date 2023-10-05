@@ -1,54 +1,105 @@
+// LoginPage.js
 import React, { useState } from 'react';
 import {
   Container,
   Typography,
-  TextField,
-  Button,
-  Grid,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
   Avatar,
   CssBaseline,
   Paper,
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Snackbar,
+  Alert,
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import SignInForm from '../SubPackages/SignInForm';
+import SignUpForm from '../SubPackages/SignUpForm';
+import signInUser from '../ApiHandeller/SignInService'; // Update the path accordingly
+import signUpUser from '../ApiHandeller/SignUpService'; // Update the path accordingly
 
 const LoginPage = () => {
-  const [formData, setFormData] = useState({
-    role: '',
-    email: '',
+  const [signInFormData, setSignInFormData] = useState({
+    username: '',
     password: '',
-    profilePic: null,
+    userType: '',
   });
 
-  const [isLogin, setIsLogin] = useState(true); // State variable to toggle between login and signup forms
+  const [signUpFormData, setSignUpFormData] = useState({
+    username: '',
+    password: '',
+    userType: '',
+  });
 
-  const handleChange = (e) => {
+  const [showSignUpDialog, setShowSignUpDialog] = useState(false);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarSeverity, setSnackbarSeverity] = useState('success');
+  const handleFileChange = (file) => {
+    setSignUpFormData({
+      ...signUpFormData,
+      avatar: file,
+    });
+  };
+  const handleSignInChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    setSignInFormData({
+      ...signInFormData,
       [name]: value,
     });
   };
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    setFormData({
-      ...formData,
-      profilePic: file,
+  const handleSignUpChange = (e) => {
+    const { name, value } = e.target;
+    setSignUpFormData({
+      ...signUpFormData,
+      [name]: value,
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSignInSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log(formData);
+    try {
+      const token = await signInUser(signInFormData);
+      console.log('Sign-in successful');
+      localStorage.setItem('bearerToken', token);
+      showSnackbar('Sign-in successful', 'success');
+    } catch (error) {
+      console.error(error.message);
+      showSnackbar('Error during sign-in', 'error');
+    }
   };
 
-  const toggleForm = () => {
-    setIsLogin(!isLogin);
+  const handleSignUpSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await signUpUser(signUpFormData);
+      console.log('Sign-up successful:', response);
+      showSnackbar('Sign-up successful', 'success');
+    } catch (error) {
+      console.error(error.message);
+      showSnackbar('Error during sign-up', 'error');
+    }
+  };
+
+  const toggleSignUpDialog = () => {
+    setShowSignUpDialog(!showSignUpDialog);
+  };
+
+  const showSnackbar = (message, severity) => {
+    setSnackbarMessage(message);
+    setSnackbarSeverity(severity);
+    setSnackbarOpen(true);
+  };
+
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setSnackbarOpen(false);
   };
 
   return (
@@ -59,80 +110,30 @@ const LoginPage = () => {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          {isLogin ? 'Sign In' : 'Sign Up'}
+          Sign In
         </Typography>
-        <form onSubmit={handleSubmit} style={{ width: '100%', marginTop: 2 }}>
-          <Grid container spacing={2}>
-            {!isLogin && (
-              <Grid item xs={12}>
-                <FormControl variant="outlined" fullWidth>
-                  <InputLabel htmlFor="role">Role</InputLabel>
-                  <Select
-                    label="Role"
-                    name="role"
-                    id="role"
-                    value={formData.role}
-                    onChange={handleChange}
-                    required
-                  >
-                    <MenuItem value="admin">Admin</MenuItem>
-                    <MenuItem value="employee">Employee</MenuItem>
-                    <MenuItem value="student">Student</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-            )}
-            <Grid item xs={12}>
-              <TextField
-                label="Email"
-                variant="outlined"
-                fullWidth
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                label="Password"
-                variant="outlined"
-                fullWidth
-                type="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                required
-              />
-            </Grid>
-            {!isLogin && (
-              <Grid item xs={12}>
-                <input
-                  accept="image/*"
-                  id="profilePic"
-                  type="file"
-                  onChange={handleFileChange}
-                />
-              </Grid>
-            )}
-          </Grid>
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            fullWidth
-            sx={{ mt: 3 }}
-          >
-            {isLogin ? 'Sign In' : 'Sign Up'}
-          </Button>
-        </form>
-        <Button
-          onClick={toggleForm}
-          fullWidth
-          sx={{ mt: 2 }}
-        >
-          {isLogin ? 'Don\'t have an account? Sign Up' : 'Already have an account? Sign In'}
+
+        <SignInForm formData={signInFormData} handleChange={handleSignInChange} handleSubmit={handleSignInSubmit} />
+
+        <Button onClick={toggleSignUpDialog} fullWidth sx={{ mt: 2 }}>
+          Don't have an account? Sign Up
         </Button>
+
+        <Dialog open={showSignUpDialog} onClose={toggleSignUpDialog}>
+          <DialogTitle>Sign Up</DialogTitle>
+          <DialogContent>
+            <SignUpForm formData={signUpFormData} handleChange={handleSignUpChange} handleSubmit={handleSignUpSubmit} handleFileChange={handleFileChange}  />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={toggleSignUpDialog}>Close</Button>
+          </DialogActions>
+        </Dialog>
+
+        <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleSnackbarClose}>
+          <Alert onClose={handleSnackbarClose} severity={snackbarSeverity} sx={{ width: '100%' }}>
+            {snackbarMessage}
+          </Alert>
+        </Snackbar>
       </Paper>
     </Container>
   );

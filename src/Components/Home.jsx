@@ -54,9 +54,9 @@ function Home() {
               gutterBottom
               letterSpacing="2px"
               marginLeft="1rem"
-              fontSize={{ xs: '1.5rem', sm: '2rem', md: '2.5rem' }}
+              fontSize={{ xs: '2.8rem', sm: '2rem', md: '2.5rem' }}
               className="neon-text"
-            >
+             >
               A.P.J.E.C
             </Typography>
           </Grid>

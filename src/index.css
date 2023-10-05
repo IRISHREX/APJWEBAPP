@@ -86,6 +86,7 @@ code {
 
 .neon-text {
   color: #048604; /* Neon green text color */
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .neon-links {

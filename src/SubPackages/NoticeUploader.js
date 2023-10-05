@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Axios from 'axios';
 import {
   Card,
   CardContent,
@@ -21,35 +22,58 @@ const NoticeUploader = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
-  const [notices, setNotices] = useState([]); // Store uploaded notices as an array of objects
+  const [notices, setNotices] = useState([]);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
-  const handleUpload = () => {
+  const handleUpload = async () => {
     if (title && description && image) {
-      const noticeData = {
-        title,
-        description,
-        image: image.name, // Store the image file name
-      };
+      const formData = new FormData();
+      formData.append('title', title);
+      formData.append('description', description);
+      formData.append('image', image);
 
-      setNotices([...notices, noticeData]); // Add the uploaded notice to the notices array
+      const bearerToken = localStorage.getItem('bearerToken');
 
-      setTitle('');
-      setDescription('');
-      setImage(null);
+      if (!bearerToken) {
+        console.error('Bearer token not found.');
+        return [];
+      }
+
+      try {
+        const response = await Axios.post(
+          'http://localhost:5000/api/noticeData',
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${bearerToken}`,
+              'Content-Type': 'multipart/form-data',
+            },
+          }
+        );
+
+        console.log(response.data);
+
+        setNotices([...notices, response.data]);
+
+        setTitle('');
+        setDescription('');
+        setImage(null);
+      } catch (error) {
+        console.error('Error uploading notice:', error);
+      }
     }
   };
 
   const handleAddMore = () => {
-    setExpanded(true); // Expand the form for adding more notices
+    setExpanded(true);
   };
 
   const handleDeleteNotice = (index) => {
     const updatedNotices = [...notices];
-    updatedNotices.splice(index, 1); // Remove the notice at the specified index
+    updatedNotices.splice(index, 1);
     setNotices(updatedNotices);
   };
 
@@ -61,7 +85,6 @@ const NoticeUploader = () => {
   };
 
   const handleSubmit = () => {
-    // Convert all uploaded notices to JSON format and log it to the console
     console.log(JSON.stringify(notices, null, 2));
   };
 
@@ -139,7 +162,7 @@ const NoticeUploader = () => {
             variant="contained"
             color="primary"
             onClick={handleSubmit}
-            disabled={notices.length === 0} // Disable if no notices have been uploaded
+            disabled={notices.length === 0}
             style={{ marginLeft: '8px' }}
           >
             Upload
