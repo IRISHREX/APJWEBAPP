@@ -12,6 +12,10 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/Twitter';
 
 const AboutCard = ({ member }) => {
+  const { name = '', role = '', description = '', imageSrc = '', socialLinks = {} } = member;
+
+  // Check if socialLinks is defined before accessing its properties
+  const { linkedin = '', twitter = '' } = socialLinks || {};
   const cardStyles = {
     maxWidth: '300px', // Adjust the maximum width as needed
     margin: 'auto', // Center the card on the page
@@ -36,32 +40,32 @@ const AboutCard = ({ member }) => {
   return (
     <Card style={cardStyles}>
       <CardContent>
-        <Avatar alt={member.name} src={member.imageSrc} style={avatarStyles} />
+        <Avatar alt={name} src={imageSrc} style={avatarStyles} />
         <Typography variant="h6" align="center" gutterBottom>
-          {member.name}
+          {name}
         </Typography>
         <Typography variant="subtitle1" align="center">
-          {member.role}
+          {role}
         </Typography>
         <Typography variant="body2" style={descriptionStyles}>
-          {member.description}
+          {description}
         </Typography>
 
         <div style={{ textAlign: 'center', marginTop: '15px' }}>
-          {member.socialLinks.linkedin && (
+          {linkedin && (
             <IconButton
               component={Link}
-              href={member.socialLinks.linkedin}
+              href={linkedin}
               target="_blank"
               rel="noopener noreferrer"
             >
               <LinkedInIcon />
             </IconButton>
           )}
-          {member.socialLinks.twitter && (
+          {twitter && (
             <IconButton
               component={Link}
-              href={member.socialLinks.twitter}
+              href={twitter}
               target="_blank"
               rel="noopener noreferrer"
             >

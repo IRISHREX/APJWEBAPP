@@ -31,6 +31,8 @@ const LoginPage = () => {
     username: '',
     password: '',
     userType: '',
+    socialLinks: 'https://www.linkedin.com/in/sohel-islam-7491341a3/', 
+    
   });
 
   const [showSignUpDialog, setShowSignUpDialog] = useState(false);

@@ -1,16 +1,32 @@
-// Import the CSS file
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Typography, Grid } from '@mui/material';
 import MapComponent from './MapComponent';
 import AboutCard from '../SubPackages/AboutCard';
-import teamMembersData from '../SubPackages/TeamMembarData';
 import TeamSection from '../SubPackages/TeamSection';
 import { defaultLocation, waypoints, zoom } from './Util';
+import fetchTeamMembersData from '../ApiHandeller/FetchTeamMembersData';
 
 const About = () => {
   const [selectedTeam, setSelectedTeam] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [teamMembers, setTeamMembers] = useState([]);
 
-  const getTeamMembers = (team) => teamMembersData.filter(member => member.team === team);
+  useEffect(() => {
+    const fetchMembers = async () => {
+      try {
+        const membersData = await fetchTeamMembersData();
+        setTeamMembers(membersData);
+      } catch (error) {
+        console.error('Error fetching team members data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMembers();
+  }, []);
+
+  const getTeamMembers = (team) => teamMembers.filter((member) => member.team === team);
 
   const toggleTeamDrawer = (team) => {
     setSelectedTeam(selectedTeam === team ? null : team);
@@ -42,9 +58,11 @@ const About = () => {
         About Us
       </Typography>
 
-      {renderTeamMembers('members', gradientColors[0])}
-      {renderTeamMembers('mocTeam', gradientColors[1])}
-      {renderTeamMembers('cordTeam', gradientColors[2])}
+      {loading && <p>Loading team members...</p>}
+
+      {!loading && renderTeamMembers('members', gradientColors[0])}
+      {!loading && renderTeamMembers('mocTeam', gradientColors[1])}
+      {!loading && renderTeamMembers('cordTeam', gradientColors[2])}
 
       <Typography variant="h4" gutterBottom>
         Our Location
