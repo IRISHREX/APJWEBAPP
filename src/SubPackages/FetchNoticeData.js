@@ -1,9 +1,15 @@
 import axios from 'axios';
 
+const localUrl = 'http://localhost:5000/api/noticeData';
+const productionUrl = 'https://tame-hospital-gown-mite.cyclic.app/api/noticeData';
+
 const fetchNoticeData = async () => {
+  const isLocal = window.location.host.includes('localhost');
+  const url = isLocal ? localUrl : productionUrl;
+
   try {
     // Retrieve token from localStorage
-   const  bearerToken=localStorage.getItem('bearerToken');
+    const bearerToken = localStorage.getItem('bearerToken');
 
     if (!bearerToken) {
       console.error('Bearer token not found.');
@@ -11,9 +17,9 @@ const fetchNoticeData = async () => {
     }
 
     console.log('Token reached:', bearerToken);
-    console.log('stored Token :', bearerToken);
+    console.log('stored Token:', bearerToken);
 
-    const response = await axios.get('http://localhost:5000/api/noticeData', {
+    const response = await axios.get(url, {
       headers: {
         Authorization: `Bearer ${bearerToken}`,
       },
