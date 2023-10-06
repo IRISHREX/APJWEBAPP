@@ -17,6 +17,12 @@ import {
   Refresh as RefreshIcon,
 } from '@mui/icons-material';
 
+const localUrl = 'http://localhost:5000/api/noticeData';
+const productionUrl = 'https://tame-hospital-gown-mite.cyclic.app/api/noticeData';
+
+const isLocal = window.location.hostname === 'localhost';
+const apiUrl = isLocal ? localUrl : productionUrl;
+
 const NoticeUploader = () => {
   const [expanded, setExpanded] = useState(false);
   const [title, setTitle] = useState('');
@@ -43,16 +49,12 @@ const NoticeUploader = () => {
       }
 
       try {
-        const response = await Axios.post(
-          'http://localhost:5000/api/noticeData',
-          formData,
-          {
-            headers: {
-              Authorization: `Bearer ${bearerToken}`,
-              'Content-Type': 'multipart/form-data',
-            },
-          }
-        );
+        const response = await Axios.post(apiUrl, formData, {
+          headers: {
+            Authorization: `Bearer ${bearerToken}`,
+            'Content-Type': 'multipart/form-data',
+          },
+        });
 
         console.log(response.data);
 
