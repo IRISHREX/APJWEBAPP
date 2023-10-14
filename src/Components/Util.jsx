@@ -344,3 +344,28 @@ export const closeDrawerAfterDelay = (isDrawerOpen, setIsDrawerOpen) => {
 //     prevScrollY.current = currentScrollY;
 //   };
 // };
+export const cardStyles = {
+  maxWidth: '300px', // Adjust the maximum width as needed
+  margin: 'auto', // Center the card on the page
+  transition: 'transform 0.3s ease-in-out', // Add a smooth transition effect
+  '&:hover': {
+    transform: 'scale(1.05)', // Scale up the card on hover
+  },
+};
+
+export const avatarStyles = {
+  width: '100px',
+  height: '100px',
+  margin: 'auto', // Center the avatar within the card
+};
+
+export const descriptionStyles = {
+  maxHeight: '100px',
+  overflowY: 'auto',
+  marginTop: '10px', // Add some top margin to the description
+};
+export const gradientColors = [
+  'linear-gradient(to bottom, #4286f4, #0063b3)',
+  'linear-gradient(to bottom, #ff8a00, #ff0033)',
+  'linear-gradient(to bottom, #36a985, #00754f)',
+];

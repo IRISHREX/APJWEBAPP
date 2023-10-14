@@ -3,8 +3,8 @@ import { Typography, Grid } from '@mui/material';
 import MapComponent from './MapComponent';
 import AboutCard from '../SubPackages/AboutCard';
 import TeamSection from '../SubPackages/TeamSection';
-import { defaultLocation, waypoints, zoom } from './Util';
-import fetchTeamMembersData from '../ApiHandeller/FetchTeamMembersData';
+import { defaultLocation, gradientColors, waypoints, zoom } from './Util';
+import { deleteTeamMember, fetchTeamMembersData, updateTeamMember } from '../ApiHandeller/FetchTeamMembersData';
 
 const About = () => {
   const [selectedTeam, setSelectedTeam] = useState(null);
@@ -26,17 +26,29 @@ const About = () => {
     fetchMembers();
   }, []);
 
+  const handleUpdate = async (id, updatedData) => {
+    try {
+      await updateTeamMember(id, updatedData);
+      fetchTeamMembersData(); // Refresh data
+    } catch (error) {
+      console.error('Update failed:', error);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await deleteTeamMember(id);
+      fetchTeamMembersData(); // Refresh data
+    } catch (error) {
+      console.error('Deletion failed:', error);
+    }
+  };
+
   const getTeamMembers = (team) => teamMembers.filter((member) => member.team === team);
 
   const toggleTeamDrawer = (team) => {
     setSelectedTeam(selectedTeam === team ? null : team);
   };
-
-  const gradientColors = [
-    'linear-gradient(to bottom, #4286f4, #0063b3)',
-    'linear-gradient(to bottom, #ff8a00, #ff0033)',
-    'linear-gradient(to bottom, #36a985, #00754f)',
-  ];
 
   const renderTeamMembers = (team, color) => (
     <div className={`team-section ${selectedTeam === team ? 'active' : ''}`}>
@@ -45,7 +57,7 @@ const About = () => {
         {selectedTeam === team &&
           getTeamMembers(team).map((member, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
-              <AboutCard member={member} />
+              <AboutCard member={member} onUpdate={handleUpdate} onDelete={handleDelete} />
             </Grid>
           ))}
       </Grid>
@@ -58,7 +70,7 @@ const About = () => {
         About Us
       </Typography>
 
-      {loading && <p>Loading team members...</p>}
+      {loading ? <p>Loading team members...</p> : null}
 
       {!loading && renderTeamMembers('members', gradientColors[0])}
       {!loading && renderTeamMembers('mocTeam', gradientColors[1])}

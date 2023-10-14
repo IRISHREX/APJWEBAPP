@@ -1,40 +1,43 @@
-// Import necessary modules from Material-UI
-import React from 'react';
+import React, { useState } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
-import Link from '@mui/material/Link';
+import { LinkedIn, Twitter, Edit as EditIcon, Delete as DeleteIcon } from '@mui/icons-material';
+import { avatarStyles, cardStyles, descriptionStyles } from '../Components/Util';
+import UpdateForm from './UpdateForm';
+import { Avatar } from '@mui/material';
 
-// Import icons for social media
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import TwitterIcon from '@mui/icons-material/Twitter';
-
-const AboutCard = ({ member }) => {
-  const { name = '', role = '', description = '', imageSrc = '', socialLinks = {} } = member;
-
-  // Check if socialLinks is defined before accessing its properties
+const AboutCard = ({ member, onUpdate, onDelete, onGetById }) => {
+  const { id, name = '', role = '', description = '', imageSrc = '', socialLinks = {} } = member;
   const { linkedin = '', twitter = '' } = socialLinks || {};
-  const cardStyles = {
-    maxWidth: '300px', // Adjust the maximum width as needed
-    margin: 'auto', // Center the card on the page
-    transition: 'transform 0.3s ease-in-out', // Add a smooth transition effect
-    '&:hover': {
-      transform: 'scale(1.05)', // Scale up the card on hover
-    },
+
+  const [isUpdateFormOpen, setUpdateFormOpen] = useState(false);
+
+  const handleUpdate = () => {
+    setUpdateFormOpen(true);
   };
 
-  const avatarStyles = {
-    width: '100px',
-    height: '100px',
-    margin: 'auto', // Center the avatar within the card
+  const handleDelete = () => {
+    try {
+      onDelete(id);
+      console.log('Deleted');
+    } catch (error) {
+      console.error('Deletion failed:', error);
+    }
   };
 
-  const descriptionStyles = {
-    maxHeight: '100px',
-    overflowY: 'auto',
-    marginTop: '10px', // Add some top margin to the description
+  const handleGetById = () => {
+    try {
+      onGetById(id);
+    } catch (error) {
+      console.error('Fetch by ID failed:', error);
+    }
+  };
+
+  const handleFormUpdate = (updatedData) => {
+    onUpdate(id, updatedData);
+    setUpdateFormOpen(false);
   };
 
   return (
@@ -53,27 +56,31 @@ const AboutCard = ({ member }) => {
 
         <div style={{ textAlign: 'center', marginTop: '15px' }}>
           {linkedin && (
-            <IconButton
-              component={Link}
-              href={linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <LinkedInIcon />
+            <IconButton component="a" href={linkedin} target="_blank" rel="noopener noreferrer">
+              <LinkedIn />
             </IconButton>
           )}
           {twitter && (
-            <IconButton
-              component={Link}
-              href={twitter}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <TwitterIcon />
+            <IconButton component="a" href={twitter} target="_blank" rel="noopener noreferrer">
+              <Twitter />
             </IconButton>
           )}
-          {/* Add more social media icons and links as needed */}
+
+          <IconButton onClick={handleUpdate}>
+            <EditIcon />
+          </IconButton>
+          <IconButton onClick={handleDelete}>
+            <DeleteIcon />
+          </IconButton>
+          <IconButton onClick={handleGetById}>
+            {/* Add an icon for getting by ID, e.g., a search icon */}
+            {/* <SearchIcon /> */}
+          </IconButton>
         </div>
+
+        {isUpdateFormOpen && (
+          <UpdateForm member={member} onUpdate={handleFormUpdate} closeUpdateForm={() => setUpdateFormOpen(false)} />
+        )}
       </CardContent>
     </Card>
   );

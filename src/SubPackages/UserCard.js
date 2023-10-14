@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Avatar, Typography, Button, Box } from '@mui/material';
 import { styled } from '@mui/system';
 
-// Styled components for a more Instagram-like feel
 const StyledUserCard = styled('div')(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
@@ -13,6 +12,7 @@ const StyledUserCard = styled('div')(({ theme }) => ({
   boxShadow: theme.shadows[3],
   maxWidth: 300,
   margin: 'auto',
+  cursor: 'pointer',
 }));
 
 const StyledAvatar = styled(Avatar)(({ theme }) => ({
@@ -31,12 +31,50 @@ const StyledButton = styled(Button)(({ theme }) => ({
 }));
 
 const UserCard = ({ username, avatar, onLogout, onUpdateProfile }) => {
+  const handleLogout = useCallback(() => {
+    onLogout();
+  }, [onLogout]);
+
+  const [logoutTimer, setLogoutTimer] = useState(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      handleLogout();
+    }, 30 * 60 * 1000);
+
+    setLogoutTimer(timer);
+
+    return () => clearTimeout(timer);
+  }, [handleLogout]);
+
+  const handleUserActivity = useCallback(() => {
+    clearTimeout(logoutTimer);
+
+    const newTimer = setTimeout(() => {
+      handleLogout();
+    }, 30 * 60 * 1000);
+
+    setLogoutTimer(newTimer);
+  }, [handleLogout, logoutTimer]);
+
+  const handleBeforeUnload = useCallback(() => {
+    handleLogout();
+  }, [handleLogout]);
+
+  useEffect(() => {
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, [handleBeforeUnload]);
+
   return (
-    <StyledUserCard>
+    <StyledUserCard onClick={handleUserActivity}>
       <StyledAvatar src={avatar} alt={username} />
       <StyledTypography variant="h6">You are logged in as {username}</StyledTypography>
       <Box>
-        <StyledButton onClick={onLogout} variant="outlined" fullWidth>
+        <StyledButton onClick={handleLogout} variant="outlined" fullWidth>
           Logout
         </StyledButton>
         <StyledButton onClick={onUpdateProfile} variant="outlined" fullWidth>

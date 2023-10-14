@@ -3,14 +3,13 @@ import axios from 'axios';
 const localUrl = 'http://localhost:5000/api/users';
 const productionUrl = 'https://tame-hospital-gown-mite.cyclic.app/api/users';
 
+const baseUrl = window.location.host.includes('localhost') ? localUrl : productionUrl;
+
 const fetchTeamMembersData = async () => {
-  const isLocal = window.location.host.includes('localhost');
-  const url = isLocal ? localUrl : productionUrl;
-
   try {
-    const response = await axios.get(url);
-
+    const response = await axios.get(baseUrl);
     const teamMembers = response.data.map((member) => ({
+      id:member.id,
       name: member.username,
       imageSrc: member.avatar,
       role: member.role,
@@ -27,4 +26,56 @@ const fetchTeamMembersData = async () => {
   }
 };
 
-export default fetchTeamMembersData;
+const updateTeamMember = async (id, updatedData) => {
+  try {
+    console.log('Updating team member with ID:', id);
+    console.log('Updated data:', updatedData);
+
+    const response = await axios.put(`${baseUrl}/${id}`, updatedData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+
+    console.log('Update Response:', response.data);
+
+    return response.data;
+  } catch (error) {
+    console.error('Error updating team member:', error);
+    throw error;
+  }
+};
+
+const deleteTeamMember = async (id) => {
+  try {
+    const response = await axios.delete(`${baseUrl}/${id}`);
+    console.log('Deleted team member:', response.data);
+    return response.data;
+  } catch (error) {
+    console.error('Error deleting team member:', error);
+    throw error;
+  }
+};
+
+const getTeamMemberById = async (id) => {
+  try {
+    const response = await axios.get(`${baseUrl}/${id}`);
+    const teamMember = {
+      name: response.data.username,
+      imageSrc: response.data.avatar,
+      role: response.data.role,
+      team: response.data.team,
+      description: response.data.description,
+      socialLinks: response.data.socialLinks,
+      id: response.data.id,
+    };
+
+    console.log('Team member by ID:', teamMember);
+    return teamMember;
+  } catch (error) {
+    console.error('Error fetching team member by ID:', error);
+    throw error;
+  }
+};
+
+export { fetchTeamMembersData, updateTeamMember, deleteTeamMember, getTeamMemberById };
