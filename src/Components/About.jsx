@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Typography, Grid } from '@mui/material';
+import { Typography, Grid, CircularProgress } from '@mui/material';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import MapComponent from './MapComponent';
 import AboutCard from '../SubPackages/AboutCard';
 import TeamSection from '../SubPackages/TeamSection';
@@ -29,18 +31,22 @@ const About = () => {
   const handleUpdate = async (id, updatedData) => {
     try {
       await updateTeamMember(id, updatedData);
-      fetchTeamMembersData(); // Refresh data
+      await fetchTeamMembersData(); // Refresh data
+      toast.success('Member updated successfully!');
     } catch (error) {
       console.error('Update failed:', error);
+      toast.error('Failed to update member.');
     }
   };
 
   const handleDelete = async (id) => {
     try {
       await deleteTeamMember(id);
-      fetchTeamMembersData(); // Refresh data
+      await fetchTeamMembersData(); // Refresh data
+      toast.success('Member deleted successfully!');
     } catch (error) {
       console.error('Deletion failed:', error);
+      toast.error('Failed to delete member.');
     }
   };
 
@@ -70,7 +76,9 @@ const About = () => {
         About Us
       </Typography>
 
-      {loading ? <p>Loading team members...</p> : null}
+      {loading ? (
+        <CircularProgress style={{ margin: '20px' }} />
+      ) : null}
 
       {!loading && renderTeamMembers('members', gradientColors[0])}
       {!loading && renderTeamMembers('mocTeam', gradientColors[1])}
@@ -81,6 +89,8 @@ const About = () => {
       </Typography>
 
       <MapComponent center={defaultLocation} zoom={zoom} waypoints={waypoints} />
+      
+      <ToastContainer />
     </div>
   );
 };

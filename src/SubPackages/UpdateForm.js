@@ -44,6 +44,7 @@ const UpdateForm = ({ member, onUpdate, closeUpdateForm }) => {
     };
 
     onUpdate(updatedData);
+    
   };
 
   const formFields = [

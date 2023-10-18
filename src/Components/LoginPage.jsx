@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Typography, Avatar, CssBaseline, Paper, Button, Dialog, DialogTitle, DialogContent, DialogActions, Snackbar, Alert } from '@mui/material';
+import { Container, Typography, Avatar, CssBaseline, Paper, Button, Dialog, DialogTitle, DialogContent, DialogActions} from '@mui/material';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import SignInForm from '../SubPackages/SignInForm';
 import SignUpForm from '../SubPackages/SignUpForm';
@@ -13,6 +15,8 @@ const LoginPage = () => {
 
   useEffect(() => {
     const storedToken = localStorage.getItem('bearerToken');
+    // const userType = localStorage.getItem('userType');
+
     if (storedToken) {
       const user = parseToken(storedToken);
       if (user) {
@@ -35,9 +39,6 @@ const LoginPage = () => {
   });
 
   const [showSignUpDialog, setShowSignUpDialog] = useState(false);
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState('');
-  const [snackbarSeverity, setSnackbarSeverity] = useState('success');
 
   const handleFileChange = (file) => {
     setSignUpFormData({
@@ -75,26 +76,26 @@ const LoginPage = () => {
   const handleSignInSubmit = async (e) => {
     e.preventDefault();
     try {
-      const token = await signInUser(signInFormData);
-      const user = parseToken(token);
-      setLoggedInUser(user);
-      localStorage.setItem('bearerToken', token);
-      showSnackbar('Sign-in successful', 'success');
+      const { userType, accessToken } = await signInUser(signInFormData);
+      setLoggedInUser({ userType });
+      localStorage.setItem('userType', userType);
+      localStorage.setItem('bearerToken', accessToken);
+      toast.success('Sign-in successful');
     } catch (error) {
       console.error(error.message);
-      showSnackbar('Error during sign-in', 'error');
+      toast.error('Error during sign-in');
     }
   };
-
+  
   const handleSignUpSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await signUpUser(signUpFormData);
       console.log('Sign-up successful:', response);
-      showSnackbar('Sign-up successful', 'success');
+      toast.success('Sign-up successful');
     } catch (error) {
       console.error(error.message);
-      showSnackbar('Error during sign-up', 'error');
+      toast.error('Error during sign-up');
     }
   };
 
@@ -102,27 +103,14 @@ const LoginPage = () => {
     setShowSignUpDialog(!showSignUpDialog);
   };
 
-  const handleSnackbarClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-
-    setSnackbarOpen(false);
-  };
-
   const handleLogout = () => {
     setLoggedInUser(null);
     localStorage.removeItem('bearerToken');
+    localStorage.removeItem('userType');
   };
 
   const handleUpdateProfile = () => {
     console.log('Update profile clicked');
-  };
-
-  const showSnackbar = (message, severity) => {
-    setSnackbarMessage(message);
-    setSnackbarSeverity(severity);
-    setSnackbarOpen(true);
   };
 
   return (
@@ -159,11 +147,7 @@ const LoginPage = () => {
             <Button onClick={toggleSignUpDialog}>Close</Button>
           </DialogActions>
         </Dialog>
-        <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleSnackbarClose}>
-          <Alert onClose={handleSnackbarClose} severity={snackbarSeverity} sx={{ width: '100%' }}>
-            {snackbarMessage}
-          </Alert>
-        </Snackbar>
+        <ToastContainer />
       </Paper>
     </Container>
   );

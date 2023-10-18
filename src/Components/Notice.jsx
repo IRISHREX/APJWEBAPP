@@ -14,55 +14,32 @@ import {
   CardMedia,
   Card,
   CardContent,
+  IconButton,
 } from '@mui/material';
 import Carousel from 'react-material-ui-carousel';
-import fetchNoticeData from '../SubPackages/FetchNoticeData';
+import { toast, ToastContainer } from 'react-toastify';
 
-const NoticeCard = ({ title, description, image, link, isTable }) => (
-  <Grid item xs={12} sm={12} md={6}>
-    {isTable ? (
-      <Paper elevation={3}>
-        <Box p={2}>
-          <Typography variant="h6" component="div">
-            {title}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {description}
-          </Typography>
-          <Button variant="outlined" href={link} target="_blank" rel="noopener noreferrer">
-            Read More
-          </Button>
-        </Box>
-      </Paper>
-    ) : (
-      <Card sx={{ width: '100%' }}>
-        <CardMedia
-          component="img"
-          alt={title}
-          height="100"
-          image={image}
-          sx={{ position: 'absolute', top: 0, left: 0 }}
-        />
-        <CardContent>
-          <Typography variant="h6" component="div">
-            {title}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {description}
-          </Typography>
-          <Button variant="outlined" href={link} target="_blank" rel="noopener noreferrer">
-            Read More
-          </Button>
-        </CardContent>
-      </Card>
-    )}
-  </Grid>
-);
+import { Edit as EditIcon, Delete as DeleteIcon } from '@mui/icons-material';
+
+import {
+  fetchNoticeData,
+  updateNoticeData,
+  deleteNoticeData,
+  getNoticeDataById,
+} from '../SubPackages/FetchNoticeData';
+
+// Import your NoticeUpdateForm component
+import NoticeUpdateForm from '../SubPackages/NoticeUpdateForm';
+import NoticeCard from '../SubPackages/NoticeCard';
+
+const userType = localStorage.getItem('userType');
 
 const Notice = () => {
   const [notices, setNotices] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [selectedNoticeData, setSelectedNoticeData] = useState(null);
+  const [isUpdateFormOpen, setIsUpdateFormOpen] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -78,6 +55,73 @@ const Notice = () => {
 
     fetchData();
   }, []);
+
+  const handleUpdate = (selectedNotice) => {
+    setSelectedNoticeData(selectedNotice);
+    setIsUpdateFormOpen(true);
+  };
+
+  // const handleUpdateNotice = async (updatedData) => {
+  //   try {
+  //    const { id } = selectedNoticeData; // Assuming your notice data has an 'id' property
+  //    await updateNoticeData(id, updatedData);
+
+  //    // await updateNoticeData(updatedData);
+  //     await fetchNoticeData(); // Refresh data
+  //     toast.success('Notice updated successfully!');
+  //   } catch (error) {
+  //     console.error('Update failed:', error);
+  //     toast.error('Failed to update notice.');
+  //   } finally {
+  //     setIsUpdateFormOpen(false); // Close the form
+  //   }
+  // };
+  const handleUpdateNotice = async (updatedData) => {
+
+    // Extract image file if present
+       const { id } = selectedNoticeData; // Assuming your notice data has an 'id' property
+
+    let imageToUpdate = null;
+    if(updatedData.image) {
+      const imageData = fileToBase64(updatedData.image);
+      
+      imageToUpdate = {
+        name: updatedData.image.name,
+        type: updatedData.image.type,
+        image: imageData
+      }
+    }
+  
+    const dataToUpdate = {
+      title: updatedData.title, 
+      description: updatedData.description,
+      image: imageToUpdate // pass reshaped image object
+    }
+  
+    // Call API 
+    await updateNoticeData(id, dataToUpdate);
+  
+  }
+  
+  function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result); 
+      reader.onerror = error => reject(error);
+    });
+  }
+
+  const handleDelete = async (id) => {
+    try {
+      await deleteNoticeData(id);
+      await fetchNoticeData(); // Refresh data
+      toast.success('Notice deleted successfully!');
+    } catch (error) {
+      console.error('Deletion failed:', error);
+      toast.error('Failed to delete notice.');
+    }
+  };
 
   if (loading) {
     return <Typography variant="h4">Loading...</Typography>;
@@ -140,15 +184,33 @@ const Notice = () => {
                 <TableCell>{notice.title}</TableCell>
                 <TableCell>{notice.description}</TableCell>
                 <TableCell>
-                  <Button variant="outlined" href={notice.link} target="_blank" rel="noopener noreferrer">
-                    Read More
-                  </Button>
+                  {userType === 'admin' && (
+                    <>
+                      <IconButton onClick={() => handleUpdate(notice)}>
+                        <EditIcon />
+                      </IconButton>
+                      <IconButton onClick={() => handleDelete(notice.id)}>
+                        <DeleteIcon />
+                      </IconButton>
+                    </>
+                  )}
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
+
+      {/* Conditionally render the update form */}
+      {isUpdateFormOpen && (
+        <NoticeUpdateForm
+          initialData={selectedNoticeData}
+          onUpdate={handleUpdateNotice}
+          onCancel={() => setIsUpdateFormOpen(false)}
+        />
+      )}
+
+      <ToastContainer />
     </div>
   );
 };

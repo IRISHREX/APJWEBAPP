@@ -7,6 +7,7 @@ import { LinkedIn, Twitter, Edit as EditIcon, Delete as DeleteIcon } from '@mui/
 import { avatarStyles, cardStyles, descriptionStyles } from '../Components/Util';
 import UpdateForm from './UpdateForm';
 import { Avatar } from '@mui/material';
+// ... (import statements and other code)
 
 const AboutCard = ({ member, onUpdate, onDelete, onGetById }) => {
   const { id, name = '', role = '', description = '', imageSrc = '', socialLinks = {} } = member;
@@ -14,14 +15,20 @@ const AboutCard = ({ member, onUpdate, onDelete, onGetById }) => {
 
   const [isUpdateFormOpen, setUpdateFormOpen] = useState(false);
 
+  const userType = localStorage.getItem('userType');
+
   const handleUpdate = () => {
     setUpdateFormOpen(true);
   };
 
   const handleDelete = () => {
     try {
-      onDelete(id);
-      console.log('Deleted');
+      if (userType === 'admin') {
+        onDelete(id);
+        console.log('Deleted');
+      } else {
+        console.log('Permission denied: User is not admin');
+      }
     } catch (error) {
       console.error('Deletion failed:', error);
     }
@@ -66,12 +73,17 @@ const AboutCard = ({ member, onUpdate, onDelete, onGetById }) => {
             </IconButton>
           )}
 
-          <IconButton onClick={handleUpdate}>
-            <EditIcon />
-          </IconButton>
-          <IconButton onClick={handleDelete}>
-            <DeleteIcon />
-          </IconButton>
+          {userType === 'admin' && (
+            <>
+              <IconButton onClick={handleUpdate}>
+                <EditIcon />
+              </IconButton>
+              <IconButton onClick={handleDelete}>
+                <DeleteIcon />
+              </IconButton>
+            </>
+          )}
+
           <IconButton onClick={handleGetById}>
             {/* Add an icon for getting by ID, e.g., a search icon */}
             {/* <SearchIcon /> */}
