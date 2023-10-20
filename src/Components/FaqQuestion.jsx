@@ -38,12 +38,12 @@ export const questions = [
     {
         id: 8,
         question: "In which languages are the courses taught?",
-        answer: "We have two batches. <br>  The Bengali batch primarily focused on teaching the students in Bengali as well as in english. <br>  And the hindi batch in which we primarily emphasize on teaching in Hindi and English. It is important to note that All the study materials which will be provided are in English.",
+        answer: "We have two batches.    The Bengali batch primarily focused on teaching the students in Bengali as well as in english.    And the hindi batch in which we primarily emphasize on teaching in Hindi and English. It is important to note that All the study materials which will be provided are in English.",
     },
     {
         id: 9,
         question: "I'm interested in the course, but I'm not sure if APJEC is right for me. To whom can I speak to about this?",
-        answer: "The question arises that why Should We choose APJEC? `<br/>` Well We have made an attempt to not only guide the Underprivileged students towards a better future by enrolling them in our scholarship program but also let the fortunate ones get access to proper guidance and personalized coaching at a very affordable cost.  <br> Our institution and faculty are committed to admitting students based on their intellectual ability, regardless of their background. We value in invoking their interest and guiding them towards a better future. <br> You are being requested to reach out for more information or any question regarding our courses or Career related queries. <br> You can contact us via WhatsApp at 6294494027 or by calling 7029928412.",
+        answer: "The question arises that why Should We choose APJEC?  Well We have made an attempt to not only guide the Underprivileged students towards a better future by enrolling them in our scholarship program but also let the fortunate ones get access to proper guidance and personalized coaching at a very affordable cost.    Our institution and faculty are committed to admitting students based on their intellectual ability, regardless of their background. We value in invoking their interest and guiding them towards a better future.   You are being requested to reach out for more information or any question regarding our courses or Career related queries.   You can contact us via WhatsApp at 6294494027 or by calling 7029928412.",
     },
     {
         id: 10,
@@ -53,7 +53,7 @@ export const questions = [
     {
         id: 11,
         question: " How can I stay updated with the latest information and updates from the APJEC? ",
-        answer: "You can follow us on Instagram and Facebook page to stay informed about our latest news, events, and updates.<br>  • Instagram at apjec.education<br>  • Facebook at apjec.edu",
+        answer: "You can follow us on Instagram and Facebook page to stay informed about our latest news, events, and updates.   • Instagram at apjec.education   • Facebook at apjec.edu",
     },
 
 ]

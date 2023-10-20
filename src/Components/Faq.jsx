@@ -10,7 +10,7 @@ const Faq = () => {
     return (
      <>
         <section className="main-div">
-            <h1>Frequently Asked Question</h1>
+            <h4>Frequently Asked Question</h4>
         {
             data.map((curElem) => {
                 const {id} = curElem;

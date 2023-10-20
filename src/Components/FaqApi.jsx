@@ -1,22 +1,37 @@
 import React from 'react';
 import { Typography, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
 const styles = {
   accordion: {
     border: '1px solid #e0e0e0',
-    boxShadow: 'none',
-    marginBottom: '10px',
-    borderRadius: '5px',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+    marginBottom: '16px',
+    borderRadius: '8px',
+    overflow: 'hidden',
+    transition: 'box-shadow 0.3s ease-in-out', // Added box-shadow transition
+    '&:hover': {
+      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', // Highlight on hover
+    },
   },
   accordionSummary: {
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#007BA7',
+    borderBottom: '1px solid #e0e0e0',
+    borderRadius: '8px 8px 0 0',
+    transition: 'background-color 0.3s ease-in-out', // Added background-color transition
+    '&:hover': {
+      backgroundColor: '#e0e0e0', // Darken background on hover
+    },
   },
   questionText: {
-    fontWeight: 'bold',
+    fontWeight: '600',
+color:"white"
   },
   answerText: {
-    paddingLeft: '16px',
+    padding: '16px', // Consolidated padding
+    fontWeight: '600',
+    transition: 'padding 0.3s ease-in-out', // Added padding transition
+    backgroundColor: '#A9E0D0',
+
   },
 };
 

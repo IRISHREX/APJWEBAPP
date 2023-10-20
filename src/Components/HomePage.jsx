@@ -1,20 +1,20 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Typography, Slide, Fade, CardContent, Card } from '@mui/material';
 import CarouselComponent from './CarouselComponent'; // Import your CarouselComponent component
 
 function HomePage() {
-  useEffect(() => {
-    // Scroll to the card after 5 seconds
-    const scrollTimeout = setTimeout(() => {
-      const cardElement = document.querySelector('.about-us-card');
-      if (cardElement) {
-        cardElement.scrollIntoView({ behavior: 'smooth' });
-      }
-    }, 6000);
+  // useEffect(() => {
+  //   // Scroll to the card after 5 seconds
+  //   const scrollTimeout = setTimeout(() => {
+  //     const cardElement = document.querySelector('.about-us-card');
+  //     if (cardElement) {
+  //       cardElement.scrollIntoView({ behavior: 'smooth' });
+  //     }
+  //   }, 6000);
 
-    // Clear the timeout when the component unmounts
-    return () => clearTimeout(scrollTimeout);
-  }, []);
+  //   // Clear the timeout when the component unmounts
+  //   return () => clearTimeout(scrollTimeout);
+  // }, []);
   return (
     <div>
       <CarouselComponent /> {/* Add the CarouselComponent here */}
