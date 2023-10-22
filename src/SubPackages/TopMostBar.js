@@ -36,14 +36,15 @@ function TopMostBar() {
           </Grid>
           <Grid item>
             <Typography
-              variant="h5"
               gutterBottom
               letterSpacing="2px"
               marginLeft="1rem"
               fontSize={{ xs: '1.5rem', sm: '2rem', md: '2.5rem' }}
               className="neon-text"
+              fontFamily={'Pacifico'}
+              fontWeight={900}
             >
-              A.P.J.E.C
+             APJC
             </Typography>
           </Grid>
         </Grid>

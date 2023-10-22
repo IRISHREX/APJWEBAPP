@@ -13,7 +13,7 @@ import MasterUploader from './MasterUploader';
 import TopMostBar from '../SubPackages/TopMostBar';
 import LOGO from '../Images/Genral/LOGO.png'
 import Footer from './Footer';
-import Faq from './Faq';
+
 
 function Home() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -54,11 +54,13 @@ function Home() {
               variant="h5"
               gutterBottom
               letterSpacing="2px"
+              fontFamily={'Pacifico'}
               marginLeft="1rem"
               fontSize={{ xs: '2.8rem', sm: '2rem', md: '2.5rem' }}
               className="neon-text"
+              
              >
-              A.P.J.E.C
+      <h1>APJC</h1>
             </Typography>
           </Grid>
         </Grid>
@@ -86,7 +88,6 @@ function Home() {
           <Route path="/login" element={<LoginPage  />} />
         </Routes>
       </main>
-      <Faq />
       <Footer/>
     </div>
   );
