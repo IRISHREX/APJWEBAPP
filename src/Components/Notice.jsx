@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
   Typography,
-  Button,
   Grid,
-  Box,
   Paper,
   Table,
   TableBody,
@@ -11,9 +9,7 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  CardMedia,
-  Card,
-  CardContent,
+ 
   IconButton,
 } from '@mui/material';
 import Carousel from 'react-material-ui-carousel';
@@ -25,7 +21,6 @@ import {
   fetchNoticeData,
   updateNoticeData,
   deleteNoticeData,
-  getNoticeDataById,
 } from '../SubPackages/FetchNoticeData';
 
 // Import your NoticeUpdateForm component
