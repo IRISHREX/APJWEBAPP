@@ -11,6 +11,7 @@ import {
   TableRow,
  
   IconButton,
+  Slide,
 } from '@mui/material';
 import Carousel from 'react-material-ui-carousel';
 import { toast, ToastContainer } from 'react-toastify';
@@ -26,6 +27,7 @@ import {
 // Import your NoticeUpdateForm component
 import NoticeUpdateForm from '../SubPackages/NoticeUpdateForm';
 import NoticeCard from '../SubPackages/NoticeCard';
+import NoticeData from '../SubPackages/NoticeData';
 
 const userType = localStorage.getItem('userType');
 
@@ -38,9 +40,16 @@ const Notice = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      let dataToBeShown;
       try {
         const data = await fetchNoticeData();
-        setNotices(data);
+if(data.length===0){
+  dataToBeShown=NoticeData;
+}
+else{
+   dataToBeShown=data;
+}
+        setNotices(dataToBeShown);
       } catch (error) {
         setError(error);
       } finally {
@@ -56,21 +65,6 @@ const Notice = () => {
     setIsUpdateFormOpen(true);
   };
 
-  // const handleUpdateNotice = async (updatedData) => {
-  //   try {
-  //    const { id } = selectedNoticeData; // Assuming your notice data has an 'id' property
-  //    await updateNoticeData(id, updatedData);
-
-  //    // await updateNoticeData(updatedData);
-  //     await fetchNoticeData(); // Refresh data
-  //     toast.success('Notice updated successfully!');
-  //   } catch (error) {
-  //     console.error('Update failed:', error);
-  //     toast.error('Failed to update notice.');
-  //   } finally {
-  //     setIsUpdateFormOpen(false); // Close the form
-  //   }
-  // };
   const handleUpdateNotice = async (updatedData) => {
 
     // Extract image file if present
@@ -137,36 +131,32 @@ const Notice = () => {
             key={notice.id}
             container
             spacing={2}
-            direction={index % 2 === 0 ? 'row' : 'row-reverse'}
+            direction={'row'}
           >
-            {index % 2 === 0 ? (
-              <>
-                <NoticeCard
-                  title={notice.title}
-                  description={notice.description}
-                  image={notice.image}
-                  link={notice.link}
-                />
-                {/* You can add more NoticeCard components here */}
-              </>
-            ) : (
+            
+             (
               <NoticeCard
-                title={notice.title}
-                description={notice.description}
-                image={notice.image}
-                link={notice.link}
-                isTable={true}
-              />
-            )}
+  title={
+    <Typography variant="h6" style={{ fontWeight: 'bold', color: 'red' }}>
+      {notice.title}
+    </Typography>
+  }
+  description={notice.description}
+  image={notice.image}
+  link={notice.link}
+  isTable={true}
+/>
+
+            )
           </Grid>
         ))}
       </Carousel>
       <Typography variant="h5" mt={4}>
         Notices Table
       </Typography>
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} style={{ border: '1px solid #4CAF50', borderRadius: '8px', overflow: 'hidden', margin: '16px 0', background: '#E0F2F1' }}>
         <Table>
-          <TableHead>
+          <TableHead style={{ backgroundColor: '#81C784' }}>
             <TableRow>
               <TableCell>Title</TableCell>
               <TableCell>Description</TableCell>
@@ -174,23 +164,28 @@ const Notice = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {notices.map((notice) => (
-              <TableRow key={notice.id}>
-                <TableCell>{notice.title}</TableCell>
-                <TableCell>{notice.description}</TableCell>
-                <TableCell>
-                  {userType === 'admin' && (
-                    <>
-                      <IconButton onClick={() => handleUpdate(notice)}>
-                        <EditIcon />
-                      </IconButton>
-                      <IconButton onClick={() => handleDelete(notice.id)}>
-                        <DeleteIcon />
-                      </IconButton>
-                    </>
-                  )}
-                </TableCell>
-              </TableRow>
+            {notices?.map((notice) => (
+              <Slide direction="up" in={true} key={notice.id}>
+                <TableRow
+                  hover
+                  style={{ '&:hover': { backgroundColor: '#4CAF50', transition: 'background-color 0.3s ease' } }}
+                >
+                  <TableCell>{notice.title}</TableCell>
+                  <TableCell>{notice.description}</TableCell>
+                  <TableCell>
+                    {userType === 'admin' && (
+                      <>
+                        <IconButton onClick={() => handleUpdate(notice)}>
+                          <EditIcon />
+                        </IconButton>
+                        <IconButton onClick={() => handleDelete(notice.id)}>
+                          <DeleteIcon />
+                        </IconButton>
+                      </>
+                    )}
+                  </TableCell>
+                </TableRow>
+              </Slide>
             ))}
           </TableBody>
         </Table>

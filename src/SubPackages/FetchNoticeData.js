@@ -51,11 +51,6 @@ const updateNoticeData = async (id, updatedData) => {
       return null;
     }
 
-    // const response = await axios.put(url, updatedData, {
-    //   headers: {
-    //     Authorization: `Bearer ${bearerToken}`,
-    //   },
-    // });
     const response = await axios.put(url, updatedData, {
       headers: {
         Authorization: `Bearer ${bearerToken}`,

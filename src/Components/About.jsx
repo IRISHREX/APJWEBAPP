@@ -7,6 +7,7 @@ import AboutCard from '../SubPackages/AboutCard';
 import TeamSection from '../SubPackages/TeamSection';
 import { defaultLocation, gradientColors, waypoints, zoom } from './Util';
 import { deleteTeamMember, fetchTeamMembersData, updateTeamMember } from '../ApiHandeller/FetchTeamMembersData';
+import teamMembersData from '../SubPackages/TeamMembarData';
 
 const About = () => {
   const [selectedTeam, setSelectedTeam] = useState(null);
@@ -15,9 +16,17 @@ const About = () => {
 
   useEffect(() => {
     const fetchMembers = async () => {
+      let TeamData;
       try {
         const membersData = await fetchTeamMembersData();
-        setTeamMembers(membersData);
+       if (membersData.length===0){
+         TeamData= teamMembersData
+       }
+       else{
+        TeamData=membersData
+       }
+       console.log('TeamData',TeamData)
+        setTeamMembers(TeamData);
       } catch (error) {
         console.error('Error fetching team members data:', error);
       } finally {

@@ -7,7 +7,6 @@ import { LinkedIn, Twitter, Edit as EditIcon, Delete as DeleteIcon } from '@mui/
 import { avatarStyles, cardStyles, descriptionStyles } from '../Components/Util';
 import UpdateForm from './UpdateForm';
 import { Avatar } from '@mui/material';
-// ... (import statements and other code)
 
 const AboutCard = ({ member, onUpdate, onDelete, onGetById }) => {
   const { id, name = '', role = '', description = '', imageSrc = '', socialLinks = {} } = member;
@@ -85,8 +84,6 @@ const AboutCard = ({ member, onUpdate, onDelete, onGetById }) => {
           )}
 
           <IconButton onClick={handleGetById}>
-            {/* Add an icon for getting by ID, e.g., a search icon */}
-            {/* <SearchIcon /> */}
           </IconButton>
         </div>
 

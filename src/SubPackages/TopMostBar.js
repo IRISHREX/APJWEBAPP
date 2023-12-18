@@ -9,8 +9,19 @@ import InfoIcon from '@mui/icons-material/Info';
 import ContactMailIcon from '@mui/icons-material/ContactMail';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 function TopMostBar() {
+  const [isHidden , setIsHidden]= useState(false);
+
+ const userType = localStorage.getItem('userType')
+  // console.log('userType',userType)
+  useEffect(() => {
+    if (userType === 'admin' || userType !== null) {
+      setIsHidden(true);
+    }
+  }, [userType]);
   const location = useLocation();
 
   const linkStyle = (path) => ({
@@ -59,10 +70,14 @@ function TopMostBar() {
             <AnnouncementIcon sx={{ marginRight: '5px' }} />
             Notice
           </Link>
+          
+              {isHidden ? 
+            
           <Link to="/login" className={location.pathname === '/login' ? 'neon-link active' : 'neon-link'} style={linkStyle('/login')}>
             <AccountCircleIcon sx={{ marginRight: '5px' }} />
             Login
-          </Link>
+          </Link> : <></>}
+          
           <Link to="/about" className={location.pathname === '/about' ? 'neon-link active' : 'neon-link'} style={linkStyle('/about')}>
             <InfoIcon sx={{ marginRight: '5px' }} />
             About
@@ -71,6 +86,8 @@ function TopMostBar() {
             <ContactMailIcon sx={{ marginRight: '5px' }} />
             Contact
           </Link>
+          {isHidden ? 
+
           <Link
             to="/notice-uploader"
             className={location.pathname === '/notice-uploader' ? 'neon-link active' : 'neon-link'}
@@ -79,6 +96,9 @@ function TopMostBar() {
             <CloudUploadIcon sx={{ marginRight: '5px' }} />
             Notice Uploader
           </Link>
+          :<></>}
+                        {isHidden ? 
+
           <Link
             to="/credential-manager"
             className={location.pathname === '/credential-manager' ? 'neon-link active' : 'neon-link'}
@@ -86,7 +106,7 @@ function TopMostBar() {
           >
             <VpnKeyIcon sx={{ marginRight: '5px' }} />
             Credential Manager
-          </Link>
+          </Link>:<></>}
         </div>
       </Toolbar>
     </AppBar>
