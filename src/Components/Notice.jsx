@@ -11,11 +11,13 @@ import {
   TableRow,
   IconButton,
   Slide,
+  Drawer,
+  Button,
 } from "@mui/material";
 import Carousel from "react-material-ui-carousel";
 import { toast, ToastContainer } from "react-toastify";
 
-import { Edit as EditIcon, Delete as DeleteIcon } from "@mui/icons-material";
+import { Edit as EditIcon, Delete as DeleteIcon, Close } from "@mui/icons-material";
 
 import {
   fetchNoticeData,
@@ -23,7 +25,6 @@ import {
   deleteNoticeData,
 } from "../SubPackages/FetchNoticeData";
 
-// Import your NoticeUpdateForm component
 import NoticeUpdateForm from "../SubPackages/NoticeUpdateForm";
 import NoticeCard from "../SubPackages/NoticeCard";
 import NoticeData from "../SubPackages/NoticeData";
@@ -36,6 +37,7 @@ const Notice = () => {
   const [error, setError] = useState(null);
   const [selectedNoticeData, setSelectedNoticeData] = useState(null);
   const [isUpdateFormOpen, setIsUpdateFormOpen] = useState(false);
+  const [drawerContent, setDrawerContent] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -64,8 +66,7 @@ const Notice = () => {
   };
 
   const handleUpdateNotice = async (updatedData) => {
-    // Extract image file if present
-    const { id } = selectedNoticeData; // Assuming your notice data has an 'id' property
+    const { id } = selectedNoticeData;
 
     let imageToUpdate = null;
     if (updatedData.image) {
@@ -81,10 +82,9 @@ const Notice = () => {
     const dataToUpdate = {
       title: updatedData.title,
       description: updatedData.description,
-      image: imageToUpdate, // pass reshaped image object
+      image: imageToUpdate,
     };
 
-    // Call API
     await updateNoticeData(id, dataToUpdate);
   };
 
@@ -100,12 +100,20 @@ const Notice = () => {
   const handleDelete = async (id) => {
     try {
       await deleteNoticeData(id);
-      await fetchNoticeData(); // Refresh data
+      await fetchNoticeData();
       toast.success("Notice deleted successfully!");
     } catch (error) {
       console.error("Deletion failed:", error);
       toast.error("Failed to delete notice.");
     }
+  };
+
+  const handleDrawerOpen = (content) => {
+    setDrawerContent(content);
+  };
+
+  const handleDrawerClose = () => {
+    setDrawerContent("");
   };
 
   if (loading) {
@@ -138,6 +146,7 @@ const Notice = () => {
               image={notice.image}
               link={notice.link}
               isTable={true}
+              onReadMore={() => handleDrawerOpen(notice.description)}
             />
             )
           </Grid>
@@ -177,7 +186,20 @@ const Notice = () => {
                   }}
                 >
                   <TableCell>{notice.title}</TableCell>
-                  <TableCell>{notice.description}</TableCell>
+                  <TableCell>
+                    {notice.description.length > 100 ? (
+                      <>
+                        {`${notice.description.substring(0, 100)}... `}
+                        <Button
+                          onClick={() => handleDrawerOpen(notice.description)}
+                        >
+                          Read More
+                        </Button>
+                      </>
+                    ) : (
+                      notice.description
+                    )}
+                  </TableCell>
                   <TableCell>
                     {userType === "admin" && (
                       <>
@@ -197,7 +219,15 @@ const Notice = () => {
         </Table>
       </TableContainer>
 
-      {/* Conditionally render the update form */}
+      <Drawer anchor="bottom" open={!!drawerContent} onClose={handleDrawerClose}>
+        <div>
+          <Close onClick={handleDrawerClose}>Close</Close>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {drawerContent}
+          </Typography>
+        </div>
+      </Drawer>
+
       {isUpdateFormOpen && (
         <NoticeUpdateForm
           initialData={selectedNoticeData}
