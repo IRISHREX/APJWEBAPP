@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   Typography,
   Grid,
@@ -9,27 +9,26 @@ import {
   TableContainer,
   TableHead,
   TableRow,
- 
   IconButton,
   Slide,
-} from '@mui/material';
-import Carousel from 'react-material-ui-carousel';
-import { toast, ToastContainer } from 'react-toastify';
+} from "@mui/material";
+import Carousel from "react-material-ui-carousel";
+import { toast, ToastContainer } from "react-toastify";
 
-import { Edit as EditIcon, Delete as DeleteIcon } from '@mui/icons-material';
+import { Edit as EditIcon, Delete as DeleteIcon } from "@mui/icons-material";
 
 import {
   fetchNoticeData,
   updateNoticeData,
   deleteNoticeData,
-} from '../SubPackages/FetchNoticeData';
+} from "../SubPackages/FetchNoticeData";
 
 // Import your NoticeUpdateForm component
-import NoticeUpdateForm from '../SubPackages/NoticeUpdateForm';
-import NoticeCard from '../SubPackages/NoticeCard';
-import NoticeData from '../SubPackages/NoticeData';
+import NoticeUpdateForm from "../SubPackages/NoticeUpdateForm";
+import NoticeCard from "../SubPackages/NoticeCard";
+import NoticeData from "../SubPackages/NoticeData";
 
-const userType = localStorage.getItem('userType');
+const userType = localStorage.getItem("userType");
 
 const Notice = () => {
   const [notices, setNotices] = useState([]);
@@ -43,12 +42,11 @@ const Notice = () => {
       let dataToBeShown;
       try {
         const data = await fetchNoticeData();
-if(data.length===0){
-  dataToBeShown=NoticeData;
-}
-else{
-   dataToBeShown=data;
-}
+        if (data.length === 0) {
+          dataToBeShown = NoticeData;
+        } else {
+          dataToBeShown = data;
+        }
         setNotices(dataToBeShown);
       } catch (error) {
         setError(error);
@@ -66,38 +64,36 @@ else{
   };
 
   const handleUpdateNotice = async (updatedData) => {
-
     // Extract image file if present
-       const { id } = selectedNoticeData; // Assuming your notice data has an 'id' property
+    const { id } = selectedNoticeData; // Assuming your notice data has an 'id' property
 
     let imageToUpdate = null;
-    if(updatedData.image) {
+    if (updatedData.image) {
       const imageData = fileToBase64(updatedData.image);
-      
+
       imageToUpdate = {
         name: updatedData.image.name,
         type: updatedData.image.type,
-        image: imageData
-      }
+        image: imageData,
+      };
     }
-  
+
     const dataToUpdate = {
-      title: updatedData.title, 
+      title: updatedData.title,
       description: updatedData.description,
-      image: imageToUpdate // pass reshaped image object
-    }
-  
-    // Call API 
+      image: imageToUpdate, // pass reshaped image object
+    };
+
+    // Call API
     await updateNoticeData(id, dataToUpdate);
-  
-  }
-  
+  };
+
   function fileToBase64(file) {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result); 
-      reader.onerror = error => reject(error);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
     });
   }
 
@@ -105,10 +101,10 @@ else{
     try {
       await deleteNoticeData(id);
       await fetchNoticeData(); // Refresh data
-      toast.success('Notice deleted successfully!');
+      toast.success("Notice deleted successfully!");
     } catch (error) {
-      console.error('Deletion failed:', error);
-      toast.error('Failed to delete notice.');
+      console.error("Deletion failed:", error);
+      toast.error("Failed to delete notice.");
     }
   };
 
@@ -127,26 +123,22 @@ else{
       </Typography>
       <Carousel animation="slide">
         {notices.map((notice, index) => (
-          <Grid
-            key={notice.id}
-            container
-            spacing={2}
-            direction={'row'}
-          >
-            
-             (
-              <NoticeCard
-  title={
-    <Typography variant="h6" style={{ fontWeight: 'bold', color: 'red' }}>
-      {notice.title}
-    </Typography>
-  }
-  description={notice.description}
-  image={notice.image}
-  link={notice.link}
-  isTable={true}
-/>
-
+          <Grid key={notice.id} container spacing={2} direction={"row"}>
+            (
+            <NoticeCard
+              title={
+                <Typography
+                  variant="h6"
+                  style={{ fontWeight: "bold", color: "red" }}
+                >
+                  {notice.title}
+                </Typography>
+              }
+              description={notice.description}
+              image={notice.image}
+              link={notice.link}
+              isTable={true}
+            />
             )
           </Grid>
         ))}
@@ -154,9 +146,18 @@ else{
       <Typography variant="h5" mt={4}>
         Notices Table
       </Typography>
-      <TableContainer component={Paper} style={{ border: '1px solid #4CAF50', borderRadius: '8px', overflow: 'hidden', margin: '16px 0', background: '#E0F2F1' }}>
+      <TableContainer
+        component={Paper}
+        style={{
+          border: "1px solid #4CAF50",
+          borderRadius: "8px",
+          overflow: "hidden",
+          margin: "16px 0",
+          background: "#E0F2F1",
+        }}
+      >
         <Table>
-          <TableHead style={{ backgroundColor: '#81C784' }}>
+          <TableHead style={{ backgroundColor: "#81C784" }}>
             <TableRow>
               <TableCell>Title</TableCell>
               <TableCell>Description</TableCell>
@@ -168,12 +169,17 @@ else{
               <Slide direction="up" in={true} key={notice.id}>
                 <TableRow
                   hover
-                  style={{ '&:hover': { backgroundColor: '#4CAF50', transition: 'background-color 0.3s ease' } }}
+                  style={{
+                    "&:hover": {
+                      backgroundColor: "#4CAF50",
+                      transition: "background-color 0.3s ease",
+                    },
+                  }}
                 >
                   <TableCell>{notice.title}</TableCell>
                   <TableCell>{notice.description}</TableCell>
                   <TableCell>
-                    {userType === 'admin' && (
+                    {userType === "admin" && (
                       <>
                         <IconButton onClick={() => handleUpdate(notice)}>
                           <EditIcon />

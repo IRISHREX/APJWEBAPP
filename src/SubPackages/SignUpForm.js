@@ -1,10 +1,27 @@
 // SignUpForm.jsx
-import React from 'react';
-import { Button, Grid, TextField, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import React from "react";
+import {
+  Button,
+  Grid,
+  TextField,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+} from "@mui/material";
 
-const SignUpForm = ({ formData, handleChange, handleFileChange, handleSubmit, loading }) => (
-  
-  <form onSubmit={handleSubmit} encType="multipart/form-data" style={{ width: '100%', marginTop: 2 }}>
+const SignUpForm = ({
+  formData,
+  handleChange,
+  handleFileChange,
+  handleSubmit,
+  loading,
+}) => (
+  <form
+    onSubmit={handleSubmit}
+    encType="multipart/form-data"
+    style={{ width: "100%", marginTop: 2 }}
+  >
     <Grid container spacing={2}>
       <Grid item xs={12}>
         <TextField
@@ -39,7 +56,7 @@ const SignUpForm = ({ formData, handleChange, handleFileChange, handleSubmit, lo
             value={formData.userType}
             onChange={handleChange}
             required
-          > 
+          >
             <MenuItem value="admin">Admin</MenuItem>
             <MenuItem value="employee">Employee</MenuItem>
             <MenuItem value="student">Student</MenuItem>
@@ -49,15 +66,20 @@ const SignUpForm = ({ formData, handleChange, handleFileChange, handleSubmit, lo
       <Grid item xs={12}>
         {/* Add the Avatar component or file input for avatar upload */}
         <input
-    accept="image/*"
-    style={{ display: 'none' }}
-    id="avatar"
-    type="file"
-    name="avatar"
-    onChange={(e) => handleFileChange(e.target.files[0])} 
-  />
+          accept="image/*"
+          style={{ display: "none" }}
+          id="avatar"
+          type="file"
+          name="avatar"
+          onChange={(e) => handleFileChange(e.target.files[0])}
+        />
         <label htmlFor="avatar">
-          <Button component="span" variant="outlined" fullWidth disabled={loading}>
+          <Button
+            component="span"
+            variant="outlined"
+            fullWidth
+            disabled={loading}
+          >
             Upload Avatar
           </Button>
         </label>
@@ -65,12 +87,12 @@ const SignUpForm = ({ formData, handleChange, handleFileChange, handleSubmit, lo
           <img
             src={URL.createObjectURL(formData.avatar)}
             alt="Avatar Preview"
-            style={{ maxWidth: '100%', marginTop: '10px' }}
+            style={{ maxWidth: "100%", marginTop: "10px" }}
           />
         )}
       </Grid>
 
-         <Grid item xs={12}>
+      <Grid item xs={12}>
         <FormControl variant="outlined" fullWidth>
           <InputLabel htmlFor="team">Team</InputLabel>
           <Select
@@ -122,7 +144,7 @@ const SignUpForm = ({ formData, handleChange, handleFileChange, handleSubmit, lo
           sx={{ mt: 3 }}
           disabled={loading}
         >
-          {loading ? 'Signing Up...' : 'Sign Up'}
+          {loading ? "Signing Up..." : "Sign Up"}
         </Button>
       </Grid>
     </Grid>
