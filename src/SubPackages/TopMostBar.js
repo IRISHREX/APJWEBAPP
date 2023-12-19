@@ -35,7 +35,12 @@ function TopMostBar() {
   return (
     <AppBar
       position="static"
-      style={{ backgroundColor: "transparent", boxShadow: "none" }}
+      style={{ backgroundColor: "transparent", boxShadow: "none", 
+      border: "2px solid rgba(0, 188, 0, 0.7)", // Green border
+      borderTop: "2px solid rgba(255, 0, 0, 0.7)", // Red top border
+      borderBottom: "2px solid rgba(0, 0, 255, 0.7)", // Blue bottom border
+   
+    }}
     >
       <Toolbar>
         <Grid container alignItems="center">

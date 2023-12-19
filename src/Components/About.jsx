@@ -88,10 +88,18 @@ const About = () => {
                 transition: "transform 0.3s ease",
               }}
             >
-              <AboutCard
+              <AboutCard 
                 member={member}
                 onUpdate={handleUpdate}
                 onDelete={handleDelete}
+                style={{
+                  backgroundColor: "rgba(0, 188, 212, 0.7)", // Greenish background color
+                  boxShadow: "0 0 20px rgba(255, 0, 0, 0.5)", // Reddish and radiant shadow
+                  borderRadius: "15px", // Border radius for a smoother look
+                  overflow: "hidden", // Ensure content doesn't overflow
+                  position: "relative", // Positioning for absolute elements inside
+                }}
+                
               />
             </Grid>
           ))}

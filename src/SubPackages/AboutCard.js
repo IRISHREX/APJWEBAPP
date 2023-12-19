@@ -1,20 +1,36 @@
-import React, { useState } from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import { LinkedIn, Twitter, Edit as EditIcon, Delete as DeleteIcon } from '@mui/icons-material';
-import { avatarStyles, cardStyles, descriptionStyles } from '../Components/Util';
-import UpdateForm from './UpdateForm';
-import { Avatar } from '@mui/material';
+import React, { useState } from "react";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
+import {
+  LinkedIn,
+  Twitter,
+  Edit as EditIcon,
+  Delete as DeleteIcon,
+} from "@mui/icons-material";
+import {
+  avatarStyles,
+  cardStyles,
+  descriptionStyles,
+} from "../Components/Util";
+import UpdateForm from "./UpdateForm";
+import { Avatar } from "@mui/material";
 
 const AboutCard = ({ member, onUpdate, onDelete, onGetById }) => {
-  const { id, name = '', role = '', description = '', imageSrc = '', socialLinks = {} } = member;
-  const { linkedin = '', twitter = '' } = socialLinks || {};
+  const {
+    id,
+    name = "",
+    role = "",
+    description = "",
+    imageSrc = "",
+    socialLinks = {},
+  } = member;
+  const { linkedin = "", twitter = "" } = socialLinks || {};
 
   const [isUpdateFormOpen, setUpdateFormOpen] = useState(false);
 
-  const userType = localStorage.getItem('userType');
+  const userType = localStorage.getItem("userType");
 
   const handleUpdate = () => {
     setUpdateFormOpen(true);
@@ -22,14 +38,14 @@ const AboutCard = ({ member, onUpdate, onDelete, onGetById }) => {
 
   const handleDelete = () => {
     try {
-      if (userType === 'admin') {
+      if (userType === "admin") {
         onDelete(id);
-        console.log('Deleted');
+        console.log("Deleted");
       } else {
-        console.log('Permission denied: User is not admin');
+        console.log("Permission denied: User is not admin");
       }
     } catch (error) {
-      console.error('Deletion failed:', error);
+      console.error("Deletion failed:", error);
     }
   };
 
@@ -37,7 +53,7 @@ const AboutCard = ({ member, onUpdate, onDelete, onGetById }) => {
     try {
       onGetById(id);
     } catch (error) {
-      console.error('Fetch by ID failed:', error);
+      console.error("Fetch by ID failed:", error);
     }
   };
 
@@ -50,7 +66,7 @@ const AboutCard = ({ member, onUpdate, onDelete, onGetById }) => {
     <Card style={cardStyles}>
       <CardContent>
         <Avatar alt={name} src={imageSrc} style={avatarStyles} />
-        <Typography variant="h6" align="center" gutterBottom>
+        <Typography variant="h6" align="center" gutterBottom color={'#670ca6'}>
           {name}
         </Typography>
         <Typography variant="subtitle1" align="center">
@@ -60,19 +76,29 @@ const AboutCard = ({ member, onUpdate, onDelete, onGetById }) => {
           {description}
         </Typography>
 
-        <div style={{ textAlign: 'center', marginTop: '15px' }}>
+        <div style={{ textAlign: "center", marginTop: "15px" }}>
           {linkedin && (
-            <IconButton component="a" href={linkedin} target="_blank" rel="noopener noreferrer">
+            <IconButton
+              component="a"
+              href={linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <LinkedIn />
             </IconButton>
           )}
           {twitter && (
-            <IconButton component="a" href={twitter} target="_blank" rel="noopener noreferrer">
+            <IconButton
+              component="a"
+              href={twitter}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Twitter />
             </IconButton>
           )}
 
-          {userType === 'admin' && (
+          {userType === "admin" && (
             <>
               <IconButton onClick={handleUpdate}>
                 <EditIcon />
@@ -83,12 +109,15 @@ const AboutCard = ({ member, onUpdate, onDelete, onGetById }) => {
             </>
           )}
 
-          <IconButton onClick={handleGetById}>
-          </IconButton>
+          <IconButton onClick={handleGetById}></IconButton>
         </div>
 
         {isUpdateFormOpen && (
-          <UpdateForm member={member} onUpdate={handleFormUpdate} closeUpdateForm={() => setUpdateFormOpen(false)} />
+          <UpdateForm
+            member={member}
+            onUpdate={handleFormUpdate}
+            closeUpdateForm={() => setUpdateFormOpen(false)}
+          />
         )}
       </CardContent>
     </Card>
