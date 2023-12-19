@@ -16,6 +16,7 @@ import Footer from "./Footer";
 import PdfListPage from "./PdfListPage";
 import ClassInfo from "./ClassInfo";
 
+
 function Home() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
@@ -89,7 +90,9 @@ function Home() {
           <Route path="/classes" element={<ClassInfo />} />
 
 
-          <Route path="/login" element={<LoginPage />} />
+    <Route path="/login" element={<LoginPage />} />
+
+
         </Routes>
       </main>
       <Footer />

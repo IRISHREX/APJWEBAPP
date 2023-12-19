@@ -1,30 +1,38 @@
-import React from 'react';
-import { Typography, Slide, Fade, CardContent, Card, Grid, Button } from '@mui/material';
-import CarouselComponent from './CarouselComponent';
-import Faq from './Faq';
+import React from "react";
+import {
+  Typography,
+  Slide,
+  Fade,
+  CardContent,
+  Card,
+  Grid,
+  Button,
+} from "@mui/material";
+import CarouselComponent from "./CarouselComponent";
+import Faq from "./Faq";
 
-import aboutUsImage from '../Images/Genral/S1.jpg';
-import missionImage from '../Images/Genral/S2.jpg';
-import courseOfferImage from '../Images/Genral/S3.jpg';
+import aboutUsImage from "../Images/Genral/S1.jpg";
+import missionImage from "../Images/Genral/S2.jpg";
+import courseOfferImage from "../Images/Genral/S3.jpg";
 
 function HomePage() {
   const cardData = [
     {
-      title: 'About Us',
+      title: "About Us",
       description:
-        'Presenting the APJ Abdul Kalam Free Education Center. Founded on October 15, 2022, in honor of APJ Abdul Kalam\'s birth anniversary, we are an initiative of the Universal Human Foundation...',
+        "Presenting the APJ Abdul Kalam Free Education Center. Founded on October 15, 2022, in honor of APJ Abdul Kalam's birth anniversary, we are an initiative of the Universal Human Foundation...",
       image: aboutUsImage,
     },
     {
-      title: 'Our Mission',
+      title: "Our Mission",
       description:
-        'We are dedicated to providing a launchpad for the underprivileged, empowering them to conquer the nation\'s university admission exams. In our eyes, education is a fundamental human right, and we firmly believe that no one should be deprived of this opportunity due to a lack of essential guidance...',
+        "We are dedicated to providing a launchpad for the underprivileged, empowering them to conquer the nation's university admission exams. In our eyes, education is a fundamental human right, and we firmly believe that no one should be deprived of this opportunity due to a lack of essential guidance...",
       image: missionImage,
     },
     {
-      title: 'Course Offers',
+      title: "Course Offers",
       description:
-        'As previously indicated, our coaching sessions are a vital component of our institution\'s overarching mission. We are dedicated to providing deserving and diligent students, particularly those hailing from underprivileged backgrounds in West Bengal, with the invaluable opportunity to pursue prestigious university careers across various fields...',
+        "As previously indicated, our coaching sessions are a vital component of our institution's overarching mission. We are dedicated to providing deserving and diligent students, particularly those hailing from underprivileged backgrounds in West Bengal, with the invaluable opportunity to pursue prestigious university careers across various fields...",
       image: courseOfferImage,
     },
   ];
@@ -32,6 +40,7 @@ function HomePage() {
   return (
     <div>
       <CarouselComponent />
+
 
       <Grid container spacing={2}>
         {cardData.map((card, index) => (
@@ -51,7 +60,11 @@ function HomePage() {
                       </Typography>
                     </Fade>
                     {index === 2 && (
-                      <Button variant="contained" color="primary" href="#view-course">
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        href="#view-course"
+                      >
                         View Course
                       </Button>
                     )}
@@ -62,11 +75,11 @@ function HomePage() {
                     src={card.image}
                     alt={card.title}
                     style={{
-                      width: '100%',
-                      height: 'auto',
-                      borderRadius:'5rem',
+                      width: "100%",
+                      height: "auto",
+                      borderRadius: "5rem",
                       // float: index === 0 || index === 2 ? 'right' : 'left',
-                      float:'right',
+                      float: "right",
                     }}
                   />
                 </Grid>

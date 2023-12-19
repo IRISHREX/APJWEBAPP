@@ -1,11 +1,15 @@
-import React from 'react';
-import Home from './Components/Home';
+import React from "react";
+import Home from "./Components/Home";
 
+import { FeatureComingSoonProvider } from "../src/context/FeatureComingSoonContext.js";
 
 function App() {
   return (
     <div>
-      <Home />
+<FeatureComingSoonProvider>
+     <Home />
+  
+     </FeatureComingSoonProvider>
     </div>
   );
 }
