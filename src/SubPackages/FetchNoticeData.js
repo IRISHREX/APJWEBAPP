@@ -1,10 +1,11 @@
-import axios from 'axios';
+import axios from "axios";
 
-const localUrl = 'http://localhost:5000/api/noticeData';
-const productionUrl = 'https://tame-hospital-gown-mite.cyclic.app/api/noticeData';
+const localUrl = "http://localhost:5000/api/noticeData";
+const productionUrl =
+  "https://tame-hospital-gown-mite.cyclic.app/api/noticeData";
 
 const getApiUrl = () => {
-  const isLocal = window.location.host.includes('localhost');
+  const isLocal = window.location.host.includes("localhost");
   return isLocal ? localUrl : productionUrl;
 };
 
@@ -12,9 +13,9 @@ const fetchNoticeData = async () => {
   const url = getApiUrl();
 
   try {
-    const bearerToken = localStorage.getItem('bearerToken');
+    const bearerToken = localStorage.getItem("bearerToken");
     if (!bearerToken) {
-      console.error('Bearer token not found.');
+      console.error("Bearer token not found.");
       return [];
     }
 
@@ -34,27 +35,27 @@ const fetchNoticeData = async () => {
 
     return notices;
   } catch (error) {
-    console.error('Error fetching notice data:', error);
+    console.error("Error fetching notice data:", error);
     return [];
   }
 };
 
 const updateNoticeData = async (id, updatedData) => {
-  console.log('Updating team member with ID:', id);
-  console.log('Updated data:', updatedData);
+  console.log("Updating team member with ID:", id);
+  console.log("Updated data:", updatedData);
   const url = `${getApiUrl()}/${id}`;
 
   try {
-    const bearerToken = localStorage.getItem('bearerToken');
+    const bearerToken = localStorage.getItem("bearerToken");
     if (!bearerToken) {
-      console.error('Bearer token not found.');
+      console.error("Bearer token not found.");
       return null;
     }
 
     const response = await axios.put(url, updatedData, {
       headers: {
         Authorization: `Bearer ${bearerToken}`,
-        'Content-Type': 'multipart/form-data',
+        "Content-Type": "multipart/form-data",
       },
     });
 
@@ -69,9 +70,9 @@ const deleteNoticeData = async (id) => {
   const url = `${getApiUrl()}/${id}`;
 
   try {
-    const bearerToken = localStorage.getItem('bearerToken');
+    const bearerToken = localStorage.getItem("bearerToken");
     if (!bearerToken) {
-      console.error('Bearer token not found.');
+      console.error("Bearer token not found.");
       return false;
     }
 
@@ -92,9 +93,9 @@ const getNoticeDataById = async (id) => {
   const url = `${getApiUrl()}/${id}`;
 
   try {
-    const bearerToken = localStorage.getItem('bearerToken');
+    const bearerToken = localStorage.getItem("bearerToken");
     if (!bearerToken) {
-      console.error('Bearer token not found.');
+      console.error("Bearer token not found.");
       return null;
     }
 
@@ -111,4 +112,9 @@ const getNoticeDataById = async (id) => {
   }
 };
 
-export { fetchNoticeData, updateNoticeData, deleteNoticeData, getNoticeDataById };
+export {
+  fetchNoticeData,
+  updateNoticeData,
+  deleteNoticeData,
+  getNoticeDataById,
+};

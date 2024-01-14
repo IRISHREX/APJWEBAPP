@@ -1,11 +1,6 @@
 // NoticeUpdateForm.jsx
-import React, { useState } from 'react';
-import {
-  FormControl,
-  InputLabel,
-  Input,
-  Button,
-} from '@mui/material';
+import React, { useState } from "react";
+import { FormControl, InputLabel, Input, Button } from "@mui/material";
 
 const NoticeUpdateForm = ({ initialData, onUpdate, onCancel }) => {
   const [title, setTitle] = useState(initialData.title);
@@ -23,8 +18,6 @@ const NoticeUpdateForm = ({ initialData, onUpdate, onCancel }) => {
     onUpdate(updatedData);
   };
 
-
-  
   return (
     <form encType="multipart/form-data">
       <FormControl fullWidth>

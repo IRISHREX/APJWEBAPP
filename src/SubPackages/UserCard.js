@@ -1,18 +1,18 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { Avatar, Typography, Button, Box } from '@mui/material';
-import { styled } from '@mui/system';
+import React, { useState, useEffect, useCallback } from "react";
+import { Avatar, Typography, Button, Box } from "@mui/material";
+import { styled } from "@mui/system";
 
-const StyledUserCard = styled('div')(({ theme }) => ({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
+const StyledUserCard = styled("div")(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
   padding: theme.spacing(2),
   backgroundColor: theme.palette.background.paper,
   borderRadius: theme.shape.borderRadius,
   boxShadow: theme.shadows[3],
   maxWidth: 300,
-  margin: 'auto',
-  cursor: 'pointer',
+  margin: "auto",
+  cursor: "pointer",
 }));
 
 const StyledAvatar = styled(Avatar)(({ theme }) => ({
@@ -23,7 +23,7 @@ const StyledAvatar = styled(Avatar)(({ theme }) => ({
 
 const StyledTypography = styled(Typography)(({ theme }) => ({
   marginBottom: theme.spacing(2),
-  textAlign: 'center',
+  textAlign: "center",
 }));
 
 const StyledButton = styled(Button)(({ theme }) => ({
@@ -62,17 +62,19 @@ const UserCard = ({ username, avatar, onLogout, onUpdateProfile }) => {
   }, [handleLogout]);
 
   useEffect(() => {
-    window.addEventListener('beforeunload', handleBeforeUnload);
+    window.addEventListener("beforeunload", handleBeforeUnload);
 
     return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
+      window.removeEventListener("beforeunload", handleBeforeUnload);
     };
   }, [handleBeforeUnload]);
 
   return (
     <StyledUserCard onClick={handleUserActivity}>
       <StyledAvatar src={avatar} alt={username} />
-      <StyledTypography variant="h6">You are logged in as {username}</StyledTypography>
+      <StyledTypography variant="h6">
+        You are logged in as {username}
+      </StyledTypography>
       <Box>
         <StyledButton onClick={handleLogout} variant="outlined" fullWidth>
           Logout

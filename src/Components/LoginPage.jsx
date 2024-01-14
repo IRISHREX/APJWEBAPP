@@ -1,20 +1,31 @@
-import React, { useState, useEffect } from 'react';
-import { Container, Typography, Avatar, CssBaseline, Paper, Button, Dialog, DialogTitle, DialogContent, DialogActions} from '@mui/material';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import SignInForm from '../SubPackages/SignInForm';
-import SignUpForm from '../SubPackages/SignUpForm';
-import UserCard from '../SubPackages/UserCard';
-import signInUser from '../ApiHandeller/SignInService';
-import signUpUser from '../ApiHandeller/SignUpService';
-import jwtDecode from 'jwt-decode';
+import React, { useState, useEffect } from "react";
+import {
+  Container,
+  Typography,
+  Avatar,
+  CssBaseline,
+  Paper,
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+} from "@mui/material";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import SignInForm from "../SubPackages/SignInForm";
+import SignUpForm from "../SubPackages/SignUpForm";
+import UserCard from "../SubPackages/UserCard";
+import signInUser from "../ApiHandeller/SignInService";
+import signUpUser from "../ApiHandeller/SignUpService";
+import jwtDecode from "jwt-decode";
 
 const LoginPage = () => {
   const [loggedInUser, setLoggedInUser] = useState(null);
 
   useEffect(() => {
-    const storedToken = localStorage.getItem('bearerToken');
+    const storedToken = localStorage.getItem("bearerToken");
     // const userType = localStorage.getItem('userType');
 
     if (storedToken) {
@@ -26,16 +37,16 @@ const LoginPage = () => {
   }, []);
 
   const [signInFormData, setSignInFormData] = useState({
-    username: '',
-    password: '',
-    userType: '',
+    username: "",
+    password: "",
+    userType: "",
   });
 
   const [signUpFormData, setSignUpFormData] = useState({
-    username: '',
-    password: '',
-    userType: '',
-    socialLinks: 'https://www.linkedin.com/in/sohel-islam-7491341a3/',
+    username: "",
+    password: "",
+    userType: "",
+    socialLinks: "https://www.linkedin.com/in/sohel-islam-7491341a3/",
   });
 
   const [showSignUpDialog, setShowSignUpDialog] = useState(false);
@@ -68,7 +79,7 @@ const LoginPage = () => {
       const decodedToken = jwtDecode(token);
       return decodedToken;
     } catch (error) {
-      console.error('Error decoding token:', error);
+      console.error("Error decoding token:", error);
       return null;
     }
   };
@@ -78,24 +89,24 @@ const LoginPage = () => {
     try {
       const { userType, accessToken } = await signInUser(signInFormData);
       setLoggedInUser({ userType });
-      localStorage.setItem('userType', userType);
-      localStorage.setItem('bearerToken', accessToken);
-      toast.success('Sign-in successful');
+      localStorage.setItem("userType", userType);
+      localStorage.setItem("bearerToken", accessToken);
+      toast.success("Sign-in successful");
     } catch (error) {
       console.error(error.message);
-      toast.error('Error during sign-in');
+      toast.error("Error during sign-in");
     }
   };
-  
+
   const handleSignUpSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await signUpUser(signUpFormData);
-      console.log('Sign-up successful:', response);
-      toast.success('Sign-up successful');
+      console.log("Sign-up successful:", response);
+      toast.success("Sign-up successful");
     } catch (error) {
       console.error(error.message);
-      toast.error('Error during sign-up');
+      toast.error("Error during sign-up");
     }
   };
 
@@ -105,18 +116,26 @@ const LoginPage = () => {
 
   const handleLogout = () => {
     setLoggedInUser(null);
-    localStorage.removeItem('bearerToken');
-    localStorage.removeItem('userType');
+    localStorage.removeItem("bearerToken");
+    localStorage.removeItem("userType");
   };
 
   const handleUpdateProfile = () => {
-    console.log('Update profile clicked');
+    console.log("Update profile clicked");
   };
 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <Paper elevation={3} sx={{ padding: 3, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <Paper
+        elevation={3}
+        sx={{
+          padding: 3,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
         {loggedInUser ? (
           <UserCard
             username={loggedInUser.username}
@@ -126,13 +145,17 @@ const LoginPage = () => {
           />
         ) : (
           <>
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
               Sign In
             </Typography>
-            <SignInForm formData={signInFormData} handleChange={handleSignInChange} handleSubmit={handleSignInSubmit} />
+            <SignInForm
+              formData={signInFormData}
+              handleChange={handleSignInChange}
+              handleSubmit={handleSignInSubmit}
+            />
             <Button onClick={toggleSignUpDialog} fullWidth sx={{ mt: 2 }}>
               Don't have an account? Sign Up
             </Button>
@@ -141,7 +164,12 @@ const LoginPage = () => {
         <Dialog open={showSignUpDialog} onClose={toggleSignUpDialog}>
           <DialogTitle>Sign Up</DialogTitle>
           <DialogContent>
-            <SignUpForm formData={signUpFormData} handleChange={handleSignUpChange} handleSubmit={handleSignUpSubmit} handleFileChange={handleFileChange} />
+            <SignUpForm
+              formData={signUpFormData}
+              handleChange={handleSignUpChange}
+              handleSubmit={handleSignUpSubmit}
+              handleFileChange={handleFileChange}
+            />
           </DialogContent>
           <DialogActions>
             <Button onClick={toggleSignUpDialog}>Close</Button>

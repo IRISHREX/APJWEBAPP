@@ -1,9 +1,16 @@
 // SignInForm.js
-import React from 'react';
-import { Button, Grid, InputLabel, MenuItem, Select, TextField } from '@mui/material';
+import React from "react";
+import {
+  Button,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+} from "@mui/material";
 
 const SignInForm = ({ formData, handleChange, handleSubmit }) => (
-  <form onSubmit={handleSubmit} style={{ width: '100%', marginTop: 2 }}>
+  <form onSubmit={handleSubmit} style={{ width: "100%", marginTop: 2 }}>
     <Grid container spacing={2}>
       <Grid item xs={12}>
         <TextField
@@ -29,18 +36,18 @@ const SignInForm = ({ formData, handleChange, handleSubmit }) => (
         />
       </Grid>
       <InputLabel htmlFor="userType">User Type</InputLabel>
-          <Select
-            label="User Type"
-            name="userType"
-            id="userType"
-            value={formData.userType}
-            onChange={handleChange}
-            required
-          >
-            <MenuItem value="admin">Admin</MenuItem>
-            <MenuItem value="employee">Employee</MenuItem>
-            <MenuItem value="student">Student</MenuItem>
-          </Select>
+      <Select
+        label="User Type"
+        name="userType"
+        id="userType"
+        value={formData.userType}
+        onChange={handleChange}
+        required
+      >
+        <MenuItem value="admin">Admin</MenuItem>
+        <MenuItem value="employee">Employee</MenuItem>
+        <MenuItem value="student">Student</MenuItem>
+      </Select>
     </Grid>
     <Button
       type="submit"

@@ -12,6 +12,7 @@ export const useFeatureComingSoonContext = () => {
 };
 
 export const FeatureComingSoonProvider = ({ children }) => {
+  //false is to remove the overlay
   const [isComingSoon, setComingSoon] = useState(true);
 
   const showFeatureComingSoon = () => {

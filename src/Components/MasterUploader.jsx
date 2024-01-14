@@ -1,14 +1,14 @@
-import React from 'react';
-import { Grid, Container, Card, CardContent, Typography } from '@mui/material';
-import NoticeUploader from '../SubPackages/NoticeUploader';
-import HomeUploader from '../SubPackages/HomeUploader';
-import AboutTeamUploader from '../SubPackages/AboutTeamUploader';
+import React from "react";
+import { Grid, Container, Card, CardContent, Typography } from "@mui/material";
+import NoticeUploader from "../SubPackages/NoticeUploader";
+import HomeUploader from "../SubPackages/HomeUploader";
+import AboutTeamUploader from "../SubPackages/AboutTeamUploader";
 
 // Define custom styles for the cards
 const cardStyles = {
-  backgroundColor: 'black', // Black background
-  color: 'limegreen', // Green text color
-  borderColor: 'limegreen', // Green border color
+  backgroundColor: "black", // Black background
+  color: "limegreen", // Green text color
+  borderColor: "limegreen", // Green border color
 };
 
 const MasterUploader = () => {

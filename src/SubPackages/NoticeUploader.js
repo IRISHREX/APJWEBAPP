@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import Axios from 'axios';
+import React, { useState } from "react";
+import Axios from "axios";
 import {
   Card,
   CardContent,
@@ -9,24 +9,25 @@ import {
   IconButton,
   Collapse,
   Divider,
-} from '@mui/material';
+} from "@mui/material";
 import {
   ExpandMore as ExpandMoreIcon,
   Add as AddIcon,
   Delete as DeleteIcon,
   Refresh as RefreshIcon,
-} from '@mui/icons-material';
+} from "@mui/icons-material";
 
-const localUrl = 'http://localhost:5000/api/noticeData';
-const productionUrl = 'https://tame-hospital-gown-mite.cyclic.app/api/noticeData';
+const localUrl = "http://localhost:5000/api/noticeData";
+const productionUrl =
+  "https://tame-hospital-gown-mite.cyclic.app/api/noticeData";
 
-const isLocal = window.location.hostname === 'localhost';
+const isLocal = window.location.hostname === "localhost";
 const apiUrl = isLocal ? localUrl : productionUrl;
 
 const NoticeUploader = () => {
   const [expanded, setExpanded] = useState(false);
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
   const [notices, setNotices] = useState([]);
 
@@ -37,14 +38,14 @@ const NoticeUploader = () => {
   const handleUpload = async () => {
     if (title && description && image) {
       const formData = new FormData();
-      formData.append('title', title);
-      formData.append('description', description);
-      formData.append('image', image);
+      formData.append("title", title);
+      formData.append("description", description);
+      formData.append("image", image);
 
-      const bearerToken = localStorage.getItem('bearerToken');
+      const bearerToken = localStorage.getItem("bearerToken");
 
       if (!bearerToken) {
-        console.error('Bearer token not found.');
+        console.error("Bearer token not found.");
         return [];
       }
 
@@ -52,7 +53,7 @@ const NoticeUploader = () => {
         const response = await Axios.post(apiUrl, formData, {
           headers: {
             Authorization: `Bearer ${bearerToken}`,
-            'Content-Type': 'multipart/form-data',
+            "Content-Type": "multipart/form-data",
           },
         });
 
@@ -60,11 +61,11 @@ const NoticeUploader = () => {
 
         setNotices([...notices, response.data]);
 
-        setTitle('');
-        setDescription('');
+        setTitle("");
+        setDescription("");
         setImage(null);
       } catch (error) {
-        console.error('Error uploading notice:', error);
+        console.error("Error uploading notice:", error);
       }
     }
   };
@@ -80,8 +81,8 @@ const NoticeUploader = () => {
   };
 
   const handleReset = () => {
-    setTitle('');
-    setDescription('');
+    setTitle("");
+    setDescription("");
     setImage(null);
     setNotices([]);
   };
@@ -156,7 +157,7 @@ const NoticeUploader = () => {
             color="primary"
             onClick={handleReset}
             startIcon={<RefreshIcon />}
-            style={{ marginLeft: '8px' }}
+            style={{ marginLeft: "8px" }}
           >
             Reset
           </Button>
@@ -165,7 +166,7 @@ const NoticeUploader = () => {
             color="primary"
             onClick={handleSubmit}
             disabled={notices.length === 0}
-            style={{ marginLeft: '8px' }}
+            style={{ marginLeft: "8px" }}
           >
             Upload
           </Button>

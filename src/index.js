@@ -1,28 +1,36 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { ThemeProvider, createTheme } from '@mui/material';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import createSagaMiddleware from 'redux-saga';
+
 
 // Import the base styles and any additional styles you need.
-import 'tailwindcss/base.css';
-import 'tailwindcss/components.css';
-import 'tailwindcss/utilities.css';
-import { BrowserRouter as Router } from 'react-router-dom';
+import "tailwindcss/base.css";
+import "tailwindcss/components.css";
+import "tailwindcss/utilities.css";
+import { BrowserRouter as Router } from "react-router-dom";
+import { applyMiddleware, createStore } from "redux";
+import rootSaga from "./Redux/Saga/rootSaga";
+import { Provider } from "react-redux";
+import rootReducer from "./Redux/Reducers/rootReducer";
 
-// Your other imports and code here
-// Create a Material-UI theme
-const theme = createTheme();
+const sagaMiddleWare= createSagaMiddleware()
+const store = createStore(rootReducer,applyMiddleware(sagaMiddleWare))
+sagaMiddleWare.run(rootSaga)
 
 
 ReactDOM.render(
   <Router>
-  <ThemeProvider theme={theme}>
-    <App />
-  </ThemeProvider>,
+        <Provider store={store}>
+
+      <App />
+    ,
+    </Provider>
+
   </Router>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

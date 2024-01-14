@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Typography,
   Container,
@@ -7,14 +7,20 @@ import {
   Button,
   Grid,
   IconButton,
-} from '@mui/material';
-import { Facebook, Twitter, Instagram, LinkedIn,  Mail } from '@mui/icons-material';
+} from "@mui/material";
+import {
+  Facebook,
+  Twitter,
+  Instagram,
+  LinkedIn,
+  Mail,
+} from "@mui/icons-material";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -33,7 +39,7 @@ const Contact = () => {
       await simulateSubmit(formData);
       setIsSubmitted(true);
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error("Error submitting form:", error);
     }
   };
 
@@ -44,7 +50,7 @@ const Contact = () => {
   };
 
   return (
-    <Container maxWidth="md" style={{ marginTop: '20px' }}>
+    <Container maxWidth="md" style={{ marginTop: "20px" }}>
       <Typography variant="h4" gutterBottom>
         Contact Us
       </Typography>
@@ -103,12 +109,17 @@ const Contact = () => {
 
 const ContactInfo = () => {
   return (
-    <div style={{ marginTop: '20px' }}>
+    <div style={{ marginTop: "20px" }}>
       <Typography variant="h5" gutterBottom>
         Our Address
       </Typography>
-      <Typography>Registered Office - Uttar Dariapur, Kaliachak, Malda, West Bengal, 732201</Typography>
-      <Typography>City Office - H-78/17, Batla House, Jamia Nagar, New Delhi, 110025</Typography>
+      <Typography>
+        Registered Office - Uttar Dariapur, Kaliachak, Malda, West Bengal,
+        732201
+      </Typography>
+      <Typography>
+        City Office - H-78/17, Batla House, Jamia Nagar, New Delhi, 110025
+      </Typography>
 
       <Typography variant="h5" gutterBottom>
         Phone Number
@@ -120,30 +131,54 @@ const ContactInfo = () => {
       </Typography>
       <Grid container spacing={1} alignItems="center">
         <Grid item>
-          <IconButton color="primary" component="a" href="https://www.facebook.com/" target="_blank">
+          <IconButton
+            color="primary"
+            component="a"
+            href="https://www.facebook.com/"
+            target="_blank"
+          >
             <Facebook />
           </IconButton>
         </Grid>
         <Grid item>
-          <IconButton color="primary" component="a" href="https://twitter.com/" target="_blank">
+          <IconButton
+            color="primary"
+            component="a"
+            href="https://twitter.com/"
+            target="_blank"
+          >
             <Twitter />
           </IconButton>
         </Grid>
         <Grid item>
-          <IconButton color="primary" component="a" href="https://www.instagram.com/" target="_blank">
+          <IconButton
+            color="primary"
+            component="a"
+            href="https://www.instagram.com/"
+            target="_blank"
+          >
             <Instagram />
           </IconButton>
         </Grid>
         <Grid item>
-          <IconButton color="primary" component="a" href="https://www.linkedin.com/" target="_blank">
+          <IconButton
+            color="primary"
+            component="a"
+            href="https://www.linkedin.com/"
+            target="_blank"
+          >
             <LinkedIn />
           </IconButton>
         </Grid>
         {/* Add more social media icons as needed */}
       </Grid>
-  
-      <IconButton color="primary" component="a" href="apjec.education@gmail.com">
-      <Mail/>
+
+      <IconButton
+        color="primary"
+        component="a"
+        href="apjec.education@gmail.com"
+      >
+        <Mail />
       </IconButton>
       <Typography variant="h5" gutterBottom>
         Email :- apjec.education@gmail.com

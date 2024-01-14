@@ -1,11 +1,11 @@
-import React, { useEffect, useRef } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
-import L from 'leaflet';
-import 'leaflet-routing-machine';
+import React, { useEffect, useRef } from "react";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
+import L from "leaflet";
+import "leaflet-routing-machine";
 
-import { Paper } from '@mui/material';
+import { Paper } from "@mui/material";
 
 function MapComponent({ center, zoom, waypoints }) {
   const mapRef = useRef(null);
@@ -22,14 +22,14 @@ function MapComponent({ center, zoom, waypoints }) {
   }, [waypoints]);
 
   const mapContainerStyle = {
-    height: '400px',
-    width: '100%',
-    marginBottom: '16px',
-    position: 'relative',
+    height: "400px",
+    width: "100%",
+    marginBottom: "16px",
+    position: "relative",
   };
 
   return (
-    <Paper elevation={3} style={{ padding: '16px' }}>
+    <Paper elevation={3} style={{ padding: "16px" }}>
       <MapContainer
         ref={mapRef}
         center={center}
@@ -44,7 +44,10 @@ function MapComponent({ center, zoom, waypoints }) {
           <Popup>
             <div>
               <strong>Default Location:</strong>
-              <p>City Office - H-78/17, Batla House, Jamia Nagar, New Delhi, 110025</p>
+              <p>
+                City Office - H-78/17, Batla House, Jamia Nagar, New Delhi,
+                110025
+              </p>
             </div>
           </Popup>
         </Marker>

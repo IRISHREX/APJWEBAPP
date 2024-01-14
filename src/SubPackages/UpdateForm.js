@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import { Button, Grid, TextField, InputLabel, Avatar } from '@mui/material';
+import React, { useState } from "react";
+import { Button, Grid, TextField, InputLabel, Avatar } from "@mui/material";
 
 const UpdateForm = ({ member, onUpdate, closeUpdateForm }) => {
   const [formData, setFormData] = useState({
-    username: member.name || '',
-    password: member.password || '',
-    userType: member.userType || '',
+    username: member.name || "",
+    password: member.password || "",
+    userType: member.userType || "",
     avatar: member.imageSrc || null,
-    team: member.team || '',
-    description: member.description || '',
-    role: member.role || '',
-    linkedin: member.socialLinks?.linkedin || '',
-    twitter: member.socialLinks?.twitter || '',
+    team: member.team || "",
+    description: member.description || "",
+    role: member.role || "",
+    linkedin: member.socialLinks?.linkedin || "",
+    twitter: member.socialLinks?.twitter || "",
   });
 
   const handleFormChange = (e) => {
@@ -44,18 +44,22 @@ const UpdateForm = ({ member, onUpdate, closeUpdateForm }) => {
     };
 
     onUpdate(updatedData);
-    
   };
 
   const formFields = [
-    { label: 'Username', name: 'username', value: formData.username },
-    { label: 'Password', name: 'password', value: formData.password },
-    { label: 'User Type', name: 'userType', value: formData.userType },
-    { label: 'Avatar', name: 'avatar', type: 'file', onChange: handleImageUpload },
-    { label: 'Team', name: 'team', value: formData.team },
-    { label: 'Description', name: 'description', value: formData.description },
-    { label: 'Role', name: 'role', value: formData.role },
-    { label: 'LinkedIn', name: 'linkedin', value: formData.linkedin },
+    { label: "Username", name: "username", value: formData.username },
+    { label: "Password", name: "password", value: formData.password },
+    { label: "User Type", name: "userType", value: formData.userType },
+    {
+      label: "Avatar",
+      name: "avatar",
+      type: "file",
+      onChange: handleImageUpload,
+    },
+    { label: "Team", name: "team", value: formData.team },
+    { label: "Description", name: "description", value: formData.description },
+    { label: "Role", name: "role", value: formData.role },
+    { label: "LinkedIn", name: "linkedin", value: formData.linkedin },
   ];
 
   return (
@@ -63,12 +67,12 @@ const UpdateForm = ({ member, onUpdate, closeUpdateForm }) => {
       <Grid container spacing={2}>
         {formFields.map((field) => (
           <Grid item xs={12} key={field.name}>
-            {field.type === 'file' ? (
+            {field.type === "file" ? (
               <>
                 <InputLabel>{field.label}</InputLabel>
                 <input
                   accept="image/*"
-                  style={{ display: 'none' }}
+                  style={{ display: "none" }}
                   id={field.name}
                   type="file"
                   name={field.name}
@@ -81,11 +85,14 @@ const UpdateForm = ({ member, onUpdate, closeUpdateForm }) => {
                 </label>
                 {formData.avatar && (
                   <Avatar
-                  src={formData.avatar}
+                    src={formData.avatar}
                     alt={`${field.label} Preview`}
-                    style={{ marginTop: '10px', width: '100px', height: '100px' }}
+                    style={{
+                      marginTop: "10px",
+                      width: "100px",
+                      height: "100px",
+                    }}
                   />
-                  
                 )}
               </>
             ) : (

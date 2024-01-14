@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Card,
   CardContent,
@@ -8,18 +8,18 @@ import {
   IconButton,
   Collapse,
   Divider,
-} from '@mui/material';
+} from "@mui/material";
 import {
   ExpandMore as ExpandMoreIcon,
   Add as AddIcon,
   Delete as DeleteIcon,
   Refresh as RefreshIcon,
-} from '@mui/icons-material';
+} from "@mui/icons-material";
 
 const AboutTeamUploader = () => {
   const [expanded, setExpanded] = useState(false);
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
   const [teamData, setTeamData] = useState([]); // Store uploaded team data as an array of objects
 
@@ -37,8 +37,8 @@ const AboutTeamUploader = () => {
 
       setTeamData([...teamData, teamMemberData]); // Add the uploaded team data to the teamData array
 
-      setTitle('');
-      setDescription('');
+      setTitle("");
+      setDescription("");
       setImage(null);
     }
   };
@@ -54,8 +54,8 @@ const AboutTeamUploader = () => {
   };
 
   const handleReset = () => {
-    setTitle('');
-    setDescription('');
+    setTitle("");
+    setDescription("");
     setImage(null);
     setTeamData([]);
   };
@@ -89,7 +89,9 @@ const AboutTeamUploader = () => {
               <DeleteIcon />
             </IconButton>
             <Typography variant="subtitle1">Title: {data.title}</Typography>
-            <Typography variant="body1">Description: {data.description}</Typography>
+            <Typography variant="body1">
+              Description: {data.description}
+            </Typography>
             <Typography variant="body1">Image: {data.image}</Typography>
             <Divider />
           </CardContent>
@@ -129,7 +131,7 @@ const AboutTeamUploader = () => {
             color="primary"
             onClick={handleReset}
             startIcon={<RefreshIcon />}
-            style={{ marginLeft: '8px' }}
+            style={{ marginLeft: "8px" }}
           >
             Reset
           </Button>
@@ -138,7 +140,7 @@ const AboutTeamUploader = () => {
             color="primary"
             onClick={handleSubmit}
             disabled={teamData.length === 0} // Disable if no team data has been uploaded
-            style={{ marginLeft: '8px' }}
+            style={{ marginLeft: "8px" }}
           >
             Upload
           </Button>
