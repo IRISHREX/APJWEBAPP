@@ -28,7 +28,7 @@ import {
 import NoticeUpdateForm from "../SubPackages/NoticeUpdateForm";
 import NoticeCard from "../SubPackages/NoticeCard";
 import NoticeData from "../SubPackages/NoticeData";
-import FeatureComingSoonOverlay from "../context/FeatureComingSoonOverlay";
+// import FeatureComingSoonOverlay from "../context/FeatureComingSoonOverlay";
 
 const userType = localStorage.getItem("userType");
 
@@ -156,7 +156,7 @@ const Notice = () => {
       <Typography variant="h5" mt={4}>
         Notices Table
       </Typography>
-      <FeatureComingSoonOverlay>
+      {/* <FeatureComingSoonOverlay> */}
       <TableContainer
       
         component={Paper}
@@ -221,7 +221,7 @@ const Notice = () => {
           </TableBody>
         </Table>
       </TableContainer>
-      </FeatureComingSoonOverlay>
+      {/* </FeatureComingSoonOverlay> */}
 
       <Drawer anchor="bottom" open={!!drawerContent} onClose={handleDrawerClose}>
         <div>

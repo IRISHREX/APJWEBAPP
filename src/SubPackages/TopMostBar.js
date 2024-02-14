@@ -36,15 +36,17 @@ function TopMostBar() {
     <AppBar
       position="static"
       style={{ backgroundColor: "transparent", boxShadow: "none", 
-      border: "2px solid rgba(0, 188, 0, 0.7)", // Green border
-      borderTop: "2px solid rgba(255, 0, 0, 0.7)", // Red top border
-      borderBottom: "2px solid rgba(0, 0, 255, 0.7)", // Blue bottom border
+      border: "4px solid rgba(0, 188, 0, 0.7)", // Green border
+      borderTop: "4px solid rgba(255, 0, 0, 0.7)", // Red top border
+      borderBottom: "4px solid rgba(0, 0, 255, 0.7)", // Blue bottom border
    
     }}
     >
       <Toolbar>
         <Grid container alignItems="center">
           <Grid item>
+          <a href="https://apjec.org/"  rel="noreferrer">
+
             <img
               src={LOGO}
               alt="Logo"
@@ -53,6 +55,7 @@ function TopMostBar() {
                 height: "auto",
               }}
             />
+            </a>
           </Grid>
           <Grid item>
             <Typography
@@ -64,7 +67,7 @@ function TopMostBar() {
               fontFamily={"Pacifico"}
               fontWeight={900}
             >
-              APJC
+              APJEC
             </Typography>
           </Grid>
         </Grid>

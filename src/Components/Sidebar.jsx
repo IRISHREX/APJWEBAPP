@@ -5,6 +5,7 @@ import { SidebarItem, sidebarIcons } from "../Components/Util";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useState } from "react";
 import { useEffect } from "react";
+import { Book } from "@mui/icons-material";
 
 const theme = createTheme({
   palette: {
@@ -60,6 +61,7 @@ const Sidebar = () => {
             <SidebarItem
               to="/classes"
               text="classes"
+              icon={<Book/>}
               isActive={location.pathname === "/downloads"}
             />
           <SidebarItem

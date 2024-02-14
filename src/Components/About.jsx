@@ -12,7 +12,7 @@ import {
   updateTeamMember,
 } from "../ApiHandeller/FetchTeamMembersData";
 import teamMembersData from "../SubPackages/TeamMembarData";
-import FeatureComingSoonOverlay from "../context/FeatureComingSoonOverlay";
+// import FeatureComingSoonOverlay from "../context/FeatureComingSoonOverlay";
 
 const About = () => {
   const [selectedTeam, setSelectedTeam] = useState(null);
@@ -114,10 +114,10 @@ const About = () => {
       <Typography variant="h4" gutterBottom>
         Our Location
       </Typography>
-      <FeatureComingSoonOverlay>
+      {/* <FeatureComingSoonOverlay> */}
       <MapComponent center={defaultLocation} zoom={zoom} waypoints={waypoints} />
 
-      </FeatureComingSoonOverlay>
+      {/* </FeatureComingSoonOverlay> */}
 
 
       <ToastContainer />

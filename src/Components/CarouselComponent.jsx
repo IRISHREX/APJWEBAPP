@@ -41,7 +41,7 @@ const textStyle = {
 const CarouselComponent = () => {
   const carouselSettings = {
     autoPlay: true,
-    interval: 3000,
+    interval: 10000,
     infiniteLoop: true,
   };
 

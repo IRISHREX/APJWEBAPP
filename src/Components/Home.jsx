@@ -42,6 +42,8 @@ function Home() {
           </Grid>
           <Grid container alignItems="center">
             <Grid item>
+            <a href="https://apjec.org/" target="_blank" rel="noreferrer">
+
               <img
                 src={LOGO}
                 alt="Logo"
@@ -49,7 +51,10 @@ function Home() {
                   maxWidth: "150px", // Adjust the maxWidth as needed
                   height: "auto",
                 }}
+
               />
+                            </a>
+
             </Grid>
             <Grid item>
               <Typography
@@ -61,7 +66,7 @@ function Home() {
                 fontSize={{ xs: "2.8rem", sm: "2rem", md: "2.5rem" }}
                 className="neon-text"
               >
-                <h1>APJC</h1>
+                <h1>APJEC</h1>
               </Typography>
             </Grid>
           </Grid>
