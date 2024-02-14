@@ -126,7 +126,7 @@ const Notice = () => {
   }
 
   return (
-    <div>
+    <div className={'BackGroundThame'}>
       <Typography variant="h4" gutterBottom>
         Notices
       </Typography>

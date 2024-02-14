@@ -32,7 +32,7 @@ const Sidebar = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className="drawer-container">
+      <div className="drawer-container BackGroundThame">
         <List>
           <SidebarItem
             to="/"

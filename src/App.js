@@ -1,5 +1,6 @@
 import React from "react";
 import Home from "./Components/Home";
+import './App.css'
 
 import { FeatureComingSoonProvider } from "../src/context/FeatureComingSoonContext.js";
 

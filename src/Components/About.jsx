@@ -67,7 +67,7 @@ const About = () => {
   };
 
   const renderTeamMembers = (team, color) => (
-    <div className={`team-section ${selectedTeam === team ? "active" : ""}`}>
+    <div className={`team-section ${selectedTeam === team ? "active" : ""}`} >
       <TeamSection
         team={team}
         members={getTeamMembers(team)}

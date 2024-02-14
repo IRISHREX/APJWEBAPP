@@ -50,7 +50,7 @@ const Contact = () => {
   };
 
   return (
-    <Container maxWidth="md" style={{ marginTop: "20px" }}>
+    <Container maxWidth="md" style={{ marginTop: "20px" }}className={'BackGroundThame'}>
       <Typography variant="h4" gutterBottom>
         Contact Us
       </Typography>
