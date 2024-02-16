@@ -104,7 +104,7 @@ const SignUpForm = ({
           >
             <MenuItem value="members">Members</MenuItem>
             <MenuItem value="cordTeam">CordTeam</MenuItem>
-            <MenuItem value="mocTeam">MocTeam</MenuItem>
+            <MenuItem value="mockTeam">mockTeam</MenuItem>
           </Select>
         </FormControl>
       </Grid>

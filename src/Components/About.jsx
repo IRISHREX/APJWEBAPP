@@ -108,7 +108,7 @@ const About = () => {
       </Typography>
 
       {renderTeamMembers("members", gradientColors[0])}
-      {renderTeamMembers("mocTeam", gradientColors[1])}
+      {renderTeamMembers("mockTeam", gradientColors[1])}
       {renderTeamMembers("cordTeam", gradientColors[2])}
 
       <Typography variant="h4" gutterBottom>

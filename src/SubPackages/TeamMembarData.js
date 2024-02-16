@@ -52,7 +52,7 @@ const teamMembersData = [
   {
     name: "Arman Sheikh",
     role: "Faculty",
-    team: "mocTeam",
+    team: "mockTeam",
     description:
       "I am Arman Sheikh, currently studying BA LLB (HONS) at Jamia Millia Islamia, New Delhi. I have successfully passed a lot of exams such as MHT CET, CUET (ALLAHABAD UNIVERSITY), AMU, and LUCKNOW UNIVERSITY. I am interested in designing the legal and current affairs section of the mock test, focusing on providing the most relevant legal and general knowledge questions from an exam perspective.",
     imageSrc: ArmanSheikh, // Replace with the image source
@@ -88,7 +88,7 @@ const teamMembersData = [
   {
     name: "Ananya Saren",
     role: "Faculty",
-    team: "mocTeam",
+    team: "mockTeam",
     description:
       "Meet Ananya Saren, a 3rd-year law student at the University of Calcutta, currently pursuing her BA LLB degree. Her main areas of interest are criminal and civil matters, and she is determined to enhance her legal knowledge and expertise. Ananya is an excellent communicator and excels in legal research and critical thinking. She is a valuable member of the Mock Tests Team, where she diligently prepares well-researched mock papers, showcasing her dedication to practical legal learning. Furthermore, she achieved success by cracking CLAT 2021, which demonstrates her strong aptitude for legal studies and competitive exams.      ",
     imageSrc: AnanyaSaren, // Replace with the image source
@@ -137,7 +137,7 @@ const teamMembersData = [
   {
     name: "Md Alkama",
     role: "Faculty",
-    team: "mocTeam",
+    team: "mockTeam",
     description:
       "I am Md Alkama from West Bengal. I am proud to share that I have achieved the 1st rank in the 12th standard (Fazil) from WBBME in 2022, which was a remarkable accomplishment. This achievement has motivated me to pursue my passion for languages, and currently, I am in Jamia Millia Islamia fully dedicated to studying the Arabic language. I believe that learning Arabic will open up new opportunities for me and enable me to connect with a wider global community. I am excited to expand my knowledge and skills in this beautiful language and explore its rich cultural heritage.",
     imageSrc: MdAlkama, // Replace with the image source
@@ -149,7 +149,7 @@ const teamMembersData = [
   {
     name: "Aboo Bakar Majeeda",
     role: "Faculty",
-    team: "mocTeam",
+    team: "mockTeam",
     description:
       "I am Aboo Bakr Majeedi, a dedicated law student from Panipat, Haryana. Currently enrolled in the esteemed law program at Jamia Millia Islamia, I am expanding my knowledge and sharpening my legal skills. Through academic pursuits, discussions, and practical experiences, I am growing as a law student. I embrace challenges and opportunities, believing they lead to a successful legal career. Inspired to make a positive impact, contribute to society, and uphold justice and equality, my journey as a law student is exhilarating. Excited to see where this path leads me.",
     imageSrc: AbooBakarMajeeda, // Replace with the image source
@@ -161,7 +161,7 @@ const teamMembersData = [
   {
     name: "Mohd Kifayatullah Ansari",
     role: "Faculty",
-    team: "mocTeam",
+    team: "mockTeam",
     description:
       "I am Mohd Kifayatullah Ansari, a BA LLB (HONS) student at Jamia Millia Islamia, New Delhi. I curate the legal and current affairs section of mock tests, providing relevant exam-oriented questions in law and general knowledge. My goal is to help students excel in their studies and exam preparation. My passion for law and current affairs drives me to continuously improve the content I create.",
     imageSrc: MohdKifayatullahAnsari, // Replace with the image source

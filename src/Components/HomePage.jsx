@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Typography,
   Slide,
@@ -16,25 +16,32 @@ import missionImage from "../Images/Genral/S2.jpg";
 import courseOfferImage from "../Images/Genral/S3.jpg";
 
 function HomePage() {
+  const [showCourse,setShowCourse]=useState()
+
+      const openCorses=()=>{
+
+        setShowCourse(()=><Typography style={{color:"greenyellow",fontWeight:"bolder",border:'solid 2px red'}}><h4>PLEASE CONTACT ADMIN</h4> 9609436103</Typography>)
+
+      }
   const cardData = [
     {
       id:1,
       title: "About Us",
-      description:"The APJ Abdul Kalam Free Education Center was established on October 15, 2022, the anniversary of APJ Abdul Kalam's birth, by the Universal Human Foundation (A trust registered under the Indian Trust Act 1i982). Our organization aims to provide deserving Bengali students with free and top-notch education who lack access to resources like high-quality study guides and other essential tools for passing university admission exams.",
+      description:"The APJ Abdul Kalam Free Education Center was established on October 15, 2022, the anniversary of APJ Abdul Kalam's birth, by the Universal Human Foundation (A trust registered under the Indian Trust Act 1982). Our organization aims to provide deserving Bengali students with free and top-notch education who lack access to resources like high-quality study guides and other essential tools for passing university admission exams.",
       image: aboutUsImage,
     },
     {
       id:2,
       title: "Our Mission",
       description:
-        "We are dedicated to providing a launchpad for the underprivileged, empowering them to conquer the nation's university admission exams. In our eyes, education is a fundamental human right, and we firmly believe that no one should be deprived of this opportunity due to a lack of essential guidance...",
+        "We want to offer a platform that helps those who are disadvantaged and impoverished prepare for and succeed in the numerous university admission exams held throughout the nation.According to our viewpoint, everyone has a fundamental right to an education, and no one should be denied that right for the lack of basic guidance.We take our cue from Dr. APJ Abdul-Kalam, who very correctly stated,The best brain of the nation may be found on the last benches of the classroom.We aim to achieve this by assisting and advising students in  West Bengal and all over India to enrol in prestigious universities of their choice, receive their education, and develop into fine individuals because we believe that everyone deserves the chance to receive proper guidance",
       image: missionImage,
     },
     {
       id:3,
       title: "Course Offers",
       description:
-        "As previously indicated, our coaching sessions are a vital component of our institution's overarching mission. We are dedicated to providing deserving and diligent students, particularly those hailing from underprivileged backgrounds in West Bengal, with the invaluable opportunity to pursue prestigious university careers across various fields...",
+        "As previously indicated, the coaching sessions are a component of this institution's mission to give deserving and diligent students from underprivileged backgrounds, particularly those from West Bengal, the chance to pursue careers at prestigious universities in a variety of fields.",
       image: courseOfferImage,
     },
   ];
@@ -53,9 +60,8 @@ function HomePage() {
                 <Grid item xs={6}>
                   <CardContent>
                     <Slide direction="up" in={true} mountOnEnter unmountOnExit>
-                      <Typography variant="h4" gutterBottom>
-                        {card.title}
-                      </Typography>
+                      
+                      <h4>{card.title}</h4>
                     </Slide>
                     <Fade in={true} timeout={1000}>
                       <Typography variant="body1" paragraph>
@@ -66,9 +72,8 @@ function HomePage() {
                       <Button
                         variant="contained"
                         color="primary"
-                        href="#view-course"
-                      >
-                        View Course
+onClick={openCorses}                      >
+                        {showCourse?showCourse:"View Course:-"}
                       </Button>
                     )}
                   </CardContent>
@@ -76,12 +81,8 @@ function HomePage() {
                   <img
                     src={card.image}
                     alt={card.title}
-                    style={{
-                      width: "100%",
-                      height: "auto",
-                      borderRadius: "2rem",
-                      float: "right",
-                    }}
+                    className="HomeEmages"
+                 
                   />
                 </Grid>}
        {card.id!==2?
@@ -89,21 +90,15 @@ function HomePage() {
                   <img
                     src={card.image}
                     alt={card.title}
-                    style={{
-                      width: "100%",
-                      height: "auto",
-                      borderRadius: "5rem",
-                      //  float: card.id === 0 || card.id === 2 ? 'right' : 'left',
-                      float: "right",
-                    }}
+                    className="HomeEmages"
+
                   />
                 </Grid>
 :<Grid item xs={6}>
 <CardContent>
   <Slide direction="up" in={true} mountOnEnter unmountOnExit>
-    <Typography variant="h4" gutterBottom>
-      {card.title}
-    </Typography>
+  <h4>{card.title}</h4>
+
   </Slide>
   <Fade in={true} timeout={1000}>
     <Typography variant="body1" paragraph>
@@ -114,7 +109,7 @@ function HomePage() {
     <Button
       variant="contained"
       color="primary"
-      href="#view-course"
+      onClick={openCorses}
     >
       View Course
     </Button>
