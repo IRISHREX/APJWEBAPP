@@ -46,6 +46,30 @@ width: 90%;
 height: 90%;
 margin-top: 3%;
 padding-left: 11%;
- border-radius:10% 40% 5%;
+border-radius:10% 40% 5%;
   float: left;
+}
+
+.Decription{
+  float: left;
+  background-color: rgba(228, 131, 131, 0.3);
+
+}
+
+@media only screen and (max-width: 768px) {
+
+  /* Styles for small devices */
+  .HomeEmages {
+      width: 100%; 
+      height: 50%; 
+      margin-top: 5%; 
+      padding-left: 5%; 
+      border-radius: 5%; 
+
+  
+  }
+  .Decription{
+    background-color: rgba(230, 249, 13, 0.3);
+  }
+
 }

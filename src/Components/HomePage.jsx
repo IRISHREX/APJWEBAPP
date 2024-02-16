@@ -51,20 +51,20 @@ function HomePage() {
       <CarouselComponent />
 
 
-      <Grid container spacing={2} style={{'background': 'rgb(238,174,202)'}}>
+      <Grid container spacing={2} style={{'background': 'rgb(238,174,202)'}} className="homeContainer">
         {cardData.map((card, index) => (
           <Grid item xs={12} key={index}>
             <Card variant="outlined" className="about-us-card">
               <Grid container>
 {card.id!==2?
-                <Grid item xs={6}>
+                <Grid item xs={6} >
                   <CardContent>
                     <Slide direction="up" in={true} mountOnEnter unmountOnExit>
                       
                       <h4>{card.title}</h4>
                     </Slide>
                     <Fade in={true} timeout={1000}>
-                      <Typography variant="body1" paragraph>
+                      <Typography variant="body1" paragraph className="Decription">
                         {card.description}
                       </Typography>
                     </Fade>
@@ -77,7 +77,7 @@ onClick={openCorses}                      >
                       </Button>
                     )}
                   </CardContent>
-                </Grid>:                 <Grid item xs={6} xl={3} sm={5}>
+                </Grid>:                 <Grid item xs={6} xl={3} sm={0}>
                   <img
                     src={card.image}
                     alt={card.title}
@@ -86,7 +86,7 @@ onClick={openCorses}                      >
                   />
                 </Grid>}
        {card.id!==2?
-                <Grid item xs={6} xl={3} sm={5}>
+                <Grid item xs={6} xl={3} sm={6}>
                   <img
                     src={card.image}
                     alt={card.title}
@@ -101,7 +101,7 @@ onClick={openCorses}                      >
 
   </Slide>
   <Fade in={true} timeout={1000}>
-    <Typography variant="body1" paragraph>
+    <Typography variant="body1" paragraph className="Decription">
       {card.description}
     </Typography>
   </Fade>
