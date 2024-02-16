@@ -27,7 +27,7 @@ function HomePage() {
     {
       id:1,
       title: "About Us",
-      description:"The APJ Abdul Kalam Free Education Center was established on October 15, 2022, the anniversary of APJ Abdul Kalam's birth, by the Universal Human Foundation (A trust registered under the Indian Trust Act 1982). Our organization aims to provide deserving Bengali students with free and top-notch education who lack access to resources like high-quality study guides and other essential tools for passing university admission exams.",
+      description:"The APJ Abdul Kalam  Education Center was established on October 15, 2022, the anniversary of APJ Abdul Kalam's birth, by the Universal Human Foundation (A trust registered under the Indian Trust Act 1982). Our organization aims to provide deserving Bengali students with free and top-notch education who lack access to resources like high-quality study guides and other essential tools for passing university admission exams.",
       image: aboutUsImage,
     },
     {
