@@ -119,6 +119,16 @@ h4 {
   /* filter: drop-shadow(0 0 15px #d31966) drop-shadow(0 0 30px #f49a08) drop-shadow(0 0 45px #f4fc08); */
   border-radius: 10px;
 }
+.highlightText {
+  font-family: 'Pacifico', cursive;
+  background: linear-gradient(to right, #c0eced, #f19bc5); /* Vibrant color gradient */
+  color: rgb(91, 30, 223); /* Font color for better visibility */
+  display: inline-block; /* Ensures the gradient covers the entire text */
+  /* padding: 2rem; Add some padding for a stylish look */
+  /* filter: drop-shadow(0 0 5px #df699a) drop-shadow(0 0 10px #f2efeb) drop-shadow(0 0 25px #eeaaf2); */
+  border-radius:5%;
+  text-align: center;
+}
 
 /* about css*/
 /* styles.css */

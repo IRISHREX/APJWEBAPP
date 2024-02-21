@@ -110,7 +110,7 @@ const Notice = () => {
   };
 
   const handleDrawerOpen = (content) => {
-    setDrawerContent(content);
+    setDrawerContent(<h4>{content}</h4>);
   };
 
   const handleDrawerClose = () => {

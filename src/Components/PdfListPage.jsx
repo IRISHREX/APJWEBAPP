@@ -20,12 +20,12 @@ const PdfListPage = () => {
         <Grid item xs={12} md={6} > {/* Set xs to 12 for small devices */}
           {pdfData.map((pdf) => (
             <Card key={pdf.id} style={{ margin: 10, minWidth: 200, backgroundColor: '#d1faff' }}>
-              <CardContent>
-                <Typography variant="h6" component="div" style={{ color: '#004080' }}>
+              <CardContent style={{ display: 'flex', flexDirection: 'row' }}>
+                <Typography component="div" variant='h6'  className='highlightText'>
                   {pdf.name}
                 </Typography>
-                <Typography color="text.secondary">{pdf.description}</Typography>
-                <IconButton onClick={() => handleDownload(pdf.name, pdf.file)} style={{ color: '#00264d' }}>
+                <Typography color="text.secondary" style={{padding:'0.8rem'}}>{pdf.description.slice(0,25)+"..."}</Typography>
+                <IconButton onClick={() => handleDownload(pdf.name, pdf.file)} style={{ color: '#00264d',border:" 0.3rem solid green", borderRadius:"15% 5% 20% 40%",background:'#aef3aa'}}>
                   <DownloadIcon />
                 </IconButton>
               </CardContent>
