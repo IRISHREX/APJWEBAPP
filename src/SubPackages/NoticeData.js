@@ -12,7 +12,7 @@ const NoticeData = [
     description:
       " 'All students for the PROGOTI 1.0 (1ª Phase) Batch are cordially invited to attend the orientation program on 5 DECEMBER 2023 at 8:15 PM. This program is designed to provide you with important information about the course and to help you get settled into your new environment. Please make sure to attend the program on time to receive important information and to meet with fellow students and faculty members. Program Link will be shared in the WhatsApp group before the session. If you have any questions, please contact the program coordinator for assistance. We are looking forward to seeing you at the orientation program and starting this exciting journey together'",
     image: SLIDE1, // Replace with image URL
-    link: "https://chat.whatsapp.com/DZmgwQHl9BR4fc2bPwSuPm",
+    link: "https://chat.whatsapp.com/JzXepuhNVEB1JnT0Qq93Sv",
   },
   {
     id: 2,
@@ -20,7 +20,7 @@ const NoticeData = [
     description:
       "BATHCH C IS ALREADY ANNOUNCED AND THE ADMISSION PROCESS HAS ALREADY STARTED FROM 15TH DEC",
     image: SLIDE1, // Replace with image URL
-    link: "https://chat.whatsapp.com/DZmgwQHl9BR4fc2bPwSuPm",
+    link: "https://chat.whatsapp.com/JzXepuhNVEB1JnT0Qq93Sv",
   },
   {
     id: 3,
@@ -28,7 +28,7 @@ const NoticeData = [
     description:
       "INITIAL LAST DATE OF NOTICE IS 1 JAN , MAY BE EXTENDED , INFROMATION WILL BE UPDATED IN WEBSITE ONLY",
     image: SLIDE2, // Replace with image URL
-    link: "https://chat.whatsapp.com/DZmgwQHl9BR4fc2bPwSuPm",
+    link: "https://chat.whatsapp.com/JzXepuhNVEB1JnT0Qq93Sv",
   },
   {
     id: 4,
@@ -36,7 +36,7 @@ const NoticeData = [
     description:
       "The candidate who will apply for admission test are requested to contact Asif Reza on the given number",
     image: SLIDE3, // Replace with image URL
-    link: "https://chat.whatsapp.com/DZmgwQHl9BR4fc2bPwSuPm",
+    link: "https://chat.whatsapp.com/JzXepuhNVEB1JnT0Qq93Sv",
   },
   {
     id: 5,
@@ -44,8 +44,14 @@ const NoticeData = [
     description:
       "The ScholarShip schem for students are to be decalred soon , kindly contact Asif Reza for Futrther Info.",
     image: SLIDE4, // Replace with image URL
-    link: "https://chat.whatsapp.com/DZmgwQHl9BR4fc2bPwSuPm",
+    link: "https://chat.whatsapp.com/JzXepuhNVEB1JnT0Qq93Sv",
   },
+  {
+    id:6,
+    title:"Total Seats-80 NEWANNOUNCEMENT",
+    description:"NEW BATCH FOR B.A.L.L.BENTRANCE FOR CalcuttaUniversity(CULET) starting",
+    link: "https://chat.whatsapp.com/JzXepuhNVEB1JnT0Qq93Sv",
+  }
   // Add more notices as needed
 ];
 
