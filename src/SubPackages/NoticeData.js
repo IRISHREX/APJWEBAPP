@@ -6,6 +6,12 @@ import SLIDE4 from "../Images/Genral/SLIDE4.jpeg";
 
 const NoticeData = [
   {
+    id:0,
+    title:"Total Seats-80 NEWANNOUNCEMENT",
+    description:"NEW BATCH FOR B.A.L.L.BENTRANCE FOR CalcuttaUniversity(CULET) starting, Payment details on google form ,Visit Our Whats APP group by clicking see More...",
+    link: "https://chat.whatsapp.com/JzXepuhNVEB1JnT0Qq93Sv",
+  },
+  {
     id: 1,
     title:
       "Orientation Program for PROGOTI 1.0 Batch Students Date: 5 December 2023.Time: 8:15 PM",
@@ -46,12 +52,7 @@ const NoticeData = [
     image: SLIDE4, // Replace with image URL
     link: "https://chat.whatsapp.com/JzXepuhNVEB1JnT0Qq93Sv",
   },
-  {
-    id:6,
-    title:"Total Seats-80 NEWANNOUNCEMENT",
-    description:"NEW BATCH FOR B.A.L.L.BENTRANCE FOR CalcuttaUniversity(CULET) starting",
-    link: "https://chat.whatsapp.com/JzXepuhNVEB1JnT0Qq93Sv",
-  }
+  
   // Add more notices as needed
 ];
 
