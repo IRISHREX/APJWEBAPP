@@ -21,13 +21,21 @@ const PdfListPage = () => {
           {pdfData.map((pdf) => (
             <Card key={pdf.id} style={{ margin: 10, minWidth: 200, backgroundColor: '#d1faff' }}>
               <CardContent style={{ display: 'flex', flexDirection: 'row' }}>
+              <Grid container spacing={2}>
+
+                <Grid item xs={12} md={8}>
                 <Typography component="div" variant='h6'  className='highlightText'>
                   {pdf.name}
                 </Typography>
-                <Typography color="text.secondary" style={{padding:'0.8rem'}}>{pdf.description.slice(0,25)+"..."}</Typography>
+                <Typography color="primary" style={{padding:'0.8rem'}}>{pdf.description.slice(0,25)+"..."}</Typography>
+                </Grid>
+                <Grid  item xs={12} md={4}>
                 <IconButton onClick={() => handleDownload(pdf.name, pdf.file)} style={{ color: '#00264d',border:" 0.3rem solid green", borderRadius:"15% 5% 20% 40%",background:'#aef3aa'}}>
                   <DownloadIcon />
                 </IconButton>
+                </Grid>
+                </Grid>
+
               </CardContent>
             </Card>
           ))}

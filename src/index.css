@@ -121,8 +121,8 @@ h4 {
 }
 .highlightText {
   font-family: 'Pacifico', cursive;
-  background: linear-gradient(to right, #c0eced, #f19bc5); /* Vibrant color gradient */
-  color: rgb(91, 30, 223); /* Font color for better visibility */
+  background: linear-gradient(to right,#ed6565, #74bef0, #f19bc5); /* Vibrant color gradient */
+  color: rgb(238, 233, 249,0.9); /* Font color for better visibility */
   display: inline-block; /* Ensures the gradient covers the entire text */
   /* padding: 2rem; Add some padding for a stylish look */
   /* filter: drop-shadow(0 0 5px #df699a) drop-shadow(0 0 10px #f2efeb) drop-shadow(0 0 25px #eeaaf2); */
