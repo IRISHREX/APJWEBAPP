@@ -269,9 +269,8 @@ export const SidebarItem = ({ to, text, icon, isActive }) => (
     button
     component={Link}
     to={to}
-    className={`${
-      isActive ? "active-route" : ""
-    } group hover:bg-indigo-600 dark:hover:bg-indigo-400`}
+    className={`${isActive ? "active-route" : ""
+      } group hover:bg-indigo-600 dark:hover:bg-indigo-400`}
   >
     <ListItemIcon>{icon}</ListItemIcon>
     <ListItemText primary={text} />
@@ -298,11 +297,10 @@ export function AppToolbar({ darkMode, toggleDarkMode }) {
       </div>
       <div>
         <button
-          className={`${
-            darkMode
+          className={`${darkMode
               ? "bg-gray-800 text-white"
               : "bg-gray-200 text-gray-700 dark:bg-gray-600 dark:text-white"
-          } p-2 rounded-full shadow-md hover:bg-gray-300 dark:hover:bg-gray-700 focus:outline-none`}
+            } p-2 rounded-full shadow-md hover:bg-gray-300 dark:hover:bg-gray-700 focus:outline-none`}
           onClick={toggleDarkMode}
         >
           {darkMode ? "Light Mode" : "Dark Mode"}
@@ -351,7 +349,7 @@ export const cardStyles = {
   "&:hover": {
     transform: "scale(1.05)", // Scale up the card on hover
   },
-  
+
 };
 //style={{
 //   backgroundColor: "rgba(0, 188, 212, 0.7)", // Greenish background color
