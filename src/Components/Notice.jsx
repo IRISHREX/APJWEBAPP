@@ -17,7 +17,11 @@ import {
 import Carousel from "react-material-ui-carousel";
 import { toast, ToastContainer } from "react-toastify";
 
-import { Edit as EditIcon, Delete as DeleteIcon, Close } from "@mui/icons-material";
+import {
+  Edit as EditIcon,
+  Delete as DeleteIcon,
+  Close,
+} from "@mui/icons-material";
 
 import {
   fetchNoticeData,
@@ -126,7 +130,7 @@ const Notice = () => {
   }
 
   return (
-    <div className={'BackGroundThame'}>
+    <div className={"BackGroundThame"}>
       <Typography variant="h4" gutterBottom>
         Notices
       </Typography>
@@ -143,7 +147,7 @@ const Notice = () => {
                   {notice.title}
                 </Typography>
               }
-              description={notice.description}
+              description={<p className="highlightText">{notice.description.slice(0, 120)+"..."}</p>}
               image={notice.image}
               link={notice.link}
               isTable={true}
@@ -158,7 +162,6 @@ const Notice = () => {
       </Typography>
       {/* <FeatureComingSoonOverlay> */}
       <TableContainer
-      
         component={Paper}
         style={{
           border: "1px solid #4CAF50",
@@ -173,7 +176,9 @@ const Notice = () => {
             <TableRow>
               <TableCell>Title</TableCell>
               <TableCell>Description</TableCell>
-              <TableCell>Action</TableCell>
+              {userType === "admin" && (
+
+              <TableCell>Action</TableCell>)}
             </TableRow>
           </TableHead>
           <TableBody>
@@ -203,8 +208,8 @@ const Notice = () => {
                       notice.description
                     )}
                   </TableCell>
-                  <TableCell>
-                    {userType === "admin" && (
+                  {userType === "admin" && (
+                    <TableCell>
                       <>
                         <IconButton onClick={() => handleUpdate(notice)}>
                           <EditIcon />
@@ -213,8 +218,8 @@ const Notice = () => {
                           <DeleteIcon />
                         </IconButton>
                       </>
-                    )}
-                  </TableCell>
+                    </TableCell>
+                  )}
                 </TableRow>
               </Slide>
             ))}
@@ -223,7 +228,11 @@ const Notice = () => {
       </TableContainer>
       {/* </FeatureComingSoonOverlay> */}
 
-      <Drawer anchor="bottom" open={!!drawerContent} onClose={handleDrawerClose}>
+      <Drawer
+        anchor="bottom"
+        open={!!drawerContent}
+        onClose={handleDrawerClose}
+      >
         <div>
           <Close onClick={handleDrawerClose}>Close</Close>
           <Typography variant="body2" color="textSecondary" component="p">

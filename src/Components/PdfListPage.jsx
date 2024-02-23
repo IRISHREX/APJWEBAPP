@@ -1,10 +1,12 @@
-import React from 'react';
-import { Card, CardContent, Typography, IconButton, Grid, Avatar } from '@mui/material';
+import React, { useState } from 'react';
+import { Card, CardContent, Typography, IconButton, Grid, Avatar} from '@mui/material';
 import { Download as DownloadIcon } from '@mui/icons-material'; // Import the Download icon
 import pdfData from '../SubPackages/PdfData';
 import AsifReza from '../Images/TeamMembars/AsifReza.jpg'
 
 const PdfListPage = () => {
+  const [background, setBackground] = useState("BackGroundThame");
+
   const handleDownload = (pdfName, pdfFilePath) => {
     const a = document.createElement('a');
     a.href = pdfFilePath;
@@ -15,7 +17,7 @@ const PdfListPage = () => {
   };
 
   return (
-    <div className="BackGroundThame">
+    <div className={background}>
       <Grid container spacing={2}> {/* Add spacing between grid items */}
         <Grid item xs={12} md={6} > {/* Set xs to 12 for small devices */}
           {pdfData.map((pdf) => (
@@ -30,8 +32,8 @@ const PdfListPage = () => {
                 <Typography color="primary" style={{padding:'0.8rem'}}>{pdf.description.slice(0,25)+"..."}</Typography>
                 </Grid>
                 <Grid  item xs={12} md={4}>
-                <IconButton onClick={() => handleDownload(pdf.name, pdf.file)} style={{ color: '#00264d',border:" 0.3rem solid green", borderRadius:"15% 5% 20% 40%",background:'#aef3aa'}}>
-                  <DownloadIcon />
+                <IconButton onClick={() => handleDownload(pdf.name, pdf.file)} >
+                  <DownloadIcon className={"downLoadButton"} onClick= {()=>setBackground("BackGroundThameSphear")} />
                 </IconButton>
                 </Grid>
                 </Grid>

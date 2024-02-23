@@ -37,8 +37,36 @@
     transform: rotate(360deg);
   }
 }
+.marqueeText {
+  font-family: 'Pacifico', cursive;
+  background: linear-gradient(to right,#e8b2b2, #74bef0, #b3db16); /* Vibrant color gradient */
+  color: rgba(94, 2, 36, 0.9); /* Font color for better visibility */
+  display: inline-block; /* Ensures the gradient covers the entire text */
+  /* padding: 2rem; Add some padding for a stylish look */
+  filter: drop-shadow(0 0 5px #df699a) drop-shadow(0 0 10px #f2efeb) drop-shadow(0 0 25px #eeaaf2);
+  border-radius:35%;
+  text-align: center;
+}
+.marquee {
+  overflow: hidden;
+  position: relative;
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
 .BackGroundThame{ 
   background:radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(222,176,208,1) 18%, rgba(209,178,212,1) 32%, rgba(194,180,217,1) 49%, rgba(148,187,233,0.978203781512605) 100%);
+}
+.BackGroundThameSphear{ 
+  background:radial-gradient(circle, rgb(57, 12, 73) 0%, rgb(208, 8, 148) 18%, rgb(2, 11, 38) 32%, rgba(194,180,217,1) 49%, rgba(148,187,233,0.978203781512605) 100%);
 }
 
 .HomeEmages{
@@ -55,7 +83,39 @@ border-radius:10% 40% 5%;
   background-color: rgba(228, 131, 131, 0.3);
 
 }
-
+.downLoadButton{
+  color: #00264d;
+  border:0.3rem solid green;
+  
+   border-radius: 15% 5% 20% 40%;
+   background:#aef3aa
+  }
+  
+  .block {
+    background-color: red;
+    border-radius: 8px;
+    width: 120px;
+    text-align: center;
+  }
+  
+  .button {
+    width: 100%;
+    border-radius: inherit;
+    color: white;
+  
+  }
+  
+  .downLoadButton:hover {
+    background-color: rgb(139, 181, 250);
+    border:0.29rem solid rgb(248, 238, 41);
+  }
+  
+  .block:hover .button {
+    color: #00264d;
+    border:0.3rem solid green;
+    border-radius: 15% 5% 20% 40%;
+    background:#aef3aa;
+  }
 @media only screen and (max-width: 768px) {
 
   /* Styles for small devices */
