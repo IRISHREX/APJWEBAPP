@@ -35,10 +35,10 @@ function Home() {
           <Grid padding={2}>
             <MenuIcon
               onClick={() => toggleDrawer(isDrawerOpen, setIsDrawerOpen)}
-              style={{ cursor: "pointer" }}
+              style={{ cursor: "pointer" , position:"fixed" }}
               className="neon-top-bar"
             />
-            <Typography className="neon-text">MENU</Typography>
+            <Typography className="neon-text" style={{position:"fixed", marginLeft:"1.5rem"}}>MENU</Typography>
           </Grid>
           <Grid container alignItems="center">
             <Grid item>
