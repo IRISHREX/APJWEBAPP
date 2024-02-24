@@ -1,0 +1,44 @@
+/* Custom styles for the PdfListPage component */
+
+/* Main container */
+.PdfListPage {
+    padding: 20px;
+  }
+  
+  /* Card */
+  .PdfListPageCard {
+    margin: 10px;
+    min-width: 200px;
+    background-color: #d1faff; /* Light blue background */
+  }
+  
+  /* Card content */
+  .PdfListPageCardContent {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Align items vertically */
+  }
+  
+  /* Pdf name */
+  .PdfListPagePdfName {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  /* Pdf description */
+  .PdfListPagePdfDescription {
+    padding: 0.8rem;
+    color: #2196f3; /* Blue color */
+  }
+  
+  /* Download button */
+  .PdfListPageDownloadButton {
+    color: #2196f3; /* Blue color */
+  }
+  
+  /* Avatar */
+  .PdfListPageAvatar {
+    height: 100%;
+    width: 5rem;
+  }
+  

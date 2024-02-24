@@ -1,0 +1,59 @@
+/* HomePage.css */
+
+/* Styles for the entire HomePage component */
+.home-page {
+    padding: 20px;
+  }
+  
+  /* Styles for the marquee */
+  .marquee {
+    background-color: #007ba7;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .marquee-text {
+    color: #ffffff;
+    font-size: 18px;
+  }
+  
+  /* Styles for the carousel */
+  /* Add your styles here */
+  
+  /* Styles for the card container */
+  .about-us-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  /* Styles for the description text */
+  .description {
+    color: #333333;
+  }
+  
+  /* Styles for the images */
+  .home-images {
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  /* Styles for the buttons */
+  .btn-view-course {
+    background-color: #007ba7;
+    color: #ffffff;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .btn-view-course:hover {
+    background-color: #005c84;
+  }
+  
+  /* Additional styles for other elements */
+  /* Add your styles here */
+  

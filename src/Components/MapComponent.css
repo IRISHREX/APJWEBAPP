@@ -1,0 +1,29 @@
+/* MapComponent.css */
+
+/* Paper styles */
+.paper {
+    padding: 16px;
+  }
+  
+  /* Map container styles */
+  .map-container {
+    height: 400px;
+    width: 100%;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  
+  /* Popup styles */
+  .popup {
+    padding: 10px;
+    text-align: center;
+  }
+  
+  /* Marker styles */
+  .marker {
+    background-color: #1976d2; /* Change the background color to match your theme */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  

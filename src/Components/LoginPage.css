@@ -1,0 +1,68 @@
+/* LoginPage.css */
+
+/* Container styles */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  /* Paper styles */
+  .paper {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Avatar styles */
+  .avatar {
+    margin: 10px;
+    background-color: #1976d2; /* Change the background color to match your theme */
+  }
+  
+  /* Typography styles */
+  .title {
+    margin: 10px 0;
+  }
+  
+  /* Sign In form styles */
+  .sign-in-form {
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  /* Sign Up button styles */
+  .sign-up-btn {
+    margin-top: 20px;
+  }
+  
+  /* Sign Up dialog styles */
+  .sign-up-dialog {
+    width: 400px;
+  }
+  
+  /* Dialog title styles */
+  .dialog-title {
+    padding: 20px;
+  }
+  
+  /* Dialog content styles */
+  .dialog-content {
+    padding: 20px;
+  }
+  
+  /* Dialog actions styles */
+  .dialog-actions {
+    padding: 20px;
+  }
+  
+  /* Toast container styles */
+  .toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+  }
+  

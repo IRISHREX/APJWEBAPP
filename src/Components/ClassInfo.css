@@ -1,0 +1,54 @@
+/* ClassInfo.css */
+
+.class-info-container {
+    position: relative;
+    height: 100vh;
+  }
+  
+  .feature-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-bottom: 20px;
+  }
+  
+  .slider-section {
+    z-index: 1;
+  }
+  
+  .timing-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .timing-item {
+    text-align: center;
+    margin: 10px;
+  }
+  
+  .clock-icon {
+    font-size: 40px;
+  }
+  
+  .table-section {
+    z-index: 1;
+    margin-top: 20px;
+  }
+  
+  .syllabus-section {
+    z-index: 1;
+    margin-top: 20px;
+  }
+  
+  .syllabus-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .syllabus-card {
+    width: 200px;
+    margin: 10px;
+  }
+  

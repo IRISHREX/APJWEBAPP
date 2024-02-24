@@ -8,12 +8,12 @@ import prospector2024 from '../Components/Documents/prospector2024.pdf'
 
 
 const pdfData = [
-  {
-    id: 0,
-    name: 'PROSPECTUS 2024',
-    description: 'NEW BATCH FOR B.A.L.L.BENTRANCE FOR CalcuttaUniversity(CULET) starting',
-    file: prospector2024, 
-  },
+  // {
+  //   id: 0,
+  //   name: 'PROSPECTUS 2024',
+  //   description: 'NEW BATCH FOR B.A.L.L.BENTRANCE FOR CalcuttaUniversity(CULET) starting',
+  //   file: prospector2024, 
+  // },
     {
         id: 1,
         name: 'Java 101',

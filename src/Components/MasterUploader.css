@@ -1,0 +1,19 @@
+/* Apply styles to the grid container */
+.uploader-grid {
+    margin-top: 20px;
+  }
+  
+  /* Apply styles to the cards */
+  .uploader-card {
+    background-color: #282c34; /* Dark background color */
+    color: #ffffff; /* White text color */
+    border: 2px solid #61dafb; /* Light blue border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Padding inside the cards */
+  }
+  
+  /* Apply styles to the typography (header) */
+  .uploader-card h6 {
+    margin-bottom: 10px; /* Add space below the header */
+  }
+  
