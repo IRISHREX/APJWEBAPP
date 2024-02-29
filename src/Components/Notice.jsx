@@ -13,6 +13,7 @@ import {
   Slide,
   Drawer,
   Button,
+  Pagination,
 } from "@mui/material";
 import Carousel from "react-material-ui-carousel";
 import { toast, ToastContainer } from "react-toastify";
@@ -25,7 +26,7 @@ import {
 
 import {
   fetchNoticeData,
-  updateNoticeData,
+  createNoticeData,
   deleteNoticeData,
 } from "../SubPackages/FetchNoticeData";
 
@@ -45,10 +46,10 @@ const Notice = () => {
   const [drawerContent, setDrawerContent] = useState("");
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = async (p) => {
       let dataToBeShown;
       try {
-        const data = await fetchNoticeData();
+        const data = await fetchNoticeData(p);
         if (data.length === 0) {
           dataToBeShown = NoticeData;
         } else {
@@ -62,13 +63,26 @@ const Notice = () => {
       }
     };
 
-    fetchData();
+     fetchData();
   }, []);
 
   const handleUpdate = (selectedNotice) => {
     setSelectedNoticeData(selectedNotice);
     setIsUpdateFormOpen(true);
   };
+
+ function pages ()
+ {
+    let pageAvilble=[];
+    for(let i=0;i<18;i++) pageAvilble.push(i+1);
+    return pageAvilble;
+  }
+  function handlePagintion(e,p){
+      
+     fetchNoticeData(p).then(data=>
+      setNotices(data)
+     )
+  }
 
   const handleUpdateNotice = async (updatedData) => {
     const { id } = selectedNoticeData;
@@ -90,7 +104,7 @@ const Notice = () => {
       image: imageToUpdate,
     };
 
-    await updateNoticeData(id, dataToUpdate);
+    await createNoticeData(id, dataToUpdate);
   };
 
   function fileToBase64(file) {
@@ -225,8 +239,14 @@ const Notice = () => {
             ))}
           </TableBody>
         </Table>
+      
       </TableContainer>
-      {/* </FeatureComingSoonOverlay> */}
+      <div>  {userType === "admin" && (
+
+<Pagination count={pages().length} color="secondary" onChange={handlePagintion} />)}</div>
+      {  }
+     
+
 
       <Drawer
         anchor="bottom"
@@ -250,6 +270,7 @@ const Notice = () => {
       )}
 
       <ToastContainer />
+      
     </div>
   );
 };

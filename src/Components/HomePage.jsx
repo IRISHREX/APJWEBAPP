@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Typography,
   Slide,
@@ -14,11 +14,17 @@ import Faq from "./Faq";
 import aboutUsImage from "../Images/Genral/S1.jpg";
 import missionImage from "../Images/Genral/S2.jpg";
 import courseOfferImage from "../Images/Genral/S3.jpg";
+import { fetchNoticeData } from "../SubPackages/FetchNoticeData";
 
 function HomePage() {
   const [showCourse, setShowCourse] = useState();
+  const [GenralNotice, setGenralNotice] = useState(null);
   const [background, setBackground] = useState("BackGroundThame");
 
+  useEffect(()=>{
+    fetchNoticeData().then((data)=>setGenralNotice(data[0]?.description))
+  },[])
+  
   const openCorses = () => {
     setBackground("BackGroundThameSphear");
     setShowCourse(() => (
@@ -63,7 +69,8 @@ function HomePage() {
       <Grid container spacing={2}>
       <Grid sm={12} item>
           <div className="marquee">
-            <h5 className="marqueeText">NOTICE: -NEW BATCH FOR B.A.L.L.B ENTRANCE FOR Calcutta University(CULET) starting, Payment details on google form ,Visit Our Whats APP group by clicking see More in Notice Page... </h5>
+           
+            <h5 className="marqueeText">NOTICE: {GenralNotice?GenralNotice:"NEW BATCH FOR B.A.L.L.B ENTRANCE FOR Calcutta University(CULET) starting, Payment details on google form ,Visit Our Whats APP group by clicking see More in Notice Page..."} </h5>
             </div>
           </Grid>
         <Grid sm={12} item>

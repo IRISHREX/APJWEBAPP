@@ -16,6 +16,7 @@ import {
   Delete as DeleteIcon,
   Refresh as RefreshIcon,
 } from "@mui/icons-material";
+import { createNoticeData } from "./FetchNoticeData";
 
 const localUrl = "http://localhost:5000/api/noticeData";
 const productionUrl =
@@ -28,7 +29,6 @@ const NoticeUploader = () => {
   const [expanded, setExpanded] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState(null);
   const [notices, setNotices] = useState([]);
 
   const handleExpandClick = () => {
@@ -36,11 +36,10 @@ const NoticeUploader = () => {
   };
 
   const handleUpload = async () => {
-    if (title && description && image) {
+    if (title && description) {
       const formData = new FormData();
       formData.append("title", title);
       formData.append("description", description);
-      formData.append("image", image);
 
       const bearerToken = localStorage.getItem("bearerToken");
 
@@ -50,11 +49,12 @@ const NoticeUploader = () => {
       }
 
       try {
-        const response = await Axios.post(apiUrl, formData, {
+        const response = await Axios.post(apiUrl, {title,description}, {
           headers: {
             Authorization: `Bearer ${bearerToken}`,
-            "Content-Type": "multipart/form-data",
-          },
+            "Content-Type": "application/x-www-form-urlencoded"       
+             },
+          
         });
 
         console.log(response.data);
@@ -63,7 +63,6 @@ const NoticeUploader = () => {
 
         setTitle("");
         setDescription("");
-        setImage(null);
       } catch (error) {
         console.error("Error uploading notice:", error);
       }
@@ -83,11 +82,11 @@ const NoticeUploader = () => {
   const handleReset = () => {
     setTitle("");
     setDescription("");
-    setImage(null);
     setNotices([]);
   };
 
   const handleSubmit = () => {
+    createNoticeData(...notices).then((res)=>console.log(res)).catch((err)=>console.log(err))
     console.log(JSON.stringify(notices, null, 2));
   };
 
@@ -136,11 +135,11 @@ const NoticeUploader = () => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
-          <input
+          {/* <input
             type="file"
             accept="image/*"
             onChange={(e) => setImage(e.target.files[0])}
-          />
+          /> */}
           <Button variant="contained" color="primary" onClick={handleUpload}>
             Add Notice
           </Button>
@@ -165,7 +164,7 @@ const NoticeUploader = () => {
             variant="contained"
             color="primary"
             onClick={handleSubmit}
-            disabled={notices.length === 0}
+            // disabled={notices.length === 0}
             style={{ marginLeft: "8px" }}
           >
             Upload

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Container,
   Typography,
@@ -10,31 +10,34 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
+  Card,
+  CardContent,
+  LinearProgress,
 } from "@mui/material";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import SignInForm from "../SubPackages/SignInForm";
 import SignUpForm from "../SubPackages/SignUpForm";
-import UserCard from "../SubPackages/UserCard";
 import signInUser from "../ApiHandeller/SignInService";
 import signUpUser from "../ApiHandeller/SignUpService";
-import jwtDecode from "jwt-decode";
+import { Logout, Visibility, VisibilityOff } from "@mui/icons-material";
+import { fetchTeamMembersDataByEmail } from "../ApiHandeller/FetchTeamMembersData";
+import { descriptionStyles } from "./Util";
 
 const LoginPage = () => {
   const [loggedInUser, setLoggedInUser] = useState(null);
 
-  useEffect(() => {
-    const storedToken = localStorage.getItem("bearerToken");
-    // const userType = localStorage.getItem('userType');
+  const [showMore, setshowMore] = useState(false);
 
-    if (storedToken) {
-      const user = parseToken(storedToken);
-      if (user) {
-        setLoggedInUser(user);
-      }
-    }
+  useEffect(() => {
+    // const userType = localStorage.getItem('userType');
+    const res = localStorage.getItem("userData");
+    res ? setLoggedInUser(JSON.parse(res)) : setLoggedInUser(null);
+
+    // console.log('userData:-',userData)
   }, []);
+  console.log("loggedInUser->", loggedInUser);
 
   const [signInFormData, setSignInFormData] = useState({
     username: "",
@@ -50,6 +53,8 @@ const LoginPage = () => {
   });
 
   const [showSignUpDialog, setShowSignUpDialog] = useState(false);
+
+  useEffect(() => {}, []);
 
   const handleFileChange = (file) => {
     setSignUpFormData({
@@ -74,26 +79,31 @@ const LoginPage = () => {
     });
   };
 
-  const parseToken = (token) => {
-    try {
-      const decodedToken = jwtDecode(token);
-      return decodedToken;
-    } catch (error) {
-      console.error("Error decoding token:", error);
-      return null;
-    }
-  };
-
   const handleSignInSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { userType, accessToken } = await signInUser(signInFormData);
+      const { userType, accessToken, userEmail, user } = await signInUser(
+        signInFormData
+      );
+      console.log(userType);
+      console.log("userEmail:-", userEmail);
+      console.log("user:-", user);
+
       setLoggedInUser({ userType });
       localStorage.setItem("userType", userType);
       localStorage.setItem("bearerToken", accessToken);
+      // localStorage.setItem( "email" , userEmail );
       toast.success("Sign-in successful");
+      // const email=localStorage.getItem("email");
+      let res=await fetchTeamMembersDataByEmail(userEmail)
+      
+      setLoggedInUser(res);
+      //must Stringyfy
+      localStorage.setItem("userData", JSON.stringify(res));
+
+
     } catch (error) {
-      console.error(error.message);
+      // console.error(error.message);
       toast.error("Error during sign-in");
     }
   };
@@ -118,10 +128,9 @@ const LoginPage = () => {
     setLoggedInUser(null);
     localStorage.removeItem("bearerToken");
     localStorage.removeItem("userType");
-  };
+    localStorage.removeItem("userData");
 
-  const handleUpdateProfile = () => {
-    console.log("Update profile clicked");
+
   };
 
   return (
@@ -137,12 +146,72 @@ const LoginPage = () => {
         }}
       >
         {loggedInUser ? (
-          <UserCard
-            username={loggedInUser.username}
-            avatar={loggedInUser.avatar}
-            onLogout={handleLogout}
-            onUpdateProfile={handleUpdateProfile}
-          />
+          <Card className="BackGroundThameSphear">
+            <CardContent style={{ textAlign: "center", marginBottom: 20 }}>
+              {loggedInUser?.avatar ? (
+                <Avatar
+                  alt="Remy Sharp"
+                  src={loggedInUser?.avatar}
+                  style={{ marginLeft: "35%", height: "auto", width: "25%" }}
+                />
+              ) : (
+                <LinearProgress />
+              )}
+              <Typography variant="h5" gutterBottom className="textPurple">
+                {loggedInUser?.username}
+              </Typography>
+              {showMore === false ? (
+                <Visibility onClick={() => setshowMore(true)} />
+              ) : (
+                ""
+              )}
+            </CardContent>
+
+            {showMore ? (
+              <>
+                <VisibilityOff
+                  onClick={() => setshowMore(false)}
+                  style={{ marginLeft: "47%" }}
+                />
+                <CardContent>
+                  {" "}
+                  <Typography className="textWhite">
+                    <strong>EMAIL:-</strong>
+                    {loggedInUser?.email}
+                  </Typography>
+                </CardContent>
+                <strong> DESCRIPTION</strong>
+                <CardContent style={descriptionStyles} className="textWhite">
+                  {" "}
+                  <Typography>{loggedInUser?.description}</Typography>
+                </CardContent>
+                <CardContent>
+                  {" "}
+                  <Typography className="textWhite">
+                    <strong>ROLE:-</strong>
+                    {loggedInUser?.role}
+                  </Typography>
+                </CardContent>
+                <CardContent>
+                  {" "}
+                  <Typography className="textWhite">
+                    <strong>TEAM:-</strong>
+                    {loggedInUser?.team}
+                  </Typography>
+                </CardContent>
+              </>
+            ) : (
+              ""
+            )}
+
+            <CardContent style={{ textAlign: "center" }}>
+              <Logout onClick={handleLogout} />
+              <Typography>LOG-OUT</Typography>
+            </CardContent>
+
+            {/* onLogout={handleLogout}
+            onUpdateProfile={handleUpdateProfile} */}
+          </Card>
         ) : (
           <>
             <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>

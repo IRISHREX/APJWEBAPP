@@ -9,8 +9,10 @@ const getApiUrl = () => {
   return isLocal ? localUrl : productionUrl;
 };
 
-const fetchNoticeData = async () => {
+const fetchNoticeData = async (pg) => {
+  let PageNO=pg||0;
   const url = getApiUrl();
+  const urlModified=url+`/?page=${PageNO}`
 
   try {
     const bearerToken = localStorage.getItem("bearerToken");
@@ -19,7 +21,7 @@ const fetchNoticeData = async () => {
       return [];
     }
 
-    const response = await axios.get(url, {
+    const response = await axios.get(urlModified, {
       headers: {
         Authorization: `Bearer ${bearerToken}`,
       },
@@ -40,10 +42,10 @@ const fetchNoticeData = async () => {
   }
 };
 
-const updateNoticeData = async (id, updatedData) => {
-  console.log("Updating team member with ID:", id);
+const createNoticeData = async (updatedData) => {
+  // console.log("Updating team member with ID:", id);
   console.log("Updated data:", updatedData);
-  const url = `${getApiUrl()}/${id}`;
+  const url = `${getApiUrl()}`;
 
   try {
     const bearerToken = localStorage.getItem("bearerToken");
@@ -52,7 +54,7 @@ const updateNoticeData = async (id, updatedData) => {
       return null;
     }
 
-    const response = await axios.put(url, updatedData, {
+    const response = await axios.post(url, updatedData, {
       headers: {
         Authorization: `Bearer ${bearerToken}`,
         "Content-Type": "multipart/form-data",
@@ -61,7 +63,7 @@ const updateNoticeData = async (id, updatedData) => {
 
     return response.data;
   } catch (error) {
-    console.error(`Error updating notice data with ID ${id}:`, error);
+    console.error(`Error `, error);
     return null;
   }
 };
@@ -114,7 +116,7 @@ const getNoticeDataById = async (id) => {
 
 export {
   fetchNoticeData,
-  updateNoticeData,
+  createNoticeData,
   deleteNoticeData,
   getNoticeDataById,
 };

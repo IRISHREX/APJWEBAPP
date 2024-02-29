@@ -69,6 +69,17 @@
   background:radial-gradient(circle, rgb(57, 12, 73) 0%, rgb(208, 8, 148) 18%, rgb(2, 11, 38) 32%, rgba(194,180,217,1) 49%, rgba(148,187,233,0.978203781512605) 100%);
 }
 
+.textWhite{
+    color: white;
+    font-family: cursive;
+    text-shadow: -1px 0 0 black, 0 1px 0 black, 1px 0 0 black, 0 -1px 0 black; /* Creates black outline */
+}
+.textPurple{
+  color: rgb(172, 15, 219);
+  font-family: cursive;
+  text-shadow: -1px 0 0 rgb(248, 246, 246), 0 1px 0 black, 1px 0 0 black, 0 -1px 0 rgb(244, 9, 9); /* Creates black outline */
+}
+
 .HomeEmages{
 width: 90%;
 height: 90%;

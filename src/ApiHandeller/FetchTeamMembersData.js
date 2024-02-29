@@ -26,6 +26,28 @@ const fetchTeamMembersData = async () => {
   }
 };
 
+const fetchTeamMembersDataByEmail = async (email) => {
+  console.log(email)
+  try {
+    const response = await axios.get(`http://localhost:5000/api/users/${email}`);
+    // const teamMembers = response.data.map((member) => ({
+    //   id:member.id,
+    //   name: member.username,
+    //   imageSrc: member.avatar,
+    //   role: member.role,
+    //   team: member.team,
+    //   description: member.description,
+    //   socialLinks: member.socialLinks,
+    // }));
+
+    console.log('teamMembers:', response);
+    return response?.data[0];
+  } catch (error) {
+    console.error('Error fetching team members data:', error);
+    return [];
+  }
+};
+
 const updateTeamMember = async (id, updatedData) => {
   try {
     console.log('Updating team member with ID:', id);
@@ -78,4 +100,4 @@ const getTeamMemberById = async (id) => {
   }
 };
 
-export { fetchTeamMembersData, updateTeamMember, deleteTeamMember, getTeamMemberById };
+export { fetchTeamMembersData, updateTeamMember, deleteTeamMember, getTeamMemberById ,fetchTeamMembersDataByEmail};
