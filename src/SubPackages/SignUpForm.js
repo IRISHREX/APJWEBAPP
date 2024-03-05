@@ -36,6 +36,18 @@ const SignUpForm = ({
       </Grid>
       <Grid item xs={12}>
         <TextField
+          label="email"
+          variant="outlined"
+          fullWidth
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+      </Grid>
+      <Grid item xs={12}>
+        <TextField
           label="Password"
           variant="outlined"
           fullWidth

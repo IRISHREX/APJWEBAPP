@@ -43,6 +43,7 @@ const LoginPage = () => {
     username: "",
     password: "",
     userType: "",
+    email:"",
   });
 
   const [signUpFormData, setSignUpFormData] = useState({
