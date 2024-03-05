@@ -88,7 +88,13 @@ padding-left: 11%;
 border-radius:10% 40% 5%;
   float: left;
 }
-
+.HomeEmagesvarient{
+  width: 90%;
+  height: 90%;
+  margin-top: 3%;
+  border-radius:40% 0% 40% 5%;
+    /* float: left; */
+  }
 .Decription{
   float: left;
   background-color: rgba(228, 131, 131, 0.3);
