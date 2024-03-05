@@ -19,7 +19,8 @@ const signInUser = async (formData) => {
       user: response.data.username,
     };
   } catch (error) {
-    throw new Error(`Error during sign-in: ${error.message}`);
+    throw error;
+    // throw new Error(`Error during sign-in: ${error.message}`);
   }
 };
 

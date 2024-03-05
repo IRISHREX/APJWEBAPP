@@ -104,8 +104,8 @@ const LoginPage = () => {
 
 
     } catch (error) {
-      // console.error(error.message);
-      toast.error("Error during sign-in");
+      console.error("error",error.message);
+      toast.error("Invalid credentials");
     }
   };
 
@@ -114,7 +114,7 @@ const LoginPage = () => {
     try {
       const response = await signUpUser(signUpFormData);
       console.log("Sign-up successful:", response);
-      toast.success("Sign-up successful");
+      toast.success(`Sign-up successful -> ${response[0]?.email} `);
     } catch (error) {
       console.error(error.message);
       toast.error("Error during sign-up");

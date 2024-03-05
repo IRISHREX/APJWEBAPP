@@ -38,7 +38,7 @@
   }
 }
 .marqueeText {
-  font-family: 'Pacifico', cursive;
+  font-family: "Caveat", cursive;
   background: linear-gradient(to right,#e8b2b2, #74bef0, #b3db16); /* Vibrant color gradient */
   color: rgba(94, 2, 36, 0.9); /* Font color for better visibility */
   display: inline-block; /* Ensures the gradient covers the entire text */
@@ -97,7 +97,11 @@ border-radius:10% 40% 5%;
   }
 .Decription{
   float: left;
-  background-color: rgba(228, 131, 131, 0.3);
+  background-color: rgb(249, 220, 220);
+  color: #046bd2;
+  font-family: "Caveat", cursive;
+  font-weight: 850;
+  line-height: 1.5em;
 
 }
 .downLoadButton{
@@ -149,4 +153,13 @@ border-radius:10% 40% 5%;
     background-color: rgba(230, 249, 13, 0.3);
   }
 
+}
+/* // <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 400 to 700 */
+
+.lora-x {
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
 }

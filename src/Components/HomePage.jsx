@@ -74,13 +74,8 @@ function HomePage() {
                           <h4>{card.title}</h4>
                         </Slide>
                         <Fade in={true} timeout={1000}>
-                          <Typography
-                            variant="body1"
-                            paragraph
-                            className="Decription"
-                          >
-                            {card.description}
-                          </Typography>
+                        <p className="Decription">{card.description.slice(0,400)}</p>
+
                         </Fade>
 
                       </CardContent>
@@ -128,13 +123,8 @@ function HomePage() {
                           <h4>{card.title}</h4>
                         </Slide>
                         <Fade in={true} timeout={1000}>
-                          <Typography
-                            variant="body1"
-                            paragraph
-                            className="Decription"
-                          >
-                            {card.description.slice(0,400)}
-                          </Typography>
+
+                            <p className="Decription">{card.description.slice(0,400)}</p>
                         </Fade>
                         {index === 2 && (
                           <Button
