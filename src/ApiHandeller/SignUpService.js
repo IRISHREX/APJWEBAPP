@@ -15,7 +15,7 @@ const signUpUser = async (data) => {
     });
     return response.data;
   } catch (error) {
-    throw new Error(`Error during sign-up: ${error.message}`);
+    throw error;
   }
 };
 

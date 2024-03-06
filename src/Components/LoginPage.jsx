@@ -161,6 +161,9 @@ const LoginPage = () => {
               <Typography variant="h5" gutterBottom className="textPurple">
                 {loggedInUser?.username}
               </Typography>
+              <Typography variant="h5" gutterBottom color={"yellowgreen"}>
+                {loggedInUser?.userType==="Admin"?`${loggedInUser?.userType}`:`Team Member`}
+              </Typography>
               {showMore === false ? (
                 <Visibility onClick={() => setshowMore(true)} />
               ) : (
