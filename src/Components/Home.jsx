@@ -15,6 +15,7 @@ import LOGO from "../Images/Genral/LOGO.png";
 import Footer from "./Footer";
 import PdfListPage from "./PdfListPage";
 import ClassInfo from "./ClassInfo";
+import ErrorPage from "./ErrorPage";
 
 
 function Home() {
@@ -23,6 +24,8 @@ function Home() {
   useEffect(() => {
     closeDrawerAfterDelay(isDrawerOpen, setIsDrawerOpen);
   }, [isDrawerOpen]);
+
+  const user=localStorage.getItem("userType");
 
   const isLargeScreen = window.innerWidth >= 768; // Adjust the breakpoint as needed
 
@@ -89,10 +92,13 @@ function Home() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<About />} />
           <Route path="/notice" element={<Notice />} />
+          {user==='Admin'?
           <Route path="/notice-uploader" element={<MasterUploader />} />
+          :null}
           <Route path="/contact" element={<Contact />} />
           <Route path="/downloads" element={<PdfListPage />} />
           <Route path="/classes" element={<ClassInfo />} />
+          <Route path="/*" element={<ErrorPage/>} />
 
 
     <Route path="/login" element={<LoginPage />} />

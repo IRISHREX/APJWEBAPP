@@ -10,7 +10,7 @@ import createSagaMiddleware from 'redux-saga';
 import "tailwindcss/base.css";
 import "tailwindcss/components.css";
 import "tailwindcss/utilities.css";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter} from "react-router-dom";
 import { applyMiddleware, createStore } from "redux";
 import rootSaga from "./Redux/Saga/rootSaga";
 import { Provider } from "react-redux";
@@ -22,14 +22,14 @@ sagaMiddleWare.run(rootSaga)
 
 
 ReactDOM.render(
-  <Router>
+  <BrowserRouter>
         <Provider store={store}>
 
       <App />
     ,
     </Provider>
 
-  </Router>,
+  </BrowserRouter>,
   document.getElementById("root")
 );
 
