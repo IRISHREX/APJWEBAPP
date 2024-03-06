@@ -39,7 +39,7 @@ function HomePage() {
   };
 
   return (
-    <div>
+    <div style={{background:'rgba(252, 157, 5, 0.2)'}}>
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <div className="marquee">
@@ -58,7 +58,7 @@ function HomePage() {
 
       <Grid container spacing={2} className={background}>
         {cardData.map((card, index) => (
-          <Grid item xs={12} sm={6} xl={4} key={index}>
+          <Grid item xs={12} sm={6} xl={4} key={card.id}>
             <Card variant="outlined" className="about-us-card">
               <Grid container>
                 {card.id !== 2 ? (

@@ -46,8 +46,8 @@ const CarouselComponent = () => {
   };
 
   return (
-    <div>
-      <Carousel {...carouselSettings}>
+    <div style={{border:'solid 0.03 rem transparent',borderRadius:'31% 69% 15% 85% / 10% 100% 0% 90%  ',overflow:"hidden", background:"rgba(124, 252, 5, 0.3)",paddingTop:'1rem'}}>
+      <Carousel {...carouselSettings} >
         {carouselData.map((item, index) => (
           <div key={index}>
             <div style={containerStyle}>
