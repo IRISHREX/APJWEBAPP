@@ -19,7 +19,7 @@ function TopMostBar() {
   const userType = localStorage.getItem("userType");
   // console.log('userType',userType)
   useEffect(() => {
-    if (userType === "admin" || userType !== null) {
+    if (userType && userType === "admin") {
       setIsHidden(true);
     }
   }, [userType]);
@@ -35,26 +35,26 @@ function TopMostBar() {
   return (
     <AppBar
       position="static"
-      style={{ backgroundColor: "transparent", boxShadow: "none", 
-      border: "4px solid rgba(0, 188, 0, 0.7)", // Green border
-      borderTop: "4px solid rgba(255, 0, 0, 0.7)", // Red top border
-      borderBottom: "4px solid rgba(0, 0, 255, 0.7)", // Blue bottom border
-   
-    }}
+      style={{
+        backgroundColor: "transparent",
+        boxShadow: "none",
+        border: "4px solid rgba(0, 188, 0, 0.7)", // Green border
+        borderTop: "4px solid rgba(255, 0, 0, 0.7)", // Red top border
+        borderBottom: "4px solid rgba(0, 0, 255, 0.7)", // Blue bottom border
+      }}
     >
       <Toolbar>
         <Grid container alignItems="center">
           <Grid item>
-          <a href="https://apjec.org/"  rel="noreferrer">
-
-            <img
-              src={LOGO}
-              alt="Logo"
-              style={{
-                maxWidth: "150px", // Adjust the maxWidth as needed
-                height: "auto",
-              }}
-            />
+            <a href="https://apjec.org/" rel="noreferrer">
+              <img
+                src={LOGO}
+                alt="Logo"
+                style={{
+                  maxWidth: "150px", // Adjust the maxWidth as needed
+                  height: "auto",
+                }}
+              />
             </a>
           </Grid>
           <Grid item>
@@ -95,23 +95,6 @@ function TopMostBar() {
             Notice
           </Link>
 
-          {isHidden ? (
-            <Link
-              to="/login"
-              className={
-                location.pathname === "/login"
-                  ? "neon-link active"
-                  : "neon-link"
-              }
-              style={linkStyle("/login")}
-            >
-              <AccountCircleIcon sx={{ marginRight: "5px" }} />
-              Login
-            </Link>
-          ) : (
-            <></>
-          )}
-
           <Link
             to="/about"
             className={
@@ -123,29 +106,29 @@ function TopMostBar() {
             About
           </Link>
           <Link
-              to="/downloads"
-              className={
-                location.pathname === "/downloads"
-                  ? "neon-link active"
-                  : "neon-link"
-              }
-              style={linkStyle("/notice-uploader")}
-            >
-              <Download sx={{ marginRight: "5px" }} />
-              Downloads
-            </Link>
-            <Link
-              to="/classes"
-              className={
-                location.pathname === "/classes"
-                  ? "neon-link active"
-                  : "neon-link"
-              }
-              style={linkStyle("/credential-manager")}
-            >
-              <School sx={{ marginRight: "5px" }} />
-Classes
-            </Link>
+            to="/downloads"
+            className={
+              location.pathname === "/downloads"
+                ? "neon-link active"
+                : "neon-link"
+            }
+            style={linkStyle("/notice-uploader")}
+          >
+            <Download sx={{ marginRight: "5px" }} />
+            Downloads
+          </Link>
+          <Link
+            to="/classes"
+            className={
+              location.pathname === "/classes"
+                ? "neon-link active"
+                : "neon-link"
+            }
+            style={linkStyle("/credential-manager")}
+          >
+            <School sx={{ marginRight: "5px" }} />
+            Classes
+          </Link>
           <Link
             to="/contact"
             className={
@@ -190,7 +173,16 @@ Classes
           ) : (
             <></>
           )}
-
+          <Link
+            to="/login"
+            className={
+              location.pathname === "/login" ? "neon-link active" : "neon-link"
+            }
+            style={linkStyle("/login")}
+          >
+            <AccountCircleIcon sx={{ marginRight: "5px" }} />
+            Login
+          </Link>
         </div>
       </Toolbar>
     </AppBar>

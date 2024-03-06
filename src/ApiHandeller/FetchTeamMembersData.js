@@ -14,6 +14,7 @@ const fetchTeamMembersData = async () => {
       imageSrc: member.avatar,
       role: member.role,
       team: member.team,
+      email:member.email,
       description: member.description,
       socialLinks: member.socialLinks,
     }));
@@ -26,12 +27,34 @@ const fetchTeamMembersData = async () => {
   }
 };
 
-const updateTeamMember = async (id, updatedData) => {
+const fetchTeamMembersDataByEmail = async (email) => {
+  console.log(email)
   try {
-    console.log('Updating team member with ID:', id);
+    const response = await axios.get(`http://localhost:5000/api/users/${email}`);
+    // const teamMembers = response.data.map((member) => ({
+    //   id:member.id,
+    //   name: member.username,
+    //   imageSrc: member.avatar,
+    //   role: member.role,
+    //   team: member.team,
+    //   description: member.description,
+    //   socialLinks: member.socialLinks,
+    // }));
+
+    console.log('teamMembers:', response);
+    return response?.data[0];
+  } catch (error) {
+    console.error('Error fetching team members data:', error);
+    return [];
+  }
+};
+
+const updateTeamMember = async (email, updatedData) => {
+  try {
+    console.log('Updating team member with ID:', email);
     console.log('Updated data:', updatedData);
 
-    const response = await axios.put(`${baseUrl}/${id}`, updatedData, {
+    const response = await axios.put(`${baseUrl}/${email}`, updatedData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -65,6 +88,7 @@ const getTeamMemberById = async (id) => {
       imageSrc: response.data.avatar,
       role: response.data.role,
       team: response.data.team,
+      email:response.data.email,
       description: response.data.description,
       socialLinks: response.data.socialLinks,
       id: response.data.id,
@@ -78,4 +102,4 @@ const getTeamMemberById = async (id) => {
   }
 };
 
-export { fetchTeamMembersData, updateTeamMember, deleteTeamMember, getTeamMemberById };
+export { fetchTeamMembersData, updateTeamMember, deleteTeamMember, getTeamMemberById ,fetchTeamMembersDataByEmail};

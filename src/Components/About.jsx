@@ -173,9 +173,9 @@ const About = () => {
     fetchMembers();
   }, []);
 
-  const handleUpdate = async (id, updatedData) => {
+  const handleUpdate = async (email, updatedData) => {
     try {
-      await updateTeamMember(id, updatedData);
+      await updateTeamMember(email, updatedData);
       await fetchTeamMembersData(); // Refresh data
       toast.success("Member updated successfully!");
     } catch (error) {

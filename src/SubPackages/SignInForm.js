@@ -44,7 +44,7 @@ const SignInForm = ({ formData, handleChange, handleSubmit }) => (
         onChange={handleChange}
         required
       >
-        <MenuItem value="admin">Admin</MenuItem>
+        <MenuItem value="admin" >Admin</MenuItem>
         <MenuItem value="employee">Employee</MenuItem>
         <MenuItem value="student">Student</MenuItem>
       </Select>

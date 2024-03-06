@@ -4,10 +4,10 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import {
-  LinkedIn,
-  Twitter,
+
   Edit as EditIcon,
   Delete as DeleteIcon,
+  Mail,
 } from "@mui/icons-material";
 import {
   avatarStyles,
@@ -19,14 +19,12 @@ import { Avatar } from "@mui/material";
 
 const AboutCard = ({ member, onUpdate, onDelete, onGetById }) => {
   const {
-    id,
     name = "",
     role = "",
     description = "",
     imageSrc = "",
-    socialLinks = {},
+    email="",
   } = member;
-  const { linkedin = "", twitter = "" } = socialLinks || {};
 
   const [isUpdateFormOpen, setUpdateFormOpen] = useState(false);
 
@@ -39,7 +37,7 @@ const AboutCard = ({ member, onUpdate, onDelete, onGetById }) => {
   const handleDelete = () => {
     try {
       if (userType === "admin") {
-        onDelete(id);
+        onDelete(email);
         console.log("Deleted");
       } else {
         console.log("Permission denied: User is not admin");
@@ -51,14 +49,14 @@ const AboutCard = ({ member, onUpdate, onDelete, onGetById }) => {
 
   const handleGetById = () => {
     try {
-      onGetById(id);
+      onGetById(email);
     } catch (error) {
       console.error("Fetch by ID failed:", error);
     }
   };
 
   const handleFormUpdate = (updatedData) => {
-    onUpdate(id, updatedData);
+    onUpdate(email, updatedData);
     setUpdateFormOpen(false);
   };
 
@@ -77,30 +75,19 @@ const AboutCard = ({ member, onUpdate, onDelete, onGetById }) => {
         </Typography>
 
         <div style={{ textAlign: "center", marginTop: "15px" }}>
-          {linkedin && (
             <IconButton
               component="a"
-              href={linkedin}
+              go={email}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <LinkedIn />
+              <Mail />
             </IconButton>
-          )}
-          {twitter && (
-            <IconButton
-              component="a"
-              href={twitter}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Twitter />
-            </IconButton>
-          )}
+
 
           {userType === "admin" && (
             <>
-              <IconButton onClick={handleUpdate}>
+              <IconButton onClick={()=>handleUpdate(email)}>
                 <EditIcon />
               </IconButton>
               <IconButton onClick={handleDelete}>

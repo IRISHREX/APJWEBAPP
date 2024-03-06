@@ -24,11 +24,13 @@ const UpdateForm = ({ member, onUpdate, closeUpdateForm }) => {
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
-
+file?
     setFormData((prevData) => ({
       ...prevData,
       avatar: file,
-    }));
+    })):
+    console.log("NO IMAGE PROVIDED")
+    ;
   };
 
   const handleUpdate = () => {
@@ -76,6 +78,7 @@ const UpdateForm = ({ member, onUpdate, closeUpdateForm }) => {
                   id={field.name}
                   type="file"
                   name={field.name}
+                  // placeholder={field.name}
                   onChange={field.onChange}
                 />
                 <label htmlFor={field.name}>

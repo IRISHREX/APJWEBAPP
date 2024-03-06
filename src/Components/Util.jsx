@@ -7,7 +7,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import TableChartIcon from "@mui/icons-material/TableChart";
 import AssessmentIcon from "@mui/icons-material/Assessment";
 import NoticeIcon from "@mui/icons-material/Notifications";
-import LoginIcon from "@mui/icons-material/Login";
+// import AccountCircleIcon from "@mui/icons-material/AccountCircleIcon";
 import AboutIcon from "@mui/icons-material/Info";
 import ContactIcon from "@mui/icons-material/ContactMail";
 import NoticeUploaderIcon from "@mui/icons-material/CloudUpload";
@@ -20,6 +20,10 @@ import {
   Typography,
 } from "@mui/material";
 import { Link } from "react-router-dom";
+import aboutUsImage from "../Images/Genral/S1.jpg";
+import missionImage from "../Images/Genral/S4.jpg";
+import courseOfferImage from "../Images/Genral/S3.jpg";
+import { AccountCircleOutlined } from "@mui/icons-material";
 
 //convert Excel To Json data
 export const convertExcelToJson = (file, onSuccess, onError) => {
@@ -282,7 +286,7 @@ export const sidebarIcons = {
   Table: <TableChartIcon />,
   Analysis: <AssessmentIcon />,
   Notice: <NoticeIcon />,
-  Login: <LoginIcon />,
+  Login: <AccountCircleOutlined style={{color:"red"}} />,
   About: <AboutIcon />,
   Contact: <ContactIcon />,
   "Notice Uploader": <NoticeUploaderIcon />,
@@ -373,4 +377,27 @@ export const gradientColors = [
   "linear-gradient(to bottom, #4286f4, #0063b3)",
   "linear-gradient(to bottom, #ff8a00, #ff0033)",
   "linear-gradient(to bottom, #36a985, #00754f)",
+];
+ export const cardData = [
+  {
+    id: 1,
+    title: "About Us ",
+    description:
+      "The APJ Abdul Kalam  Education Center was established on October 15, 2022, the anniversary of APJ Abdul Kalam's birth, by the Universal Human Foundation (A trust registered under the Indian Trust Act 1982). Our organization aims to provide deserving Bengali students with free and top-notch education who lack access to resources like high-quality study guides and other essential tools for passing university admission exams.",
+    image: aboutUsImage,
+  },
+  {
+    id: 2,
+    title: "Our Mission",
+    description:   "At our core, we're driven by a mission to bridge educational disparities. Inspired by the visionary words of Dr. APJ Abdul-Kalam, we strive to empower disadvantaged students across West Bengal and India to excel in university entrance exams. Our comprehensive platform offers personalized guidance and support, ensuring that every individual, regardless of their background, has an equal opportunity to succeed in their academic pursuits. Join us in our commitment to democratize education and unlock the potential of every student.",
+
+    image: missionImage,
+  },
+  {
+    id: 3,
+    title: "Course Offers",
+    description:
+      "As previously indicated, the coaching sessions are a component of this institution's mission to give deserving and diligent students from underprivileged backgrounds, particularly those from West Bengal, the chance to pursue careers at prestigious universities in a variety of fields.",
+    image: courseOfferImage,
+  },
 ];

@@ -38,15 +38,17 @@
   }
 }
 .marqueeText {
-  font-family: 'Pacifico', cursive;
-  background: linear-gradient(to right,#e8b2b2, #74bef0, #b3db16); /* Vibrant color gradient */
-  color: rgba(94, 2, 36, 0.9); /* Font color for better visibility */
+  font-family: "Caveat", cursive;
+  background: linear-gradient(to right,#fdfdfd, #f7c1b5, #d8b7ff); /* Vibrant color gradient */
+  color: rgba(40, 3, 249, 0.9); /* Font color for better visibility */
+  font-weight: 900;
   display: inline-block; /* Ensures the gradient covers the entire text */
-  /* padding: 2rem; Add some padding for a stylish look */
-  filter: drop-shadow(0 0 5px #df699a) drop-shadow(0 0 10px #f2efeb) drop-shadow(0 0 25px #eeaaf2);
+  filter:  drop-shadow(0 0 10px #8fdbf9) drop-shadow(0 0 25px #eddfee);
   border-radius:35%;
   text-align: center;
 }
+
+
 .marquee {
   overflow: hidden;
   position: relative;
@@ -69,6 +71,17 @@
   background:radial-gradient(circle, rgb(57, 12, 73) 0%, rgb(208, 8, 148) 18%, rgb(2, 11, 38) 32%, rgba(194,180,217,1) 49%, rgba(148,187,233,0.978203781512605) 100%);
 }
 
+.textWhite{
+    color: white;
+    font-family: cursive;
+    text-shadow: -1px 0 0 black, 0 1px 0 black, 1px 0 0 black, 0 -1px 0 black; /* Creates black outline */
+}
+.textPurple{
+  color: rgb(107, 219, 15);
+  font-family: cursive;
+  text-shadow: -1px 0 0 rgb(248, 246, 246), 0 1px 0 black, 1px 0 0 black, 0 -1px 0 rgb(244, 9, 9); /* Creates black outline */
+}
+
 .HomeEmages{
 width: 90%;
 height: 90%;
@@ -77,10 +90,20 @@ padding-left: 11%;
 border-radius:10% 40% 5%;
   float: left;
 }
-
+.HomeEmagesvarient{
+  width: 90%;
+  height: 90%;
+  margin-top: 3%;
+  border-radius:40% 0% 40% 5%;
+    float: left;
+  }
 .Decription{
   float: left;
-  background-color: rgba(228, 131, 131, 0.3);
+  background-color: rgb(249, 220, 220);
+  color: #046bd2;
+  font-family: "Caveat", cursive;
+  font-weight: 850;
+  line-height: 1.5em;
 
 }
 .downLoadButton{
@@ -120,16 +143,69 @@ border-radius:10% 40% 5%;
 
   /* Styles for small devices */
   .HomeEmages {
-      width: 100%; 
-      height: 50%; 
-      margin-top: 5%; 
-      padding-left: 5%; 
-      border-radius: 5%; 
-
-  
-  }
+    width: 80%;
+    height: 90%;
+    margin-top: 3%;
+    border-radius:40% 0% 40% 5%;
+      /* float: right; */
+      padding-right: 3%;
+    }
+    .HomeEmagesvarient {
+      width: 80%;
+      height: 90%;
+      margin-top: 3%;
+      border-radius:40% 0% 40% 5%;
+      margin-left: 10%;
+        /* float: right; */
+        padding-right: 3%;
+      }
   .Decription{
     background-color: rgba(230, 249, 13, 0.3);
+    overflow: scroll;
   }
 
 }
+/* // <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 400 to 700 */
+
+.lora-x {
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+
+/*======================
+    404 page
+=======================*/
+
+
+.page_404{ padding:40px 0; background:#fff; font-family: 'Arvo', serif;
+}
+
+.page_404  img{ width:100%;}
+
+.four_zero_four_bg{
+ 
+ background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+    height: 400px;
+    background-position: center;
+ }
+ 
+ 
+ .four_zero_four_bg h1{
+ font-size:80px;
+ }
+ 
+  .four_zero_four_bg h3{
+			 font-size:80px;
+			 }
+			 
+			 .link_404{			 
+	color: #fff!important;
+    padding: 10px 20px;
+    background: #39ac31;
+    margin: 20px 0;
+    display: inline-block;}
+	.contant_box_404{ margin-top:-50px;}
