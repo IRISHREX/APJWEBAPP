@@ -117,7 +117,7 @@ const LoginPage = () => {
       toast.success(`Sign-up successful -> ${response[0]?.email} `);
     } catch (error) {
       console.error(error.message);
-      toast.error("Error during sign-up");
+      toast.error(`Error signing up -> ${error.message} try again with  different details`);
     }
   };
 

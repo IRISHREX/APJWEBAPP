@@ -90,16 +90,13 @@ const Sidebar = () => {
           ) : (
             <></>
           )}
-          {isHidden ? (
             <SidebarItem
               to="/login"
               text="Login"
               icon={sidebarIcons.Login}
               isActive={location.pathname === "/login"}
             />
-          ) : (
-            <></>
-          )}
+        
         </List>
    
       </div>

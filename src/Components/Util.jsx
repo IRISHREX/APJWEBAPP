@@ -7,7 +7,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import TableChartIcon from "@mui/icons-material/TableChart";
 import AssessmentIcon from "@mui/icons-material/Assessment";
 import NoticeIcon from "@mui/icons-material/Notifications";
-import LoginIcon from "@mui/icons-material/Login";
+// import AccountCircleIcon from "@mui/icons-material/AccountCircleIcon";
 import AboutIcon from "@mui/icons-material/Info";
 import ContactIcon from "@mui/icons-material/ContactMail";
 import NoticeUploaderIcon from "@mui/icons-material/CloudUpload";
@@ -23,6 +23,7 @@ import { Link } from "react-router-dom";
 import aboutUsImage from "../Images/Genral/S1.jpg";
 import missionImage from "../Images/Genral/S4.jpg";
 import courseOfferImage from "../Images/Genral/S3.jpg";
+import { AccountCircleOutlined } from "@mui/icons-material";
 
 //convert Excel To Json data
 export const convertExcelToJson = (file, onSuccess, onError) => {
@@ -285,7 +286,7 @@ export const sidebarIcons = {
   Table: <TableChartIcon />,
   Analysis: <AssessmentIcon />,
   Notice: <NoticeIcon />,
-  Login: <LoginIcon />,
+  Login: <AccountCircleOutlined style={{color:"red"}} />,
   About: <AboutIcon />,
   Contact: <ContactIcon />,
   "Notice Uploader": <NoticeUploaderIcon />,

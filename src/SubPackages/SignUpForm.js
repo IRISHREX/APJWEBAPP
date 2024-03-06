@@ -69,7 +69,7 @@ const SignUpForm = ({
             onChange={handleChange}
             required
           >
-            <MenuItem value="admin">Admin</MenuItem>
+            <MenuItem value="admin" disabled>Admin</MenuItem>
             <MenuItem value="employee">Employee</MenuItem>
             <MenuItem value="student">Student</MenuItem>
           </Select>
@@ -117,6 +117,8 @@ const SignUpForm = ({
             <MenuItem value="members">Members</MenuItem>
             <MenuItem value="cordTeam">CordTeam</MenuItem>
             <MenuItem value="mockTeam">mockTeam</MenuItem>
+            <MenuItem value="developer" disabled>Devs</MenuItem>
+            <MenuItem value="students" disabled>students</MenuItem>
           </Select>
         </FormControl>
       </Grid>

@@ -20,7 +20,6 @@ const SignInForm = ({ formData, handleChange, handleSubmit }) => (
           name="username"
           value={formData.username}
           onChange={handleChange}
-          
           required
         />
       </Grid>
@@ -31,9 +30,7 @@ const SignInForm = ({ formData, handleChange, handleSubmit }) => (
           fullWidth
           type="password"
           name="password"
-          
           value={formData.password}
-      
           onChange={handleChange}
           required
         />
@@ -47,7 +44,7 @@ const SignInForm = ({ formData, handleChange, handleSubmit }) => (
         onChange={handleChange}
         required
       >
-        <MenuItem value="admin">Admin</MenuItem>
+        <MenuItem value="admin" >Admin</MenuItem>
         <MenuItem value="employee">Employee</MenuItem>
         <MenuItem value="student">Student</MenuItem>
       </Select>
