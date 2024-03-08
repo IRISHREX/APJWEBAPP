@@ -39,12 +39,11 @@
 }
 .marqueeText {
   font-family: "Caveat", cursive;
-  background: linear-gradient(to right,#fdfdfd, #f7c1b5, #d8b7ff); /* Vibrant color gradient */
-  color: rgba(40, 3, 249, 0.9); /* Font color for better visibility */
+  color: rgba(249, 3, 3, 0.9); /* Font color for better visibility */
   font-weight: 900;
   display: inline-block; /* Ensures the gradient covers the entire text */
-  filter:  drop-shadow(0 0 10px #8fdbf9) drop-shadow(0 0 25px #eddfee);
   border-radius:35%;
+  font-size: larger;
   text-align: center;
 }
 
@@ -52,7 +51,8 @@
 .marquee {
   overflow: hidden;
   position: relative;
-  animation: marquee 20s linear infinite;
+  animation: marquee 20s ease-in infinite;
+  font-family: "Caveat", cursive;
 }
 
 @keyframes marquee {
@@ -62,6 +62,10 @@
 
   100% {
     transform: translateX(-100%);
+  }
+
+  0% {
+    transform: translateX(100%);
   }
 }
 .BackGroundThame{ 

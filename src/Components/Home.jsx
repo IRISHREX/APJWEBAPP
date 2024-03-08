@@ -25,7 +25,7 @@ function Home() {
     closeDrawerAfterDelay(isDrawerOpen, setIsDrawerOpen);
   }, [isDrawerOpen]);
 
-  const user=localStorage.getItem("userType");
+  const user = localStorage.getItem("userType");
 
   const isLargeScreen = window.innerWidth >= 768; // Adjust the breakpoint as needed
 
@@ -38,25 +38,25 @@ function Home() {
           <Grid padding={2}>
             <MenuIcon
               onClick={() => toggleDrawer(isDrawerOpen, setIsDrawerOpen)}
-              style={{ cursor: "pointer" , position:"fixed" }}
+              style={{ cursor: "pointer", position: "fixed" }}
               className="neon-top-bar"
             />
-            <Typography className="neon-text" style={{position:"fixed", marginLeft:"1.5rem"}}>MENU</Typography>
+            <Typography className="neon-text" style={{ position: "fixed", marginLeft: "1.5rem" }}>MENU</Typography>
           </Grid>
           <Grid container alignItems="center">
             <Grid item>
-            <a href="https://apjec.org/" target="_blank" rel="noreferrer">
+              <a href="https://apjec.org/" target="_blank" rel="noreferrer">
 
-              <img
-                src={LOGO}
-                alt="Logo"
-                style={{
-                  maxWidth: "150px", // Adjust the maxWidth as needed
-                  height: "auto",
-                }}
+                <img
+                  src={LOGO}
+                  alt="Logo"
+                  style={{
+                    maxWidth: "150px", // Adjust the maxWidth as needed
+                    height: "auto",
+                  }}
 
-              />
-                            </a>
+                />
+              </a>
 
             </Grid>
             <Grid item>
@@ -92,16 +92,16 @@ function Home() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<About />} />
           <Route path="/notice" element={<Notice />} />
-          {user==='Admin'?
-          <Route path="/notice-uploader" element={<MasterUploader />} />
-          :null}
+          {user === 'Admin' ?
+            <Route path="/notice-uploader" element={<MasterUploader />} />
+            : null}
           <Route path="/contact" element={<Contact />} />
           <Route path="/downloads" element={<PdfListPage />} />
           <Route path="/classes" element={<ClassInfo />} />
-          <Route path="/*" element={<ErrorPage/>} />
+          <Route path="/*" element={<ErrorPage />} />
 
 
-    <Route path="/login" element={<LoginPage />} />
+          <Route path="/login" element={<LoginPage />} />
 
 
         </Routes>

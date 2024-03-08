@@ -1,5 +1,6 @@
 // SignUpForm.jsx
 import React from "react";
+
 import {
   Button,
   Grid,
@@ -9,6 +10,10 @@ import {
   Select,
   MenuItem,
 } from "@mui/material";
+import ProfilePIc from "./ProfilePic/ProfilePic";
+import './SignUpForm.css';
+
+
 
 const SignUpForm = ({
   formData,
@@ -17,11 +22,16 @@ const SignUpForm = ({
   handleSubmit,
   loading,
 }) => (
+  
+  
   <form
     onSubmit={handleSubmit}
     encType="multipart/form-data"
     style={{ width: "100%", marginTop: 2 }}
   >
+    
+    
+    
     <Grid container spacing={2}>
       <Grid item xs={12}>
         <TextField
@@ -74,9 +84,13 @@ const SignUpForm = ({
             <MenuItem value="student">Student</MenuItem>
           </Select>
         </FormControl>
-      </Grid>
-      <Grid item xs={12}>
+      </Grid>     
+      {/* avatar  - ............................................................................    */}
         {/* Add the Avatar component or file input for avatar upload */}
+      
+     
+      {/* <Grid item xs={12}>
+       
         <input
           accept="image/*"
           style={{ display: "none" }}
@@ -86,6 +100,8 @@ const SignUpForm = ({
           onChange={(e) => handleFileChange(e.target.files[0])}
            required
         />
+       
+       
         <label htmlFor="avatar">
           <Button
             component="span"
@@ -103,7 +119,21 @@ const SignUpForm = ({
             style={{ maxWidth: "100%", marginTop: "10px" }}
           />
         )}
-      </Grid>
+      </Grid> */}
+
+    
+
+
+
+
+
+      {/* .................................................................... */}
+
+<Grid className="profile-pic" item xs={12}>
+
+<ProfilePIc></ProfilePIc> 
+
+</Grid>
 
       <Grid item xs={12}>
         <FormControl variant="outlined" fullWidth>
