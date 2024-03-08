@@ -11,6 +11,8 @@ import {
 import CarouselComponent from "./CarouselComponent";
 import Faq from "./Faq";
 
+import './HomePage.css';
+
 import { fetchNoticeData } from "../SubPackages/FetchNoticeData";
 import { cardData } from "./Util";
 
@@ -40,7 +42,8 @@ function HomePage() {
 
   return (
     <div style={{background:'rgba(252, 157, 5, 0.2)'}}>
-      <Grid container spacing={2}>
+      
+      {/* <Grid container spacing={2}>
         <Grid item xs={12}>
           <div className="marquee">
             <h5 className="marqueeText">
@@ -54,7 +57,25 @@ function HomePage() {
         <Grid item xs={12}>
           <CarouselComponent />
         </Grid>
+      </Grid> */}
+
+<Grid container spacing={2}>
+      <Grid item xs={12}>
+        <div className="marquee">
+          <Typography variant="h5" className="marqueeText">
+            <strong>NOTICE:</strong>{" "}
+            {GenralNotice
+              ? GenralNotice
+              : "New batch for B.A.L.L.B entrance for Calcutta University (CULET) starting. Payment details on Google Form. Visit our WhatsApp group by clicking 'See More' in Notice Page."}
+          </Typography>
+        </div>
       </Grid>
+      <Grid item xs={12}>
+        <CarouselComponent />
+      </Grid>
+    </Grid>
+    
+
 
       <Grid container spacing={2} className={background}>
         {cardData.map((card, index) => (

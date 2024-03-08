@@ -7,8 +7,8 @@ import SLIDE4 from "../Images/Genral/SLIDE4.jpeg";
 const NoticeData = [
   {
     id:0,
-    title:"Total Seats-80 NEWANNOUNCEMENT",
-    description:"NEW BATCH FOR B.A.L.L.BENTRANCE FOR CalcuttaUniversity(CULET) starting, Payment details on google form ,Visit Our Whats APP group by clicking see More...",
+    title:"Total Seats-80 NEWANNONEWUNCEMENT",
+    description:" BATCH FOR B.A.L.L.BENTRANCE FOR CalcuttaUniversity(CULET) starting, Payment details on google form ,Visit Our Whats APP group by clicking see More...",
     link: "https://chat.whatsapp.com/JzXepuhNVEB1JnT0Qq93Sv",
   },
   {
