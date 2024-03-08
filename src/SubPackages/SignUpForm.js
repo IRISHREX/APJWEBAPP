@@ -84,6 +84,7 @@ const SignUpForm = ({
           type="file"
           name="avatar"
           onChange={(e) => handleFileChange(e.target.files[0])}
+           required
         />
         <label htmlFor="avatar">
           <Button
@@ -113,6 +114,7 @@ const SignUpForm = ({
             id="team"
             value={formData.team}
             onChange={handleChange}
+              required
           >
             <MenuItem value="members">Members</MenuItem>
             <MenuItem value="cordTeam">CordTeam</MenuItem>
@@ -132,6 +134,8 @@ const SignUpForm = ({
           name="description"
           value={formData.description}
           onChange={handleChange}
+         required
+
         />
       </Grid>
       <Grid item xs={12}>
@@ -143,6 +147,8 @@ const SignUpForm = ({
             id="role"
             value={formData.role}
             onChange={handleChange}
+          required
+
           >
             <MenuItem value="faculty">Faculty</MenuItem>
             <MenuItem value="student">Student</MenuItem>
