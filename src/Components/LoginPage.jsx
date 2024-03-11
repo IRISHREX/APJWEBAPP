@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import {
   Container,
@@ -27,23 +28,18 @@ import { descriptionStyles } from "./Util";
 
 const LoginPage = () => {
   const [loggedInUser, setLoggedInUser] = useState(null);
-
   const [showMore, setshowMore] = useState(false);
 
   useEffect(() => {
-    // const userType = localStorage.getItem('userType');
     const res = localStorage.getItem("userData");
     res ? setLoggedInUser(JSON.parse(res)) : setLoggedInUser(null);
-
-    // console.log('userData:-',userData)
   }, []);
-  console.log("loggedInUser->", loggedInUser);
 
   const [signInFormData, setSignInFormData] = useState({
     username: "",
     password: "",
     userType: "",
-    email:"",
+    email: "",
   });
 
   const [signUpFormData, setSignUpFormData] = useState({
@@ -54,8 +50,6 @@ const LoginPage = () => {
   });
 
   const [showSignUpDialog, setShowSignUpDialog] = useState(false);
-
-  useEffect(() => {}, []);
 
   const handleFileChange = (file) => {
     setSignUpFormData({
@@ -86,25 +80,15 @@ const LoginPage = () => {
       const { userType, accessToken, userEmail, user } = await signInUser(
         signInFormData
       );
-      console.log(userType);
-      console.log("userEmail:-", userEmail);
-      console.log("user:-", user);
-
       setLoggedInUser({ userType });
       localStorage.setItem("userType", userType);
       localStorage.setItem("bearerToken", accessToken);
-      // localStorage.setItem( "email" , userEmail );
       toast.success("Sign-in successful");
-      // const email=localStorage.getItem("email");
-      let res=await fetchTeamMembersDataByEmail(userEmail)
-      
+      let res = await fetchTeamMembersDataByEmail(userEmail);
       setLoggedInUser(res);
-      //must Stringyfy
       localStorage.setItem("userData", JSON.stringify(res));
-
-
     } catch (error) {
-      console.error("error",error.message);
+      console.error("error", error.message);
       toast.error("Invalid credentials");
     }
   };
@@ -112,12 +96,32 @@ const LoginPage = () => {
   const handleSignUpSubmit = async (e) => {
     e.preventDefault();
     try {
+      // Validation for name
+      if (!signUpFormData.username.trim() || /\d/.test(signUpFormData.username)) {
+        toast.error("Name field shouldn't be empty and must not contain any numbers.");
+        return;
+      }
+
+      // Validation for email
+      if (!signUpFormData.email.trim() || !signUpFormData.email.includes("@") || !signUpFormData.email.endsWith("@gmail.com")) {
+        toast.error("Email field must not be empty and should contain a valid Gmail address.");
+        return;
+      }
+
+      // Validation for password
+      if (!signUpFormData.password.trim() || signUpFormData.password.length < 4 || signUpFormData.password.length > 8 ||
+          !/[A-Z]/.test(signUpFormData.password) || !/[a-z]/.test(signUpFormData.password) ||
+          !/\d/.test(signUpFormData.password) || !/[^a-zA-Z0-9]/.test(signUpFormData.password)) {
+        toast.error("Password field must not be empty and should consist of 4-8 characters, including at least one uppercase letter, one lowercase letter, one special character, and one number.");
+        return;
+      }
+
       const response = await signUpUser(signUpFormData);
       console.log("Sign-up successful:", response);
       toast.success(`Sign-up successful -> ${response[0]?.email} `);
     } catch (error) {
       console.error(error.message);
-      toast.error(`Error signing up -> ${error.message} try again with  different details`);
+      toast.error(`Error signing up -> ${error.message} try again with different details`);
     }
   };
 
@@ -130,8 +134,6 @@ const LoginPage = () => {
     localStorage.removeItem("bearerToken");
     localStorage.removeItem("userType");
     localStorage.removeItem("userData");
-
-
   };
 
   return (
@@ -213,15 +215,15 @@ const LoginPage = () => {
               <Typography>LOG-OUT</Typography>
             </CardContent>
 
-            {/* onLogout={handleLogout}
-            onUpdateProfile={handleUpdateProfile} */}
           </Card>
         ) : (
           <>
             <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
               <LockOutlinedIcon />
             </Avatar>
-            <Typography component="h1" variant="h5">
+            <
+
+Typography component="h1" variant="h5">
               Sign In
             </Typography>
             <SignInForm
