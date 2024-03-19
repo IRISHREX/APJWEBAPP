@@ -74,7 +74,7 @@ function HomePage() {
                           <h4>{card.title}</h4>
                         </Slide>
                         <Fade in={true} timeout={1000}>
-                        <p className="Decription">{card.description.slice(0,400)}</p>
+                        <p className="Decription">{card.description}</p>
 
                         </Fade>
 
@@ -124,7 +124,7 @@ function HomePage() {
                         </Slide>
                         <Fade in={true} timeout={1000}>
 
-                            <p className="Decription">{card.description.slice(0,400)}</p>
+                            <p className="Decription">{card.description}</p>
                         </Fade>
                         {index === 2 && (
                           <Button
