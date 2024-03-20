@@ -16,7 +16,7 @@ import {
   Delete as DeleteIcon,
   Refresh as RefreshIcon,
 } from "@mui/icons-material";
-import { createNoticeData } from "./FetchNoticeData";
+import { createNoticeData } from "../ApiHandeller/NoticeApis";
 
 const localUrl = "http://localhost:5000/api/noticeData";
 const productionUrl =

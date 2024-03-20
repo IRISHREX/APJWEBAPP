@@ -4,7 +4,7 @@ const localUrl = 'http://localhost:5000/api/users';
 const productionUrl = 'https://tame-hospital-gown-mite.cyclic.app/api/users';
 
 const baseUrl = window.location.host.includes('localhost') ? localUrl : productionUrl;
-
+let token=null||localStorage.getItem("bearerToken");
 const fetchTeamMembersData = async () => {
   try {
     const response = await axios.get(baseUrl);
@@ -48,6 +48,7 @@ const updateTeamMember = async (email, updatedData) => {
     const response = await axios.put(`${baseUrl}/${email}`, updatedData, {
       headers: {
         'Content-Type': 'multipart/form-data',
+        'Authorization': `Bearer ${token}`
       },
     });
 
@@ -62,7 +63,11 @@ const updateTeamMember = async (email, updatedData) => {
 
 const deleteTeamMember = async (id) => {
   try {
-    const response = await axios.delete(`${baseUrl}/${id}`);
+    const response = await axios.delete(`${baseUrl}/${id}`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+    });
     console.log('Deleted team member:', response.data);
     return response.data;
   } catch (error) {

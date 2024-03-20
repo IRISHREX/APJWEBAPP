@@ -22,7 +22,7 @@ import SignUpForm from "../SubPackages/SignUpForm";
 import signInUser from "../ApiHandeller/SignInService";
 import signUpUser from "../ApiHandeller/SignUpService";
 import { Logout, Visibility, VisibilityOff } from "@mui/icons-material";
-import { fetchTeamMembersDataByEmail } from "../ApiHandeller/FetchTeamMembersData";
+import { fetchTeamMembersDataByEmail } from "../ApiHandeller/UserApis";
 import { descriptionStyles } from "./Util";
 
 const LoginPage = () => {

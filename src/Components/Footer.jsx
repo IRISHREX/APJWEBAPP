@@ -1,8 +1,8 @@
 import React from "react";
 import { Grid, IconButton, Typography } from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import { Google } from "@mui/icons-material";
 
 function Footer() {
   return (
@@ -26,10 +26,10 @@ function Footer() {
           Follow us on social media:
         </Typography>
         <IconButton color="primary" aria-label="Facebook" sx={{ mr: 1 }}>
-          <FacebookIcon />
+          <a href="www.facebook.com/AsifReza" ><FacebookIcon /></a>
         </IconButton>
         <IconButton color="primary" aria-label="Twitter" sx={{ mr: 1 }}>
-          <TwitterIcon />
+        <a href="BioMechasoft@gmail.com" ><Google /></a>
         </IconButton>
         <IconButton color="primary" aria-label="Instagram">
           <InstagramIcon />
@@ -57,7 +57,7 @@ function Footer() {
         <Typography variant="h5" color="whitesmoke" mt={2}>
           Phone Number:
         </Typography>
-        <Typography color="blue">+91 9609436103</Typography>
+        <Typography color="blue">+91 9002096373</Typography>
       </Grid>
     </Grid>
   );

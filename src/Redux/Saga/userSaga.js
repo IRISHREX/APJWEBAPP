@@ -1,6 +1,6 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 import { FETCHUSER, SUCCESS } from "../Actions/userAction";
-import { fetchTeamMembersData } from "../../ApiHandeller/FetchTeamMembersData";
+import { fetchTeamMembersData } from "../../ApiHandeller/UserApis";
 
 
 

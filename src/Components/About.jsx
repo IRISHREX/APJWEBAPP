@@ -10,7 +10,7 @@ import {
   deleteTeamMember,
   fetchTeamMembersData,
   updateTeamMember,
-} from "../ApiHandeller/FetchTeamMembersData";
+} from "../ApiHandeller/UserApis";
 import teamMembersData from "../SubPackages/TeamMembarData";
 // import FeatureComingSoonOverlay from "../context/FeatureComingSoonOverlay";
 

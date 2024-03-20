@@ -11,7 +11,7 @@ import {
 import CarouselComponent from "./CarouselComponent";
 import Faq from "./Faq";
 
-import { fetchNoticeData } from "../SubPackages/FetchNoticeData";
+import { fetchNoticeData } from "../ApiHandeller/NoticeApis";
 import { cardData } from "./Util";
 
 function HomePage() {

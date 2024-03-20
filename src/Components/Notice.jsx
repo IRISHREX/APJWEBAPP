@@ -28,7 +28,7 @@ import {
   fetchNoticeData,
   createNoticeData,
   deleteNoticeData,
-} from "../SubPackages/FetchNoticeData";
+} from "../ApiHandeller/NoticeApis";
 
 import NoticeUpdateForm from "../SubPackages/NoticeUpdateForm";
 import NoticeCard from "../SubPackages/NoticeCard";
