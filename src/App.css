@@ -61,9 +61,6 @@
     transform: translateX(-100%);
   }
 
-  0% {
-    transform: translateX(100%);
-  }
 }
 .BackGroundThame{ 
   background:radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(222,176,208,1) 18%, rgba(209,178,212,1) 32%, rgba(194,180,217,1) 49%, rgba(148,187,233,0.978203781512605) 100%);
