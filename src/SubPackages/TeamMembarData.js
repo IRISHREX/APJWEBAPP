@@ -7,7 +7,7 @@ import AsifReza from "../Images/TeamMembars/AsifReza.jpg";
 import MdAlkama from "../Images/TeamMembars/MdAlkama.jpg";
 import MdGolamSamdani from "../Images/TeamMembars/MdGolamSamdani.jpeg";
 import MohdKifayatullahAnsari from "../Images/TeamMembars/MohdKifayatullahAnsari.jpg";
-import SifaSuhana from "../Images/TeamMembars/SifaSuhana.jpg";
+import SifaSuhanaNoDp from "../Images/TeamMembars/SifaSuhanaNoDp.png";
 import SyedImtiazHossain from "../Images/TeamMembars/SyedImtiazHossain.jpeg";
 import SwarnaliGhosh from "../Images/TeamMembars/SwarnaliGhosh.png";
 import UzairAhmed from "../Images/TeamMembars/UzairAhmed.jpg";
@@ -67,7 +67,7 @@ const teamMembersData = [
     team: "members",
     description:
       "Sifa Suhana, a highly talented individual, is a distinguished graduate from the esteemed Faculty of Science at AMU. With an impressive academic background, Sifa has been an invaluable asset to our institution for the past two years, serving as a dedicated faculty member in the PCMB department. His commitment to excellence and passion for teaching have consistently left a lasting impact on our students. Sifa s teaching style is nothing short of captivating, effortlessly engaging and inspiring students to explore the depths of their potential. We are truly fortunate to have such a remarkable individual as a part of our team.Faculty for Math&Reasoning",
-    imageSrc: SifaSuhana, // Replace with the image source
+    imageSrc: SifaSuhanaNoDp, // Replace with the image source
     socialLinks: {
       linkedin: "https://www.linkedin.com/in/janesmith/",
       twitter: "https://twitter.com/janesmith/",
