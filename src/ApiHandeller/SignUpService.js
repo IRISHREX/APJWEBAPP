@@ -3,6 +3,7 @@ import axios from 'axios';
 const localUrl = 'http://localhost:5000/api/users';
 const productionUrl = 'https://tame-hospital-gown-mite.cyclic.app/api/users';
 
+
 const signUpUser = async (data) => {
   const isLocal = window.location.host.includes('localhost');
   const url = isLocal ? localUrl : productionUrl;

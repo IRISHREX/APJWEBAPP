@@ -26,10 +26,10 @@ function Footer() {
           Follow us on social media:
         </Typography>
         <IconButton color="primary" aria-label="Facebook" sx={{ mr: 1 }}>
-          <a href="www.facebook.com/AsifReza" ><FacebookIcon /></a>
+          <a href="https://www.facebook.com/AsifReza" ><FacebookIcon /></a>
         </IconButton>
         <IconButton color="primary" aria-label="Twitter" sx={{ mr: 1 }}>
-        <a href="BioMechasoft@gmail.com" ><Google /></a>
+        <a href="https://www.BioMechasoft@gmail.com" rel="external"><Google  /></a>
         </IconButton>
         <IconButton color="primary" aria-label="Instagram">
           <InstagramIcon />

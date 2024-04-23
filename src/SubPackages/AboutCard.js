@@ -75,14 +75,8 @@ const AboutCard = ({ member, onUpdate, onDelete, onGetById }) => {
         </Typography>
 
         <div style={{ textAlign: "center", marginTop: "15px" }}>
-            <IconButton
-              component="a"
-              go={email}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Mail />
-            </IconButton>
+          
+              <a href={`${email}`}><Mail /></a>
 
 
           {userType === "admin" && (

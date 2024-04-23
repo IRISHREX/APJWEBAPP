@@ -43,6 +43,7 @@
   color: #f94503e6; /* Font color for better visibility */
   display: inline-block; /* Ensures the gradient covers the entire text */
   font-size: large;
+  overflow: hidden;
 }
 
 
