@@ -13,6 +13,7 @@ import Faq from "./Faq";
 
 import { fetchNoticeData } from "../ApiHandeller/NoticeApis";
 import { cardData } from "./Util";
+import './liveSphere.css'
 
 function HomePage() {
   const [showCourse, setShowCourse] = useState();
@@ -54,6 +55,10 @@ function HomePage() {
         <Grid item xs={12}>
           <CarouselComponent />
         </Grid>
+         {/* <Grid item xs={12}className="container" > 
+                    <div className="shape">
+                    </div>
+                    </Grid> */}
       </Grid>
 
       <Grid container spacing={2} className={background}>
@@ -139,10 +144,15 @@ function HomePage() {
                     </Grid>
                   </>
                 )}
+                   
               </Grid>
             </Card>
           </Grid>
         ))}
+         <Grid item xs={12} sm={6} className="container"> 
+                    <div className="shape">
+                    </div>
+                    </Grid>
       </Grid>
 
       <div id="view-course">

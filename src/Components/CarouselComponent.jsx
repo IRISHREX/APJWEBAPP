@@ -25,6 +25,8 @@ const imageStyle = {
   width: "100%",
   height: "100%",
   objectFit: "cover",
+  borderRadius: "8px", // Added border radius for a modern look
+  filter: "grayscale(20%)", // Added grayscale effect for a futuristic feel
 };
 
 const textStyle = {
@@ -33,9 +35,10 @@ const textStyle = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   zIndex: 1,
-  backgroundColor: "rgba(255, 255, 255, 0.8)",
+  backgroundColor: "rgba(0, 0, 0, 0.6)", // Updated background color for text overlay
   padding: "16px",
   borderRadius: "8px",
+  backdropFilter: "blur(5px)", // Added backdrop filter for a modern look
 };
 
 const CarouselComponent = () => {
@@ -46,8 +49,8 @@ const CarouselComponent = () => {
   };
 
   return (
-    <div style={{border:'solid 0.03 rem transparent',borderRadius:'31% 69% 15% 85% / 10% 100% 0% 90%  ',overflow:"hidden", background:"rgba(124, 252, 5, 0.3)",paddingTop:'1rem'}}>
-      <Carousel {...carouselSettings} >
+    <div>
+      <Carousel {...carouselSettings}>
         {carouselData.map((item, index) => (
           <div key={index}>
             <div style={containerStyle}>
@@ -57,7 +60,7 @@ const CarouselComponent = () => {
                 style={imageStyle}
               />
               <div style={textStyle}>
-                <Typography variant="body1" letterSpacing={2}>
+                <Typography variant="body1" letterSpacing={2} color="white"> {/* Changed text color to white */}
                   {item.details}
                 </Typography>
               </div>
@@ -74,10 +77,10 @@ const CarouselComponent = () => {
             marginTop: "16px",
           }}
         >
-          <IconButton onClick={handleUpdate}>
+          <IconButton onClick={handleUpdate} style={{ color: "white" }}> {/* Changed icon color to white */}
             <EditIcon />
           </IconButton>
-          <IconButton onClick={handleDelete}>
+          <IconButton onClick={handleDelete} style={{ color: "white" }}> {/* Changed icon color to white */}
             <DeleteIcon />
           </IconButton>
         </div>

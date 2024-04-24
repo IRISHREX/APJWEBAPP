@@ -3,6 +3,7 @@ import { Card, CardContent, Typography, IconButton, Grid, Avatar} from '@mui/mat
 import { Download as DownloadIcon } from '@mui/icons-material'; // Import the Download icon
 import pdfData from '../SubPackages/PdfData';
 import AsifReza from '../Images/TeamMembars/AsifReza.jpg'
+import './liveSphere.css'
 
 const PdfListPage = () => {
   const [background, setBackground] = useState("BackGroundThame");
@@ -42,13 +43,18 @@ const PdfListPage = () => {
             </Card>
           ))}
         </Grid>
-        <Grid item xs={12} md={4} marginLeft={4}>
+       
+        <Grid item xs={12} md={4} className="container"  style={{position:'relative'}}> 
+                    <div className="shape">
+                    </div>
+                    </Grid> 
+      </Grid>
+      <Grid item xs={12} md={4} marginLeft={4}>
         
 
-          <h4><Avatar alt={"ASIF"} src={AsifReza} style={{height:"100%",width:'5rem'}} />The content on this page is protected by copyright law, including the provisions of the  <strong>Copyright Act, 1957, of India</strong></h4>
-          
-        </Grid>
-      </Grid>
+        <h4><Avatar alt={"ASIF"} src={AsifReza} style={{height:"100%",width:'5rem'}} />The content on this page is protected by copyright law, including the provisions of the  <strong>Copyright Act, 1957, of India</strong></h4>
+        
+      </Grid> 
     </div>
   );
 };

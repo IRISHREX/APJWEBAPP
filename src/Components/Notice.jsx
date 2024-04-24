@@ -23,7 +23,7 @@ import {
   Delete as DeleteIcon,
   Close,
 } from "@mui/icons-material";
-
+import './liveSphere.css';
 import {
   fetchNoticeData,
   createNoticeData,
@@ -148,6 +148,10 @@ const Notice = () => {
       <Typography variant="h4" gutterBottom>
         Notices
       </Typography>
+      <Grid className="container"  style={{position:'relative'}}> 
+                    <div className="shape">
+                    </div>
+                    </Grid> 
       <Carousel animation="slide">
         {notices.map((notice, index) => (
           <Grid key={notice.id} container spacing={2} direction={"row"}>
@@ -168,9 +172,13 @@ const Notice = () => {
               onReadMore={() => handleDrawerOpen(notice.description)}
             />
             )
+            
           </Grid>
+          
         ))}
+              
       </Carousel>
+      
       <Typography variant="h5" mt={4}>
         Notices Table
       </Typography>
